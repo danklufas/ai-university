@@ -1,0 +1,10 @@
+site_name: AI University Curriculum
+
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - Week 1: week-1.md
+  - Week 2: week-2.md
+  # …continue listing up through Week 24
