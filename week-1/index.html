@@ -1,0 +1,830 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../week-2/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>Week 1 - AI University Curriculum</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#simulate-1000-die-rolls" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AI University Curriculum" class="md-header__button md-logo" aria-label="AI University Curriculum" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI University Curriculum
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Week 1
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AI University Curriculum" class="md-nav__button md-logo" aria-label="AI University Curriculum" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AI University Curriculum
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 1
+    
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Week 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<ol>
+<li>Lesson Overview
+Learning Objectives:
+By the end of this lesson, you will be able to:
+•   Describe three pivotal AI milestones and their lasting impact.
+•   Define Artificial Intelligence (AI), Machine Learning (ML), and Data Science with clear examples.
+•   Understand probability fundamentals—random variables, expectation, variance—and compute them by hand and in Python.
+•   Grasp key linear algebra concepts—vectors, matrices, dot products, matrix multiplication—and see how they underpin AI algorithms.
+•   Install and launch the required tools (Python, Jupyter Notebook, NumPy, pandas) and execute basic code.</li>
+</ol>
+<hr />
+<ol>
+<li>Core Definitions
+Term    Definition &amp; Example
+Artificial Intelligence (AI)    “The science and engineering of making intelligent machines, especially intelligent computer programs.” — John McCarthy, 1956
+Example: A chatbot that interprets questions and crafts human like responses. <br />
+Machine Learning (ML)   Algorithms that improve performance on tasks by learning from data rather than explicit programming.
+Example: A regression model that learns to predict steel prices from historical sales.<br />
+Data Science    Interdisciplinary practice of using statistics, programming, and domain knowledge to extract insights from data.
+Example: Cleaning and visualizing e commerce logs to uncover purchasing trends. </li>
+</ol>
+<hr />
+<ol>
+<li>Concept Sections
+A. AI Milestones
+Excerpt (Definition Box):
+Artificial Intelligence (AI) – “The science and engineering of making intelligent machines, especially intelligent computer programs.” — John McCarthy, 1956</li>
+<li>The Dartmouth Workshop (1956)
+In the summer of 1956, John McCarthy, Marvin Minsky, Nathaniel Rochester, and Claude Shannon convened at Dartmouth College to explore a bold question: “Can machines be made to simulate human intelligence?” They coined the term “Artificial Intelligence” and launched a two month study to investigate how machines might “learn from experience,” “make abstractions,” and “use language.”
+o   Context &amp; Significance:
+Before Dartmouth, computers were viewed largely as number crunchers. This workshop reframed them as potential thinking machines, seeding optimism that a small team could tackle “every aspect of learning or any other feature of intelligence.”
+o   First Programs:
+   Logic Theorist (1955): Developed by Newell &amp; Simon, it proved theorems in symbolic logic—demonstrating that “thinking” tasks could be mechanized.
+   General Problem Solver (1957): An early attempt at a universal reasoning engine.
+o   Why It Matters Today:
+   Cycle of Hype &amp; AI Winters: The booms and busts following Dartmouth teach us to balance ambition with realism when evaluating modern AI breakthroughs.
+   Legacy in Modern Research: Symbolic reasoning and search algorithms from this era underpin today’s knowledge graphs and constraint solving systems.</li>
+<li>Expert Systems Era (1970s–1980s)
+As symbolic AI matured, expert systems emerged—rule based programs encoding human expertise as “if–then” statements.
+o   Core Idea:
+Encode domain knowledge in production rules:
+text
+CopyEdit
+IF symptom = fever AND symptom = rash<br />
+THEN suggest = measles
+o   Notable Example – MYCIN (1972–1980):
+   Built at Stanford, MYCIN contained ~600 rules for diagnosing bacterial infections and recommending antibiotics.
+   It queried patient data (age, symptoms), applied its rule base, and in blind tests matched or outperformed human experts.
+o   Strengths &amp; Limitations:
+   Strength: Transparent logic—every recommendation traces back to specific rules.
+   Limitation: Required hand crafting thousands of rules and handled uncertainty poorly (no probabilistic reasoning).
+o   Modern Relevance:
+   Rule based approaches inform decision support in finance and healthcare.
+   Today’s hybrid systems combine rules with statistical ML (e.g., regulatory checks plus model based scoring).</li>
+<li>Deep Learning Boom (2010s–Present)
+The field’s third surge harnessed large datasets and GPU acceleration to train deep neural networks—models with many layers that learn hierarchical features automatically.
+o   Key Breakthrough – AlexNet (2012):
+   An eight layer convolutional neural network (CNN) that halved error rates on the ImageNet challenge (1.2 million labeled images, 1,000 categories).
+   Employed ReLU activations, dropout regularization, and GPU based training.
+o   Why Deep Learning Emerged:</li>
+<li>Data: Massive labeled datasets (images, text, speech).</li>
+<li>Compute: GPUs excel at parallel matrix operations critical for neural nets.</li>
+<li>Algorithms: Innovations like batch normalization, architectural search, and optimized backpropagation.
+o   Transformative Applications:
+   Computer Vision: Object detection (self driving cars), medical imaging (tumor detection).
+   Natural Language Processing: Language translation, text generation (GPT style models).
+   Speech &amp; Audio: Voice assistants, real time translation.
+o   Why It Matters for You:
+   Modern AI frameworks (TensorFlow, PyTorch) are built around neural networks.
+   This era explains why subsequent terms focus on coding deep models and leveraging pretrained architectures for rapid deployment.</li>
+</ol>
+<hr />
+<p>C. Probability Basics
+Excerpt (Definition Box):
+Probability Theory – “The mathematical framework for quantifying uncertainty and modeling random phenomena.”
+C1. Introduction
+1.  What Is Chance?
+o   Everyday Analogy: Flipping a coin. You know there are two sides—heads or tails—but you can’t predict which will land face up.
+o   Key Idea: Probability measures how likely something is to happen, on a scale from 0 (impossible) to 1 (certain).
+   Example: A fair coin has probability 0.5 of landing heads.
+2.  Simple Data &amp; Averages
+o   Real World Example: Your test scores this week: 80%, 90%, 70%, 100%, 60%.
+o   Mean (Average): Add them up and divide by the number of tests:
+80+90+70+100+605=80%. \frac{80 + 90 + 70 + 100 + 60}{5} = 80\%.580+90+70+100+60=80%. 
+o   Why It Matters: The mean gives a sense of “typical” performance.
+3.  Measuring Spread (Variance)
+o   Analogy: If all scores are close to 80% (say 75%, 80%, 85%), that’s low spread; if they vary widely (60%, 100%, 70%), that’s high spread.
+o   Step by Step (Scores Example):
+1.  Compute each score’s difference from the mean (80): e.g., 60–80 = –20.
+2.  Square these differences to make them positive: (–20)² = 400.
+3.  Average the squared differences: if squares are [400,100,100,400,400], mean = 280.
+4.  That average (280) is the variance; its square root (≈16.7) is the standard deviation.
+o   Real World Uses:
+   Weather Forecasts: “There’s a 30% chance of rain” guides umbrella choices.
+   Quality Control: A factory measures weight of cereal boxes; variance tells if the filling machine is consistent.
+C2. Formal Definitions &amp; Deep Dive
+1.  Understanding Random Variables
+A random variable XXX formalizes outcomes of random processes by assigning numeric values.
+o   Discrete RV: Takes countable values (e.g., die rolls, number of returned orders).
+   Example: Rolling a six sided die → X∈{1,2,3,4,5,6}X \in {1,2,3,4,5,6}X∈{1,2,3,4,5,6} with P(X=k)=16P(X=k)=\tfrac{1}{6}P(X=k)=61.
+o   Continuous RV: Takes any value in a continuum (e.g., time between machine failures).
+   Example: Time (in minutes) between software crashes might follow an exponential distribution:
+f(t)=λe−λt,t≥0. f(t)=\lambda e^{-\lambda t},\quad t\ge0.f(t)=λe−λt,t≥0. 
+2.  Expectation (Mean)
+The expectation E[X]E[X]E[X] is the long run average if the experiment repeats infinitely.
+o   Formula (Discrete):
+E[X]=∑ixi P(X=xi). E[X] = \sum_{i} x_i\,P(X=x_i).E[X]=i∑xiP(X=xi). 
+o   Formula (Continuous):
+E[X]=∫−∞∞x f(x) dx. E[X] = \int_{-\infty}^{\infty} x\,f(x)\,dx.E[X]=∫−∞∞xf(x)dx. 
+o   Worked Example (Die):
+E[X]=1+2+3+4+5+66=3.5. E[X] = \frac{1 + 2 + 3 + 4 + 5 + 6}{6} = 3.5.E[X]=61+2+3+4+5+6=3.5. 
+o   Relevance: Loss functions like mean squared error minimize expected error; understanding expectation clarifies why we average squared deviations.
+3.  Variance &amp; Standard Deviation
+o   Variance:
+Var(X)=E[(X−E[X])2]. \mathrm{Var}(X) = E\bigl[(X - E[X])^2\bigr].Var(X)=E[(X−E[X])2]. 
+o   Standard Deviation:
+σ=Var(X). \sigma = \sqrt{\mathrm{Var}(X)}.σ=Var(X). 
+o   Worked Example (Die):
+Var(X)=(1−3.5)2+⋯+(6−3.5)26=17.56≈2.92,σ≈1.71. \mathrm{Var}(X) = \frac{(1-3.5)^2 + \dots + (6-3.5)^2}{6} = \frac{17.5}{6} \approx 2.92,\quad \sigma \approx 1.71.Var(X)=6(1−3.5)2+⋯+(6−3.5)2=617.5≈2.92,σ≈1.71. 
+o   Relevance: Guides feature scaling, sets confidence intervals, and underpins uncertainty quantification in finance or anomaly detection.
+4.  Why These Concepts Matter in AI
+o   Model Training: Loss functions (e.g., MSE) rely on expectation of squared errors.
+o   Uncertainty Quantification: Variance informs risk metrics (VaR, confidence intervals).
+o   Feature Engineering: Distribution shapes dictate transformations (e.g., log scaling skewed data).</p>
+<hr />
+<p>D. Linear Algebra Basics
+Excerpt (Definition Box):
+Linear Algebra – “The branch of mathematics concerned with vectors, vector spaces, and linear transformations.”
+D1. Introduction
+1.  Vectors as Lists
+o   Analogy: A grocery list: [2 bananas, 1 loaf bread, 500 g cheese].
+o   Key Idea: A vector is just a list of numbers representing “features.”
+2.  Matrices as Tables
+o   Analogy: A seating chart in class: rows are table numbers, columns are seat positions.
+text
+CopyEdit
+|    | S1 | S2 | S3 |
+|----|----|----|----|
+| T1 | A  | B  | C  |
+| T2 | D  | E  | F  |
+o   Key Idea: A matrix is multiple vectors “stacked” into rows or columns.
+3.  Dot Product Intuition
+o   Example (Bill Splitting): You and a friend order appetizers ([3, 2] plates) and drinks ([1, 2] each). To compute total cost if plates = $5, drinks = $2:
+[3,2]⋅[5,2]=3×5+2×2=15+4=$19. [3,2]\cdot[5,2] = 3\times5 + 2\times2 = 15 + 4 = \$19.[3,2]⋅[5,2]=3×5+2×2=15+4=$19. 
+o   Why It Matters: Combines quantities and prices; same math as a regression prediction.
+4.  Real World Matrix Use
+o   Recipe scaling: A 4 serving recipe’s ingredients in a matrix, multiply by 1.5 to get 6 servings.
+o   School timetable: Days × hours grid for scheduling classes.
+D2. Formal Definitions &amp; Deep Dive
+1.  Vectors &amp; Their Interpretation
+A vector x∈Rn\mathbf{x}\in\mathbb{R}^nx∈Rn is an ordered list of nnn numbers representing features or data points.
+o   Example:
+x=[age, monthly_spend, num_orders]=[45, 320.5, 12]. \mathbf{x} = [\text{age},\,\text{monthly_spend},\,\text{num_orders}] = [45,\,320.5,\,12].x=[age,monthly_spend,num_orders]=[45,320.5,12]. 
+2.  Matrices &amp; Batch Operations
+A matrix X∈Rm×n\mathbf{X}\in\mathbb{R}^{m\times n}X∈Rm×n stacks mmm row vectors of dimension nnn.
+o   Example:
+X=[45320.51223150.05⋮⋮⋮]. \mathbf{X} = \begin{bmatrix} 45 &amp; 320.5 &amp; 12 \ 23 &amp; 150.0 &amp; 5 \ \vdots &amp; \vdots &amp; \vdots \end{bmatrix}.X=4523⋮320.5150.0⋮125⋮. 
+3.  Dot Product &amp; Linear Transformations
+o   Dot Product:
+a⋅b=∑i=1nai bi. \mathbf{a}\cdot\mathbf{b} = \sum_{i=1}^n a_i\,b_i.a⋅b=i=1∑naibi. 
+Example: [1,2,3]⋅[4,5,6]=32.[1,2,3]\cdot[4,5,6] = 32.[1,2,3]⋅[4,5,6]=32.
+o   Use in AI:
+   Regression: y^=w⋅x+b\hat y = \mathbf{w}\cdot\mathbf{x} + by^=w⋅x+b.
+   Neural Nets: Each neuron computes z=w⋅x+bz=\mathbf{w}\cdot\mathbf{x}+bz=w⋅x+b, then applies an activation.
+4.  Matrix Multiplication
+C=A×B,Cij=∑k=1nAik Bkj. \mathbf{C} = \mathbf{A}\times\mathbf{B},\quad C_{ij} = \sum_{k=1}^n A_{ik}\,B_{kj}.C=A×B,Cij=k=1∑nAikBkj. 
+Example: Transforming feature spaces or chaining layers in a deep network.
+5.  Relevance for AI Practitioners
+o   Batch Processing: GPUs and NumPy rely on vectorized matrix operations.
+o   Model Introspection: Weight matrices and activation maps in CNNs are built on these operations.
+o   Dimensionality Reduction: PCA uses eigenvectors/eigenvalues of covariance matrices to compress data.</p>
+<hr />
+<ol>
+<li>Tools Installation &amp; Setup
+Windows &amp; Mac
+A. Install Python &amp; Anaconda</li>
+<li>Navigate to https://www.anaconda.com/products/distribution</li>
+<li>Download the Python 3.x installer for your OS.</li>
+<li>Run the installer, accept defaults.</li>
+<li>Open Anaconda Navigator from your Start menu (Windows) or Applications folder (Mac).
+B. Launch Jupyter Notebook</li>
+<li>In Anaconda Navigator, click Launch under Jupyter Notebook.</li>
+<li>A browser window opens showing your file system.</li>
+<li>Click New → Python 3.</li>
+<li>Rename the notebook to Week1_AI_Math.ipynb.
+C. Install &amp; Import NumPy &amp; pandas</li>
+<li>In a notebook cell, run:
+bash
+CopyEdit
+!conda install numpy pandas -y</li>
+<li>In the next cell, import the libraries:
+python
+CopyEdit
+import numpy as np
+import pandas as pd</li>
+</ol>
+<hr />
+<ol>
+<li>Step by Step Exercises
+Exercise 1: Die Roll Simulation &amp; Statistics (Template)</li>
+<li>Exercise Overview &amp; Purpose
+•   What we’re doing: Simulate 1,000 rolls of a fair six sided die in Python to compute the empirical mean and variance.
+•   Why: Reinforces theoretical vs. empirical probability, builds NumPy familiarity, and demonstrates sampling variability.</li>
+<li>Concept Reinforcement
+•   Probability &amp; Random Variables
+•   Expectation &amp; Variance
+•   Sampling Variability</li>
+<li>Real World Relevance
+•   Quality Control (defect rate simulation)
+•   Risk Modeling (Monte Carlo portfolio variance)
+•   Randomized Algorithms &amp; Game Balancing</li>
+<li>Step by Step Instructions
+python
+CopyEdit
+import numpy as np</li>
+</ol>
+<h1 id="simulate-1000-die-rolls">Simulate 1,000 die rolls</h1>
+<p>rolls = np.random.randint(1, 7, size=1000)</p>
+<h1 id="compute-statistics">Compute statistics</h1>
+<p>mean_rolls = rolls.mean()
+var_rolls = rolls.var()</p>
+<p>print("Simulated Mean:    ", mean_rolls)
+print("Simulated Variance:", var_rolls)
+•   Notes:
+o   np.random.randint(1, 7, size=1000): integers 1–6
+o   .mean(), .var(): compute empirical mean &amp; variance
+5. Expected Outcomes &amp; Interpretation
+•   Mean ≈ 3.5, Variance ≈ 2.92 (± sampling noise)
+•   Larger samples converge closer to theory
+6. Extensions &amp; Variations
+•   Vary sample size (100, 10,000)
+•   Simulate weighted/unfair die
+•   Plot histogram with matplotlib
+7. Additional Notes &amp; Tips
+•   Use np.random.seed(42) for reproducibility
+•   Avoid Python loops; prefer NumPy vectorization
+Exercise 2: Coin Flip Probability Estimation
+1. Overview &amp; Purpose
+Simulate 10,000 coin flips to estimate the probability of heads and tails.
+2. Concept Reinforcement
+•   Discrete random variables
+•   Empirical vs. theoretical probability
+3. Real World Relevance
+•   A/B testing conversion rates (success/failure)
+•   Clinical trial outcomes
+4. Step by Step Instructions
+python
+CopyEdit
+import numpy as np</p>
+<p>np.random.seed(0)
+flips = np.random.choice(['H','T'], size=10000)
+p_heads = np.mean(flips == 'H')
+p_tails = np.mean(flips == 'T')
+print(f"P(heads): {p_heads:.3f}, P(tails): {p_tails:.3f}")
+5. Expected Outcomes &amp; Interpretation
+~0.5 each, with fluctuations ~±0.01.
+6. Extensions &amp; Variations
+•   Weighted coin (p=['H':0.3,'T':0.7])
+•   Plot bar chart of counts
+7. Additional Notes &amp; Tips
+Use np.random.seed(…) for reproducibility.</p>
+<hr />
+<p>Exercise 3: Histogram of Die Rolls
+1. Overview &amp; Purpose
+Visualize the distribution of the 1,000 die rolls from Exercise 1.
+2. Concept Reinforcement
+•   Frequency vs. probability
+•   Data visualization basics
+3. Real World Relevance
+•   Sales distribution by category
+•   Error rates by batch
+4. Step by Step Instructions
+python
+CopyEdit
+import matplotlib.pyplot as plt</p>
+<p>plt.hist(rolls, bins=range(1,8), align='left', rwidth=0.8)
+plt.xlabel('Die Face')
+plt.ylabel('Frequency')
+plt.title('Histogram of 1,000 Die Rolls')
+plt.show()
+5. Expected Outcomes &amp; Interpretation
+Bars roughly equal height for faces 1–6.
+6. Extensions &amp; Variations
+•   Normalized histogram (density=True)
+•   Overlay theoretical PMF
+7. Additional Notes &amp; Tips
+Ensure bins=range(1,8) to center on integer faces.</p>
+<hr />
+<p>Exercise 4: Exponential Distribution Simulation
+1. Overview &amp; Purpose
+Simulate 5,000 samples from an exponential distribution (mean = 2) and compute mean/variance.
+2. Concept Reinforcement
+•   Continuous random variables
+•   Relationship between distribution parameters and statistics
+3. Real World Relevance
+•   Time between machine failures
+•   Call-center interarrival times
+4. Step by Step Instructions
+python
+CopyEdit
+samples = np.random.exponential(scale=2, size=5000)
+print("Empirical Mean:", samples.mean())
+print("Empirical Variance:", samples.var())
+5. Expected Outcomes &amp; Interpretation
+Mean ≈ 2; variance ≈ 4.
+6. Extensions &amp; Variations
+•   Change scale (mean) parameter
+•   Plot histogram + theoretical PDF
+7. Additional Notes &amp; Tips
+Use np.histogram or matplotlib for PDF overlay.</p>
+<hr />
+<p>Exercise 5: Normal Distribution Sampling
+1. Overview &amp; Purpose
+Draw 10,000 samples from a standard normal (mean 0, σ = 1) and verify statistics.
+2. Concept Reinforcement
+•   Properties of Gaussian distribution
+•   Central Limit Theorem preview
+3. Real World Relevance
+•   Measurement errors
+•   Standardized test score modeling
+4. Step by Step Instructions
+python
+CopyEdit
+normals = np.random.randn(10000)
+print("Mean:", normals.mean())
+print("Variance:", normals.var())
+5. Expected Outcomes &amp; Interpretation
+Mean ≈ 0, variance ≈ 1.
+6. Extensions &amp; Variations
+•   Use np.random.normal(loc, scale, size)
+•   QQ plot vs. theoretical normal
+7. Additional Notes &amp; Tips
+Matplotlib’s plt.hist(..., density=True) for PDF shape.</p>
+<hr />
+<p>Exercise 6: Sampling Distribution of the Mean
+1. Overview &amp; Purpose
+Simulate 1,000 experiments, each of 100 die rolls, record sample means, and examine their distribution.
+2. Concept Reinforcement
+•   Law of Large Numbers
+•   Sampling variability reduction
+3. Real World Relevance
+•   Polling averages
+•   Quality metrics over batches
+4. Step by Step Instructions
+python
+CopyEdit
+means = [np.random.randint(1,7,100).mean() for _ in range(1000)]
+plt.hist(means, bins=20)
+plt.title('Sampling Distribution of Die Roll Means')
+plt.show()
+5. Expected Outcomes &amp; Interpretation
+Histogram approximates normal around 3.5 with narrower spread.
+6. Extensions &amp; Variations
+•   Vary experiment size (n=10, n=1000)
+•   Compute standard error (σ/√n)
+7. Additional Notes &amp; Tips
+List comprehensions vs. loops for clarity.</p>
+<hr />
+<p>Exercise 7: Weighted Dice Simulation
+1. Overview &amp; Purpose
+Simulate 1,000 rolls of a biased die with P(6)=0.5, others equal.
+2. Concept Reinforcement
+•   Custom discrete distributions
+•   Impact of bias on mean/variance
+3. Real World Relevance
+•   Biased processes in manufacturing
+•   Skewed customer behavior models
+4. Step by Step Instructions
+python
+CopyEdit
+faces = [1,2,3,4,5,6]
+probs = [0.1]*5 + [0.5]
+rolls_biased = np.random.choice(faces, size=1000, p=probs)
+print("Mean:", rolls_biased.mean(), "Variance:", rolls_biased.var())
+5. Expected Outcomes &amp; Interpretation
+Mean &gt; 3.5, variance different from fair die.
+6. Extensions &amp; Variations
+•   Tune probs for different biases
+•   Compare histograms side by side
+7. Additional Notes &amp; Tips
+Sum of probs must equal 1.</p>
+<hr />
+<p>Exercise 8: Vector Addition &amp; Scaling
+1. Overview &amp; Purpose
+Demonstrate vector addition and scalar multiplication with feature vectors.
+2. Concept Reinforcement
+•   Vector space operations
+•   Geometric interpretation
+3. Real World Relevance
+•   Combining feature influences
+•   Scaling normalized data
+4. Step by Step Instructions
+python
+CopyEdit
+v1 = np.array([2, 4, 6])
+v2 = np.array([1, 3, 5])
+sum_v = v1 + v2              # vector addition
+scaled_v = 0.5 * v1          # scalar multiplication
+print("Sum:", sum_v)
+print("Scaled:", scaled_v)
+5. Expected Outcomes &amp; Interpretation
+Sum = [3,7,11]; scaled = [1,2,3].
+6. Extensions &amp; Variations
+•   Compute dot product of sum_v and v2
+•   Visualize vectors in 2D/3D
+7. Additional Notes &amp; Tips
+Ensure consistent dimensions.</p>
+<hr />
+<p>Exercise 9: Matrix Multiplication Demonstration
+1. Overview &amp; Purpose
+Multiply a 2×3 matrix by a 3×2 matrix to reinforce matrix multiplication rules.
+2. Concept Reinforcement
+•   Shape compatibility
+•   Summation over inner index
+3. Real World Relevance
+•   Transforming feature spaces
+•   Composition of network layers
+4. Step by Step Instructions
+python
+CopyEdit
+A = np.array([[1,2,3],[4,5,6]])
+B = np.array([[7,8],[9,10],[11,12]])
+C = A.dot(B)
+print("Result:\n", C)
+5. Expected Outcomes &amp; Interpretation
+C = [[58,64],[139,154]].
+6. Extensions &amp; Variations
+•   Reverse multiplication to show error
+•   Use @ operator in Python 3.5+
+7. Additional Notes &amp; Tips
+Check shapes via A.shape and B.shape.</p>
+<hr />
+<p>Exercise 10: PCA on Toy Dataset
+1. Overview &amp; Purpose
+Perform PCA on a small 2 D dataset to reduce to 1 D and visualize variance capture.
+2. Concept Reinforcement
+•   Eigenvectors/eigenvalues
+•   Dimensionality reduction
+3. Real World Relevance
+•   Compressing image data
+•   Feature extraction for clustering
+4. Step by Step Instructions
+python
+CopyEdit
+from sklearn.decomposition import PCA</p>
+<p>X = np.array([[2.5,2.4],[0.5,0.7],[2.2,2.9],[1.9,2.2],[3.1,3.0]])
+pca = PCA(n_components=1)
+X_pca = pca.fit_transform(X)
+print("Explained variance ratio:", pca.explained_variance_ratio_)
+print("Projected data:\n", X_pca)
+5. Expected Outcomes &amp; Interpretation
+Most variance captured in first component (≈98%).
+6. Extensions &amp; Variations
+•   Plot original vs. projected points
+•   Try n_components=2
+7. Additional Notes &amp; Tips
+Requires scikit-learn installation.</p>
+<hr />
+<ol>
+<li>Summary of Week 1
+Throughout this first week, you have:
+•   Traced AI History: From the Dartmouth Workshop to Expert Systems (MYCIN) and the Deep Learning revolution (AlexNet).
+•   Built Probability Skills: Learned random variables, expectation, variance—both by hand and in Python (die rolls, coin flips, exponential and normal sampling).
+•   Visualized Data: Plotted histograms, demonstrated Central Limit Theorem.
+•   Handled Bias: Modeled a weighted die to see effects on distribution.
+•   Applied Linear Algebra: Performed vector ops, matrix multiplication, and PCA for dimensionality reduction.
+These foundational concepts and hands on exercises prepare you for more advanced AI and ML topics.</li>
+</ol>
+<hr />
+<ol>
+<li>Additional Resources
+Probability Fundamentals: Khan Academy “Introduction to Probability”
+•   Linear Algebra Visualizations: 3Blue1Brown “Essence of Linear Algebra” series
+•   Python Tutorials: Official Python documentation at python.org</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+    
+  </body>
+</html>
