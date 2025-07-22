@@ -426,6 +426,75 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#6-week-1-summary-what-you-can-now-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Week 1 Summary &amp; What You Can Now Do
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Week 1 Summary &amp; What You Can Now Do">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-ai-history-in-one-breath" class="md-nav__link">
+    <span class="md-ellipsis">
+      A. AI History in One Breath
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-probability-from-intuition-to-math" class="md-nav__link">
+    <span class="md-ellipsis">
+      B. Probability: From Intuition to Math
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-linear-algebra-the-language-of-ml" class="md-nav__link">
+    <span class="md-ellipsis">
+      C. Linear Algebra: The Language of ML
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-tools-workflow-locked-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      D. Tools &amp; Workflow Locked In
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e-exercises-recap-what-each-taught-you" class="md-nav__link">
+    <span class="md-ellipsis">
+      E. Exercises Recap (What each taught you)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-additional-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Additional Resources
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1114,22 +1183,187 @@ Perform PCA on a tiny 2‑D dataset, reduce it to 1‑D, and see how much varian
 - Requires <code>scikit-learn</code> (<code>pip install scikit-learn</code> if missing)<br />
 - PCA assumes linear structure; nonlinear data may need t‑SNE/UMAP</p>
 </details>
-<ol>
-<li>Summary of Week 1
-Throughout this first week, you have:</li>
-</ol>
-<p>Traced AI History: From the Dartmouth Workshop to Expert Systems (MYCIN) and the Deep Learning revolution (AlexNet).</p>
-<p>Built Probability Skills: Learned random variables, expectation, variance—both by hand and in Python (die rolls, coin flips, exponential and normal sampling).</p>
-<p>Visualized Data: Plotted histograms, demonstrated Central Limit Theorem.</p>
-<p>Handled Bias: Modeled a weighted die to see effects on distribution.</p>
-<p>Applied Linear Algebra: Performed vector ops, matrix multiplication, and PCA for dimensionality reduction.</p>
-<p>These foundational concepts and hands‑on exercises prepare you for more advanced AI and ML topics.</p>
-<ol>
-<li>Additional Resources
-Probability Fundamentals: Khan Academy “Introduction to Probability”</li>
-</ol>
-<p>Linear Algebra Visualizations: 3Blue1Brown “Essence of Linear Algebra” series</p>
-<p>Python Tutorials: Official Python documentation at python.org</p>
+<h2 id="6-week-1-summary-what-you-can-now-do">6. Week 1 Summary &amp; What You Can Now Do</h2>
+<div class="admonition success">
+<p class="admonition-title">You can now…</p>
+<ul>
+<li><strong>Explain key AI milestones</strong>: Dartmouth (1956), Expert Systems (1970s–80s), Deep Learning boom (2010s–present) and why each wave mattered.  </li>
+<li><strong>Use probability concepts</strong> (random variables, mean, variance) and verify them empirically in Python.  </li>
+<li><strong>Work with basic linear algebra objects</strong> (vectors, matrices, dot products, matrix multiplication) and see how they power ML models.  </li>
+<li><strong>Install and run core tools</strong> (Anaconda, Jupyter, NumPy, pandas) to explore data and math interactively.</li>
+</ul>
+</div>
+<h3 id="a-ai-history-in-one-breath">A. AI History in One Breath</h3>
+<ul>
+<li><strong>Dartmouth Workshop (1956):</strong> coined “AI”; optimism about simulating intelligence.<br />
+<em>Lesson:</em> Ambition vs. realism—avoid hype traps.  </li>
+<li><strong>Expert Systems (’70s–’80s):</strong> rule-based IF–THEN logic (e.g., MYCIN).<br />
+<em>Lesson:</em> Transparency is great, but brittle without probabilities.  </li>
+<li><strong>Deep Learning (2010s–):</strong> data + GPUs + better algorithms (AlexNet etc.) → breakthroughs.<br />
+<em>Lesson:</em> Modern toolkits (TensorFlow/PyTorch) center on neural nets.</li>
+</ul>
+<h3 id="b-probability-from-intuition-to-math">B. Probability: From Intuition to Math</h3>
+<ul>
+<li><strong>Random Variables:</strong> discrete (die, coin), continuous (time-to-failure).  </li>
+<li><strong>Expectation &amp; Variance:</strong> long-run average and spread—computed by hand and via NumPy.  </li>
+<li><strong>Why it matters:</strong> Loss functions, risk estimation, feature engineering all use these ideas.  </li>
+<li><strong>Real world ties:</strong> A/B tests, forecasting demand spikes, Monte Carlo risk simulations.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Anchor formulas</p>
+<ul>
+<li>Discrete mean: \(E[X] = \sum x_i P(X=x_i)\)  </li>
+<li>Variance: \(\mathrm{Var}(X) = E[(X - E[X])^2]\)</li>
+</ul>
+</div>
+<h3 id="c-linear-algebra-the-language-of-ml">C. Linear Algebra: The Language of ML</h3>
+<ul>
+<li><strong>Vectors:</strong> feature lists (e.g., <code>[age, spend, orders]</code>).  </li>
+<li><strong>Matrices:</strong> batches of vectors; all your data at once.  </li>
+<li><strong>Dot Product:</strong> core of regression and neuron activations.  </li>
+<li><strong>Matrix Multiplication:</strong> chaining transformations (layers) in neural nets.  </li>
+<li><strong>Why it matters:</strong> Speed (GPU vectorization), interpretability (weights are matrices), compression (PCA).</li>
+</ul>
+<h3 id="d-tools-workflow-locked-in">D. Tools &amp; Workflow Locked In</h3>
+<ul>
+<li><strong>Anaconda &amp; Jupyter:</strong> you spun up a notebook and ran code.  </li>
+<li><strong>NumPy/pandas:</strong> you handled arrays, stats, and basic data manipulation.  </li>
+<li><strong>Workflow habits:</strong> preview locally (<code>mkdocs serve</code>), commit/push, deploy (<code>gh-deploy</code>).</li>
+</ul>
+<h3 id="e-exercises-recap-what-each-taught-you">E. Exercises Recap (What each taught you)</h3>
+<table>
+<thead>
+<tr>
+<th>Exercise</th>
+<th>Core Idea</th>
+<th>Concept Reinforced</th>
+<th>Real‑World Parallel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Die roll stats</td>
+<td>Empirical vs. theoretical</td>
+<td>Mean, variance, sampling noise</td>
+<td>QC sampling, Monte Carlo</td>
+</tr>
+<tr>
+<td>2. Coin flips</td>
+<td>Bernoulli trials</td>
+<td>Discrete RVs, proportions</td>
+<td>A/B tests, pass/fail outcomes</td>
+</tr>
+<tr>
+<td>3. Histogram</td>
+<td>Visual distributions</td>
+<td>Frequency vs. prob., plotting</td>
+<td>Category sales distributions</td>
+</tr>
+<tr>
+<td>4. Exponential sim</td>
+<td>Time-to-event model</td>
+<td>Continuous RVs, λ &amp; scale</td>
+<td>Failure rates, wait times</td>
+</tr>
+<tr>
+<td>5. Normal samples</td>
+<td>Gaussian basics</td>
+<td>CLT preview, z-scores</td>
+<td>Measurement error, scores</td>
+</tr>
+<tr>
+<td>6. Sampling means</td>
+<td>Distribution of means</td>
+<td>Law of Large Numbers</td>
+<td>Polling averages, batch metrics</td>
+</tr>
+<tr>
+<td>7. Weighted die</td>
+<td>Biased distributions</td>
+<td>Shifted mean/var, custom PMFs</td>
+<td>Skewed demand, unfair odds</td>
+</tr>
+<tr>
+<td>8. Vector ops</td>
+<td>Add/scale vectors</td>
+<td>Vector spaces</td>
+<td>Feature scaling, weight tuning</td>
+</tr>
+<tr>
+<td>9. Matrix multiply</td>
+<td>Shapes &amp; transforms</td>
+<td>Linear maps, dot sums</td>
+<td>NN layers, feature transforms</td>
+</tr>
+<tr>
+<td>10. PCA toy data</td>
+<td>Dimensionality reduction</td>
+<td>Eigenvectors/variance explained</td>
+<td>Data compression, preprocessing</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-additional-resources">7. Additional Resources</h2>
+<div class="admonition tip">
+<p class="admonition-title">Probability &amp; Statistics</p>
+</div>
+<ul>
+<li><strong>Khan Academy – Introduction to Probability</strong><br />
+  Beginner‑friendly videos and practice problems.<br />
+<a href="https://www.khanacademy.org/math/statistics-probability/probability-library">https://www.khanacademy.org/math/statistics-probability/probability-library</a></li>
+<li><strong>Seeing Theory (Brown University)</strong><br />
+  Interactive visual explanations of probability concepts.<br />
+<a href="https://seeing-theory.brown.edu/">https://seeing-theory.brown.edu/</a></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Linear Algebra</p>
+</div>
+<ul>
+<li><strong>3Blue1Brown – <em>Essence of Linear Algebra</em></strong> (YouTube series)<br />
+  Beautiful visuals for vectors, matrices, dot products, eigenvectors.<br />
+<a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr">https://www.youtube.com/playlist?list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr</a></li>
+<li><strong>Khan Academy – Linear Algebra</strong><br />
+  Step‑by‑step lessons with exercises.<br />
+<a href="https://www.khanacademy.org/math/linear-algebra">https://www.khanacademy.org/math/linear-algebra</a></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Python, NumPy &amp; pandas</p>
+</div>
+<ul>
+<li><strong>Official Python Docs</strong> – Syntax, stdlib, tutorials.<br />
+<a href="https://docs.python.org/3/">https://docs.python.org/3/</a></li>
+<li><strong>NumPy User Guide</strong> – Arrays, broadcasting, linear algebra.<br />
+<a href="https://numpy.org/doc/stable/user/">https://numpy.org/doc/stable/user/</a></li>
+<li><strong>pandas Getting Started</strong> – DataFrames, cleaning, transforms.<br />
+<a href="https://pandas.pydata.org/docs/getting_started/index.html">https://pandas.pydata.org/docs/getting_started/index.html</a></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">AI History &amp; Overviews</p>
+</div>
+<ul>
+<li><strong>“Competing in the Age of AI” (Iansiti &amp; Lakhani) – Ch. 1–3</strong> <em>(already on your list)</em>  </li>
+<li><strong>“Deep Learning” (Goodfellow, Bengio, Courville) – Intro &amp; Ch. 6–7</strong> (free online)<br />
+<a href="https://www.deeplearningbook.org/">https://www.deeplearningbook.org/</a></li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Visualization &amp; Math Intuition</p>
+</div>
+<ul>
+<li><strong>Matplotlib Gallery</strong> – Quick plot recipes.<br />
+<a href="https://matplotlib.org/stable/gallery/index.html">https://matplotlib.org/stable/gallery/index.html</a></li>
+<li><strong>Desmos Graphing Calculator</strong> – Fast function plots and geometry.<br />
+<a href="https://www.desmos.com/calculator">https://www.desmos.com/calculator</a></li>
+</ul>
+<div class="admonition success">
+<p class="admonition-title">Bonus Cheat Sheets</p>
+</div>
+<ul>
+<li><strong>Markdown Syntax Cheat Sheet</strong> (for editing your site)<br />
+<a href="https://www.markdownguide.org/cheat-sheet/">https://www.markdownguide.org/cheat-sheet/</a></li>
+<li><strong>NumPy/Pandas one‑pagers</strong> (various printable PDFs)<br />
+<a href="https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf">https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf</a><br />
+<a href="https://www.dataquest.io/blog/numpy-cheat-sheet/">https://www.dataquest.io/blog/numpy-cheat-sheet/</a></li>
+</ul>
 
 
 
