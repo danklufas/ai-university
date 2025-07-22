@@ -9,6 +9,8 @@
       
       
       
+        <link rel="prev" href="../week-2/">
+      
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -16,7 +18,7 @@
     
     
       
-        <title>Quick Reminder Cheat Sheets - AI University Curriculum</title>
+        <title>Cheat Sheet - AI University Curriculum</title>
       
     
     
@@ -94,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Quick Reminder Cheat Sheets
+              Cheat Sheet
             
           </span>
         </div>
@@ -249,6 +251,79 @@
   
 
     
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Cheat Sheet
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cheat Sheet
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-everyday-workflow-edit-preview-commit-deploy" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Everyday Workflow (Edit → Preview → Commit → Deploy)
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -304,7 +379,86 @@
 <h2 id="1-everyday-workflow-edit-preview-commit-deploy">1. Everyday Workflow (Edit → Preview → Commit → Deploy)</h2>
 <p><strong>Local preview</strong>
 ```bash
-python -m mkdocs serve</p>
+python -m mkdocs serve
+Open: http://127.0.0.1:8000/
+(Leave terminal running; Ctrl+C stops it.)</p>
+<p>Commit &amp; push</p>
+<p>bash
+Copy
+Edit
+git add docs/...
+git commit -m "Your message"
+git push origin main
+Publish to GitHub Pages</p>
+<p>bash
+Copy
+Edit
+python -m mkdocs gh-deploy
+2. Common Git Commands
+bash
+Copy
+Edit
+git status                 # see what changed
+git add <file>             # stage a file
+git add .                  # stage everything
+git commit -m "message"    # commit staged changes
+git push origin main       # push to GitHub
+git pull origin main       # pull latest from GitHub
+Undo a staged file:</p>
+<p>bash
+Copy
+Edit
+git restore --staged <file>
+3. MkDocs Basics
+Edit pages in docs/</p>
+<p>Navigation lives in mkdocs.yml under nav:</p>
+<p>Rebuild local site: python -m mkdocs serve</p>
+<p>Deploy: python -m mkdocs gh-deploy</p>
+<p>Add a new page
+Create docs/new-page.md</p>
+<p>Add to mkdocs.yml:</p>
+<p>yaml
+Copy
+Edit
+nav:
+  - Home: index.md
+  - Week 1: week-1.md
+  - Week 2: week-2.md
+  - Cheat Sheets: cheat-sheets.md
+  - New Page: new-page.md
+4. VS Code Tips
+Toggle terminal: Ctrl + `</p>
+<p>Command Palette: Ctrl + Shift + P</p>
+<p>Find/Replace regex: Ctrl + H, click .*</p>
+<p>Reload the window (fix UI glitches): Developer: Reload Window</p>
+<ol>
+<li>Troubleshooting
+Local site won’t load</li>
+</ol>
+<p>Make sure python -m mkdocs serve is running</p>
+<p>Use http://127.0.0.1:8000/ (colon, not dot)</p>
+<p>GitHub Pages not updated</p>
+<p>Did you run python -m mkdocs gh-deploy after pushing?</p>
+<p>Wait ~30 seconds and refresh</p>
+<p>site/ shows up in Git changes</p>
+<p>Ensure .gitignore contains site/</p>
+<p>If already tracked:</p>
+<p>bash
+Copy
+Edit
+git rm -r --cached site
+git commit -m "Remove generated site"
+git push origin main
+(Add anything else you want to remember here as you go.)</p>
+<p>yaml
+Copy
+Edit</p>
+<ol>
+<li>Save the file (<strong>Ctrl+S</strong>).</li>
+</ol>
+<hr />
+<p>Reply <strong>“done”</strong> after you’ve saved <code>cheat-sheets.md</code>.<br />
+Then we’ll do <strong>Step 2: add it to the nav and push/deploy</strong>.</p>
 
 
 
