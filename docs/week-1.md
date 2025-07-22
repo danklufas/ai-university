@@ -1,666 +1,243 @@
-Week 1: History of AI & Math Foundations
-1. Lesson Overview
-Learning Objectives
+# History of AI & Math Foundations
+## 1. Lesson Overview
+
+!!! sucess "Learning Objectives"
 By the end of this lesson, you will be able to:
 
-Describe three pivotal AI milestones and their lasting impact.
+- Describe three pivotal AI milestones and their lasting impact.
+- Define Artificial Intelligence (AI), Machine Learning (ML), and Data Science with clear examples.
+- Understand probability fundamentals—random variables, expectation, variance—and compute them by hand and in Python.
+- Grasp key linear algebra concepts—vectors, matrices, dot products, matrix multiplication—and see how they underpin AI algorithms.
+- Install and launch the required tools (Python, Jupyter Notebook, NumPy, pandas) and execute basic code.
+
+---
+
+## 2. Core Definitions
+
+| Term | Definition & Citation | Example |
+|:---- |:----------------------|:--------|
+|**Artificial Intelligence (AI)**|	“The science and engineering of making intelligent machines, especially intelligent computer programs.” — John McCarthy, 1956 |  A chatbot that interprets questions and crafts human‑like responses.
+**Machine Learning (ML)**|	Algorithms that improve performance on tasks by learning from data rather than explicit programming.|A regression model that learns to predict steel prices from historical sales.
+**Data Science**|	Interdisciplinary practice of using statistics, programming, and domain knowledge to extract insights from data.|Cleaning and visualizing e‑commerce logs to uncover purchasing trends.
 
-Define Artificial Intelligence (AI), Machine Learning (ML), and Data Science with clear examples.
-
-Understand probability fundamentals—random variables, expectation, variance—and compute them by hand and in Python.
-
-Grasp key linear algebra concepts—vectors, matrices, dot products, matrix multiplication—and see how they underpin AI algorithms.
-
-Install and launch the required tools (Python, Jupyter Notebook, NumPy, pandas) and execute basic code.
-
-2. Core Definitions
-Term	Definition & Example
-Artificial Intelligence (AI)	“The science and engineering of making intelligent machines, especially intelligent computer programs.” — John McCarthy, 1956
-Example: A chatbot that interprets questions and crafts human‑like responses.
-Machine Learning (ML)	Algorithms that improve performance on tasks by learning from data rather than explicit programming.
-Example: A regression model that learns to predict steel prices from historical sales.
-Data Science	Interdisciplinary practice of using statistics, programming, and domain knowledge to extract insights from data.
-Example: Cleaning and visualizing e‑commerce logs to uncover purchasing trends.
-
-3. Concept Sections
-A. AI Milestones
-Excerpt (Definition Box):
-Artificial Intelligence (AI) – “The science and engineering of making intelligent machines, especially intelligent computer programs.” — John McCarthy, 1956
-
-1. The Dartmouth Workshop (1956)
-In the summer of 1956, John McCarthy, Marvin Minsky, Nathaniel Rochester, and Claude Shannon convened at Dartmouth College to explore a bold question: “Can machines be made to simulate human intelligence?” They coined the term “Artificial Intelligence” and launched a two‑month study to investigate how machines might “learn from experience,” “make abstractions,” and “use language.”
-
-Context & Significance:
-Before Dartmouth, computers were viewed largely as number crunchers. This workshop reframed them as potential thinking machines, seeding optimism that a small team could tackle “every aspect of learning or any other feature of intelligence.”
-
-First Programs:
-
-Logic Theorist (1955): Developed by Newell & Simon, it proved theorems in symbolic logic—demonstrating that “thinking” tasks could be mechanized.
-
-General Problem Solver (1957): An early attempt at a universal reasoning engine.
-
-Why It Matters Today:
-
-Cycle of Hype & AI Winters: The booms and busts following Dartmouth teach us to balance ambition with realism when evaluating modern AI breakthroughs.
-
-Legacy in Modern Research: Symbolic reasoning and search algorithms from this era underpin today’s knowledge graphs and constraint solving systems.
-
-2. Expert Systems Era (1970s–1980s)
-As symbolic AI matured, expert systems emerged—rule‑based programs encoding human expertise as “if–then” statements.
-
-Core Idea: Encode domain knowledge in production rules:
-
-java
-Copy
-Edit
-IF symptom = fever AND symptom = rash
-THEN suggest = measles
-Notable Example – MYCIN (1972–1980):
-
-Built at Stanford, MYCIN contained ~600 rules for diagnosing bacterial infections and recommending antibiotics.
-
-It queried patient data (age, symptoms), applied its rule base, and in blind tests matched or outperformed human experts.
-
-Strengths & Limitations:
-
-Strength: Transparent logic—every recommendation traces back to specific rules.
-
-Limitation: Required hand‑crafting thousands of rules and handled uncertainty poorly (no probabilistic reasoning).
-
-Modern Relevance:
-
-Rule‑based approaches inform decision support in finance and healthcare.
-
-Today’s hybrid systems combine rules with statistical ML (e.g., regulatory checks plus model‑based scoring).
-
-3. Deep Learning Boom (2010s–Present)
-The field’s third surge harnessed large datasets and GPU acceleration to train deep neural networks—models with many layers that learn hierarchical features automatically.
-
-Key Breakthrough – AlexNet (2012):
-
-An eight‑layer convolutional neural network (CNN) that halved error rates on the ImageNet challenge (1.2 million labeled images, 1,000 categories).
-
-Employed ReLU activations, dropout regularization, and GPU‑based training.
-
-Why Deep Learning Emerged:
-
-Data: Massive labeled datasets (images, text, speech).
-
-Compute: GPUs excel at parallel matrix operations critical for neural nets.
-
-Algorithms: Innovations like batch normalization, architectural search, and optimized backpropagation.
-
-Transformative Applications:
-
-Computer Vision: Object detection (self‑driving cars), medical imaging (tumor detection).
-
-Natural Language Processing: Language translation, text generation (GPT‑style models).
-
-Speech & Audio: Voice assistants, real‑time translation.
-
-Why It Matters for You:
-
-Modern AI frameworks (TensorFlow, PyTorch) are built around neural networks.
-
-This era explains why subsequent terms focus on coding deep models and leveraging pretrained architectures for rapid deployment.
-
-C. Probability Basics
-Excerpt (Definition Box):
-Probability Theory – “The mathematical framework for quantifying uncertainty and modeling random phenomena.”
-
-C1. Introduction
-What Is Chance?
-
-Everyday Analogy: Flipping a coin. You know there are two sides—heads or tails—but you can’t predict which will land face up.
-
-Key Idea: Probability measures how likely something is to happen, on a scale from 0 (impossible) to 1 (certain).
-
-Example: A fair coin has probability 0.5 of landing heads.
-
-Simple Data & Averages
-
-Real World Example: Your test scores this week: 80%, 90%, 70%, 100%, 60%.
-
-Mean (Average): Add them up and divide by the number of tests:
-(
-80
-+
-90
-+
-70
-+
-100
-+
-60
-)
-/
-5
-=
-80
-%
-(80+90+70+100+60)/5=80%
-
-Why It Matters: The mean gives a sense of “typical” performance.
-
-Measuring Spread (Variance)
-
-Analogy: If all scores are close to 80% (say 75%, 80%, 85%), that’s low spread; if they vary widely (60%, 100%, 70%), that’s high spread.
-
-Step by Step (Scores Example):
-
-Compute each score’s difference from the mean (80): e.g., 60–80 = –20.
-
-Square these differences to make them positive: (–20)² = 400.
-
-Average the squared differences: if squares are [400,100,100,400,400], mean = 280.
-
-That average (280) is the variance; its square root (≈16.7) is the standard deviation.
-
-Real World Uses:
-
-Weather Forecasts: “There’s a 30% chance of rain” guides umbrella choices.
-
-Quality Control: A factory measures weight of cereal boxes; variance tells if the filling machine is consistent.
-
-C2. Formal Definitions & Deep Dive
-Understanding Random Variables
-A random variable 
-𝑋
-X formalizes outcomes of random processes by assigning numeric values.
-
-Discrete RV: Takes countable values (e.g., die rolls, number of returned orders).
-
-Example: Rolling a six‑sided die → 
-𝑋
-∈
-{
-1
-,
-2
-,
-3
-,
-4
-,
-5
-,
-6
-}
-X∈{1,2,3,4,5,6} with 
-𝑃
-(
-𝑋
-=
-𝑘
-)
-=
-1
-6
-P(X=k)= 
-6
-1
-​
- .
-
-Continuous RV: Takes any value in a continuum (e.g., time between machine failures).
-
-Example: Time (in minutes) between software crashes might follow an exponential distribution:
-𝑓
-(
-𝑡
-)
-=
-𝜆
-𝑒
-−
-𝜆
-𝑡
-,
- 
-𝑡
-≥
-0
-f(t)=λe 
-−λt
- , t≥0.
-
-Expectation (Mean)
-The expectation 
-𝐸
-[
-𝑋
-]
-E[X] is the long‑run average if the experiment repeats infinitely.
-
-Formula (Discrete):
-𝐸
-[
-𝑋
-]
-=
-∑
-𝑖
-𝑥
-𝑖
- 
-𝑃
-(
-𝑋
-=
-𝑥
-𝑖
-)
-E[X]=∑ 
-i
-​
- x 
-i
-​
- P(X=x 
-i
-​
- )
-
-Formula (Continuous):
-𝐸
-[
-𝑋
-]
-=
-∫
-−
-∞
-∞
-𝑥
- 
-𝑓
-(
-𝑥
-)
- 
-𝑑
-𝑥
-E[X]=∫ 
-−∞
-∞
-​
- xf(x)dx
-
-Worked Example (Die):
-𝐸
-[
-𝑋
-]
-=
-1
-+
-2
-+
-3
-+
-4
-+
-5
-+
-6
-6
-=
-3.5
-E[X]= 
-6
-1+2+3+4+5+6
-​
- =3.5
-
-Relevance: Loss functions like mean squared error minimize expected error; understanding expectation clarifies why we average squared deviations.
-
-Variance & Standard Deviation
-
-Variance:
-V
-a
-r
-(
-𝑋
-)
-=
-𝐸
-[
-(
-𝑋
-−
-𝐸
-[
-𝑋
-]
-)
-2
-]
-Var(X)=E[(X−E[X]) 
-2
- ]
-
-Standard Deviation:
-𝜎
-=
-V
-a
-r
-(
-𝑋
-)
-σ= 
-Var(X)
-​
- 
-
-Worked Example (Die):
-V
-a
-r
-(
-𝑋
-)
-=
-(
-1
-−
-3.5
-)
-2
-+
-⋯
-+
-(
-6
-−
-3.5
-)
-2
-6
-=
-17.5
-6
-≈
-2.92
-,
- 
-𝜎
-≈
-1.71
-Var(X)= 
-6
-(1−3.5) 
-2
- +⋯+(6−3.5) 
-2
- 
-​
- = 
-6
-17.5
-​
- ≈2.92, σ≈1.71
-
-Relevance: Guides feature scaling, sets confidence intervals, and underpins uncertainty quantification in finance or anomaly detection.
-
-Why These Concepts Matter in AI
-
-Model Training: Loss functions (e.g., MSE) rely on expectation of squared errors.
-
-Uncertainty Quantification: Variance informs risk metrics (VaR, confidence intervals).
-
-Feature Engineering: Distribution shapes dictate transformations (e.g., log scaling skewed data).
-
-D. Linear Algebra Basics
-Excerpt (Definition Box):
-Linear Algebra – “The branch of mathematics concerned with vectors, vector spaces, and linear transformations.”
-
-D1. Introduction
-Vectors as Lists
-
-Analogy: A grocery list: [2 bananas, 1 loaf bread, 500 g cheese].
-
-Key Idea: A vector is just a list of numbers representing “features.”
-
-Matrices as Tables
-
-Analogy: A seating chart in class: rows are table numbers, columns are seat positions.
-
-mathematica
-Copy
-Edit
-|    | S1 | S2 | S3 |
-|----|----|----|----|
-| T1 | A  | B  | C  |
-| T2 | D  | E  | F  |
-Key Idea: A matrix is multiple vectors “stacked” into rows or columns.
-
-Dot Product Intuition
-
-Example (Bill Splitting): You and a friend order appetizers [3, 2] plates and drinks [1, 2] each. To compute total cost if plates = $5, drinks = $2:
-[
-3
-,
-2
-]
-⋅
-[
-5
-,
-2
-]
-=
-3
-×
-5
-+
-2
-×
-2
-=
-15
-+
-4
-=
-$
-19
-[3,2]⋅[5,2]=3×5+2×2=15+4=$19
-
-Why It Matters: Combines quantities and prices; same math as a regression prediction.
-
-Real World Matrix Use
-
-Recipe scaling: A 4‑serving recipe’s ingredients in a matrix, multiply by 1.5 to get 6 servings.
-
-School timetable: Days × hours grid for scheduling classes.
-
-D2. Formal Definitions & Deep Dive
-Vectors & Their Interpretation
-A vector 
-𝑥
-∈
-𝑅
-𝑛
-x∈R 
-n
-  is an ordered list of 
-𝑛
-n numbers representing features or data points.
-
-Example:
-𝑥
-=
-[
-age
-,
-monthly_spend
-,
-num_orders
-]
-=
-[
-45
-,
-320.5
-,
-12
-]
-x=[age,monthly_spend,num_orders]=[45,320.5,12]
-
-Matrices & Batch Operations
-A matrix 
-𝑋
-∈
-𝑅
-𝑚
-×
-𝑛
-X∈R 
-m×n
-  stacks 
-𝑚
-m row vectors of dimension 
-𝑛
-n.
-
-Example:
-
-𝑋
-=
-[
-45
-320.5
-12
-23
-150.0
-5
-⋮
-⋮
-⋮
-]
-X= 
-​
-  
-45
-23
-⋮
-​
-  
-320.5
-150.0
-⋮
-​
-  
-12
-5
-⋮
-​
-  
-​
- 
-Dot Product & Linear Transformations
-
-Dot Product:
-𝑎
-⋅
-𝑏
-=
-∑
-𝑖
-=
-1
-𝑛
-𝑎
-𝑖
- 
-𝑏
-𝑖
-a⋅b=∑ 
-i=1
-n
-​
- a 
-i
-​
- b 
-i
-​
- 
-Example: [1,2,3] ⋅ [4,5,6] = 32
-
-Use in AI:
-
-Regression: 
-𝑦
-^
-=
-𝑤
-⋅
-𝑥
-+
-𝑏
-y
-^
-​
- =w⋅x+b
-
-Neural Nets: Each neuron computes 
-𝑧
-=
-𝑤
-⋅
-𝑥
-+
-𝑏
-z=w⋅x+b, then applies an activation.
-
-Matrix Multiplication
-𝐶
-=
-𝐴
-×
-𝐵
-,
-𝐶
-𝑖
-𝑗
-=
-∑
-𝑘
-=
-1
-𝑛
-𝐴
-𝑖
-𝑘
-𝐵
-𝑘
-𝑗
-C=A×B,C 
-ij
-​
- =∑ 
-k=1
-n
-​
- A 
-ik
-​
- B 
-kj
-​
- 
-
-Example: Transforming feature spaces or chaining layers in a deep network.
-
-Relevance for AI Practitioners
-
-Batch Processing: GPUs and NumPy rely on vectorized matrix operations.
-
-Model Introspection: Weight matrices and activation maps in CNNs are built on these operations.
-
-Dimensionality Reduction: PCA uses eigenvectors/eigenvalues of covariance matrices to compress data.
+## 3. Concept Sections
+
+### A. AI Milestones
+
+???+ info "The Dartmouth Workshop (1956)"
+    **What happened:**  
+    In summer 1956, John McCarthy, Marvin Minsky, Nathaniel Rochester, and Claude Shannon met at Dartmouth College to ask: *“Can machines simulate human intelligence?”* They coined **“Artificial Intelligence”** and proposed studying how machines might “learn from experience,” “make abstractions,” and “use language.”
+
+    **Context & significance:**  
+    - Pre‑1956, computers = number crunchers. Dartmouth reframed them as **potential thinking machines**.  
+    - Sparked optimism (and funding) that small teams could crack “every aspect of learning.”
+
+ **First programs:**  
+    - **Logic Theorist (1955)** – Newell & Simon proved logic theorems with a program.  
+    - **General Problem Solver (1957)** – Early universal reasoning attempt.
+
+    !!! note "Why this still matters"
+        - Understanding the **hype → disappointment → AI winters** cycle helps you stay realistic about today’s claims.  
+        - Symbolic reasoning/search ideas from this era live on in **knowledge graphs** and **constraint solvers**.
+
+---
+
+???+ info "Expert Systems Era (1970s–1980s)"
+    **Core idea:** Encode expert knowledge as **IF–THEN rules**.
+
+    ```text
+    IF symptom = fever AND symptom = rash
+    THEN suggest = measles
+    ```
+
+    **MYCIN (1972–1980):**  
+    - ~600 rules to diagnose bacterial infections & suggest antibiotics  
+    - Matched/surpassed human experts in blind tests
+
+    **Strengths vs. limits:**  
+    - ✅ Transparent logic (traceable to specific rules)  
+    - ❌ Hard to scale (thousands of hand‑written rules), weak with uncertainty
+
+    !!! tip "Modern relevance"
+        - Rule‑based logic still used in finance/healthcare compliance.  
+        - Today’s **hybrid systems**: rules for regulation + ML models for scoring.
+
+---
+
+???+ info "Deep Learning Boom (2010s–Present)"
+    **Key breakthrough – AlexNet (2012):**  
+    - 8‑layer CNN, cut ImageNet error rate in half (1.2M images, 1,000 classes)  
+    - Used ReLU, dropout, and **GPU training**.
+
+    **Why deep learning emerged:**  
+    1. **Data:** Huge labeled datasets (images, text, speech)  
+    2. **Compute:** GPUs = fast parallel matrix ops  
+    3. **Algorithms:** Batch norm, better backprop, new architectures
+
+    **Transformative apps:**  
+    - Computer vision: self‑driving cars, medical imaging  
+    - NLP: translation, GPT‑style generation  
+    - Speech: voice assistants, real‑time translation
+
+    !!! success "Why this matters for you"
+        - Modern frameworks (TensorFlow, PyTorch) are built around neural nets.  
+        - Explains why later terms focus on coding deep models & leveraging **pretrained architectures** quickly.
+
+### C. Probability Basics
+
+!!! abstract "Definition"
+    **Probability Theory** – “The mathematical framework for quantifying uncertainty and modeling random phenomena.”
+
+#### C1. Gentle Introduction 
+
+???+ tip "1. What is Chance?"
+    **Analogy:** Flipping a coin—two outcomes, but you can’t predict which.  
+    **Key idea:** Probability measures how likely something is (0 = impossible, 1 = certain).  
+    **Example:** A fair coin → P(heads) = 0.5.
+
+???+ tip "2. Simple Data & Averages"
+    **Real example:** Test scores: 80, 90, 70, 100, 60.  
+    **Mean (average):**
+    ```text
+    (80 + 90 + 70 + 100 + 60) / 5 = 80
+    ```
+    **Why it matters:** The mean tells you what’s “typical.”
+
+???+ tip "3. Measuring Spread (Variance)"
+    **Analogy:** Scores all near 80% → small spread; scores all over the place → big spread.  
+    **Steps (using the score list above):**
+    1. Subtract the mean (80): e.g. 60 − 80 = −20  
+    2. Square them: (−20)² = 400  
+    3. Average the squares → variance ≈ 280  
+    4. Square root of variance → standard deviation ≈ 16.7  
+    **Why we care:** Spread tells you how consistent or noisy data is—critical for risk or quality control.
+
+#### C2. Formal Definitions & Deep Dive
+
+???+ info "1. Random Variables"
+    A **random variable (RV)** assigns numbers to random outcomes.
+
+    - **Discrete RV:** countable values (die roll, number of returns)  
+      Example: Fair die →  
+      ```text
+      X ∈ {1,2,3,4,5,6},   P(X = k) = 1/6
+      ```
+    - **Continuous RV:** any value in a range (time between failures)  
+      Example: Exponential distribution for time \( t ≥ 0 \):  
+      ```text
+      f(t) = λ e^{−λ t}
+      ```
+
+???+ info "2. Expectation (Mean)"
+    Long‑run average outcome if you repeat forever.
+
+    - **Discrete:**  
+      ```text
+      E[X] = Σ x_i · P(X = x_i)
+      ```
+    - **Continuous:**  
+      ```text
+      E[X] = ∫ x f(x) dx
+      ```
+    **Worked example (die):**  
+    ```text
+    E[X] = (1+2+3+4+5+6) / 6 = 3.5
+    ```
+    **Relevance:** Loss functions (e.g., MSE) minimize expected error → expectation is baked into training.
+
+???+ info "3. Variance & Standard Deviation"
+    **Variance:** average squared distance from the mean.  
+    ```text
+    Var(X) = E[(X − E[X])^2]
+    ```
+    **Std. dev.:**  
+    ```text
+    σ = √Var(X)
+    ```
+    **Die example:**  
+    ```text
+    Var ≈ 2.92,  σ ≈ 1.71
+    ```
+    **Why it matters:** Tells you how uncertain predictions are, helps build confidence intervals, drives anomaly detection.
+
+!!! note "Why Probability Matters in AI"
+    - **Model Training:** Errors are expectations (means) over data.  
+    - **Uncertainty:** Variance underpins confidence, risk, anomaly flags.  
+    - **Feature Engineering:** Understanding distributions guides transformations (e.g., log scales for skewed data).
+
+
+### D. Linear Algebra Basics
+
+!!! abstract "Definition"
+    **Linear Algebra** – “The branch of mathematics concerned with vectors, vector spaces, and linear transformations.”
+
+#### D1. Gentle Introduction 
+
+???+ tip "1. Vectors as Lists"
+    **Analogy:** A grocery list: `[2 bananas, 1 loaf bread, 500 g cheese]`  
+    **Key idea:** A **vector** is just a list of numbers representing features.
+
+???+ tip "2. Matrices as Tables"
+    **Analogy:** A seating chart (rows = tables, columns = seats):  
+    ```text
+           S1  S2  S3
+        T1  A   B   C
+        T2  D   E   F
+    ```
+    **Key idea:** A **matrix** stacks many vectors into rows or columns.
+
+???+ tip "3. Dot Product Intuition"
+    **Example (bill splitting):**  
+    - You & a friend order appetizers `[3, 2]` and drinks `[1, 2]`.  
+    - Prices: appetizers = \$5, drinks = \$2 →  
+    ```text
+    [3, 2] · [5, 2] = 3×5 + 2×2 = 19
+    ```
+    **Why it matters:** Same math as a simple regression prediction (weights × features).
+
+???+ tip "4. Real‑World Matrix Uses"
+    - **Recipe scaling:** Multiply ingredient matrix by 1.5 to go from 4 to 6 servings.  
+    - **School timetable:** Days × hours grid to schedule classes.
+
+#### D2. Formal Definitions & Deep Dive
+
+???+ info "1. Vectors & Their Interpretation"
+    A vector **x ∈ ℝⁿ** is an ordered list of n numbers (features).  
+    **Example:**
+    ```text
+    x = [age, monthly_spend, num_orders] = [45, 320.5, 12]
+    ```
+
+???+ info "2. Matrices & Batch Operations"
+    A matrix **X ∈ ℝ^{m×n}** stacks m row‑vectors of length n.  
+    **Example (customer table):**
+    ```text
+    X = [
+      [45, 320.5, 12],
+      [23, 150.0,  5],
+      ...
+    ]
+    ```
+
+???+ info "3. Dot Product & Linear Transformations"
+    **Dot product:**
+    ```text
+    a · b = Σ (a_i * b_i)
+    ```
+    **Use in AI:**
+    - **Regression:**  ŷ = w · x + b  
+    - **Neural nets:**  z = w · x + b, then apply activation (e.g., ReLU)
+
+???+ info "4. Matrix Multiplication"
+    ```text
+    C = A × B,   C_{ij} = Σ_k A_{ik} B_{kj}
+    ```
+    **Example:** Combine/transform features or chain neural network layers.
+
+???+ success "Why Linear Algebra Matters in AI"
+    - **Speed:** GPUs/NumPy rely on vectorized (matrix) ops for efficiency.  
+    - **Model Insight:** Weights, activations, attention maps are matrices/vectors.  
+    - **Dimensionality Reduction:** PCA, SVD use eigenvectors/values to compress data.
 
 4. Tools Installation & Setup
 Windows & Mac
