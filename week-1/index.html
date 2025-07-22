@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#simulate-1000-die-rolls" class="md-skip">
+        <a href="#x" class="md-skip">
           Skip to content
         </a>
       
@@ -297,481 +297,874 @@
 
 
 
+<p>Week 1: History of AI &amp; Math Foundations
+1. Lesson Overview
+Learning Objectives
+By the end of this lesson, you will be able to:</p>
+<p>Describe three pivotal AI milestones and their lasting impact.</p>
+<p>Define Artificial Intelligence (AI), Machine Learning (ML), and Data Science with clear examples.</p>
+<p>Understand probability fundamentals—random variables, expectation, variance—and compute them by hand and in Python.</p>
+<p>Grasp key linear algebra concepts—vectors, matrices, dot products, matrix multiplication—and see how they underpin AI algorithms.</p>
+<p>Install and launch the required tools (Python, Jupyter Notebook, NumPy, pandas) and execute basic code.</p>
 <ol>
-<li>Lesson Overview
-Learning Objectives:
-By the end of this lesson, you will be able to:
-•   Describe three pivotal AI milestones and their lasting impact.
-•   Define Artificial Intelligence (AI), Machine Learning (ML), and Data Science with clear examples.
-•   Understand probability fundamentals—random variables, expectation, variance—and compute them by hand and in Python.
-•   Grasp key linear algebra concepts—vectors, matrices, dot products, matrix multiplication—and see how they underpin AI algorithms.
-•   Install and launch the required tools (Python, Jupyter Notebook, NumPy, pandas) and execute basic code.</li>
-</ol>
-<hr />
-<ol>
-<li>Core Definitions
+<li>
+<p>Core Definitions
 Term    Definition &amp; Example
 Artificial Intelligence (AI)    “The science and engineering of making intelligent machines, especially intelligent computer programs.” — John McCarthy, 1956
-Example: A chatbot that interprets questions and crafts human like responses. <br />
+Example: A chatbot that interprets questions and crafts human‑like responses.
 Machine Learning (ML)   Algorithms that improve performance on tasks by learning from data rather than explicit programming.
-Example: A regression model that learns to predict steel prices from historical sales.<br />
+Example: A regression model that learns to predict steel prices from historical sales.
 Data Science    Interdisciplinary practice of using statistics, programming, and domain knowledge to extract insights from data.
-Example: Cleaning and visualizing e commerce logs to uncover purchasing trends. </li>
-</ol>
-<hr />
-<ol>
-<li>Concept Sections
+Example: Cleaning and visualizing e‑commerce logs to uncover purchasing trends.</p>
+</li>
+<li>
+<p>Concept Sections
 A. AI Milestones
 Excerpt (Definition Box):
-Artificial Intelligence (AI) – “The science and engineering of making intelligent machines, especially intelligent computer programs.” — John McCarthy, 1956</li>
-<li>The Dartmouth Workshop (1956)
-In the summer of 1956, John McCarthy, Marvin Minsky, Nathaniel Rochester, and Claude Shannon convened at Dartmouth College to explore a bold question: “Can machines be made to simulate human intelligence?” They coined the term “Artificial Intelligence” and launched a two month study to investigate how machines might “learn from experience,” “make abstractions,” and “use language.”
-o   Context &amp; Significance:
-Before Dartmouth, computers were viewed largely as number crunchers. This workshop reframed them as potential thinking machines, seeding optimism that a small team could tackle “every aspect of learning or any other feature of intelligence.”
-o   First Programs:
-   Logic Theorist (1955): Developed by Newell &amp; Simon, it proved theorems in symbolic logic—demonstrating that “thinking” tasks could be mechanized.
-   General Problem Solver (1957): An early attempt at a universal reasoning engine.
-o   Why It Matters Today:
-   Cycle of Hype &amp; AI Winters: The booms and busts following Dartmouth teach us to balance ambition with realism when evaluating modern AI breakthroughs.
-   Legacy in Modern Research: Symbolic reasoning and search algorithms from this era underpin today’s knowledge graphs and constraint solving systems.</li>
-<li>Expert Systems Era (1970s–1980s)
-As symbolic AI matured, expert systems emerged—rule based programs encoding human expertise as “if–then” statements.
-o   Core Idea:
-Encode domain knowledge in production rules:
-text
-CopyEdit
-IF symptom = fever AND symptom = rash<br />
-THEN suggest = measles
-o   Notable Example – MYCIN (1972–1980):
-   Built at Stanford, MYCIN contained ~600 rules for diagnosing bacterial infections and recommending antibiotics.
-   It queried patient data (age, symptoms), applied its rule base, and in blind tests matched or outperformed human experts.
-o   Strengths &amp; Limitations:
-   Strength: Transparent logic—every recommendation traces back to specific rules.
-   Limitation: Required hand crafting thousands of rules and handled uncertainty poorly (no probabilistic reasoning).
-o   Modern Relevance:
-   Rule based approaches inform decision support in finance and healthcare.
-   Today’s hybrid systems combine rules with statistical ML (e.g., regulatory checks plus model based scoring).</li>
-<li>Deep Learning Boom (2010s–Present)
-The field’s third surge harnessed large datasets and GPU acceleration to train deep neural networks—models with many layers that learn hierarchical features automatically.
-o   Key Breakthrough – AlexNet (2012):
-   An eight layer convolutional neural network (CNN) that halved error rates on the ImageNet challenge (1.2 million labeled images, 1,000 categories).
-   Employed ReLU activations, dropout regularization, and GPU based training.
-o   Why Deep Learning Emerged:</li>
-<li>Data: Massive labeled datasets (images, text, speech).</li>
-<li>Compute: GPUs excel at parallel matrix operations critical for neural nets.</li>
-<li>Algorithms: Innovations like batch normalization, architectural search, and optimized backpropagation.
-o   Transformative Applications:
-   Computer Vision: Object detection (self driving cars), medical imaging (tumor detection).
-   Natural Language Processing: Language translation, text generation (GPT style models).
-   Speech &amp; Audio: Voice assistants, real time translation.
-o   Why It Matters for You:
-   Modern AI frameworks (TensorFlow, PyTorch) are built around neural networks.
-   This era explains why subsequent terms focus on coding deep models and leveraging pretrained architectures for rapid deployment.</li>
+Artificial Intelligence (AI) – “The science and engineering of making intelligent machines, especially intelligent computer programs.” — John McCarthy, 1956</p>
+</li>
+<li>
+<p>The Dartmouth Workshop (1956)
+In the summer of 1956, John McCarthy, Marvin Minsky, Nathaniel Rochester, and Claude Shannon convened at Dartmouth College to explore a bold question: “Can machines be made to simulate human intelligence?” They coined the term “Artificial Intelligence” and launched a two‑month study to investigate how machines might “learn from experience,” “make abstractions,” and “use language.”</p>
+</li>
 </ol>
-<hr />
+<p>Context &amp; Significance:
+Before Dartmouth, computers were viewed largely as number crunchers. This workshop reframed them as potential thinking machines, seeding optimism that a small team could tackle “every aspect of learning or any other feature of intelligence.”</p>
+<p>First Programs:</p>
+<p>Logic Theorist (1955): Developed by Newell &amp; Simon, it proved theorems in symbolic logic—demonstrating that “thinking” tasks could be mechanized.</p>
+<p>General Problem Solver (1957): An early attempt at a universal reasoning engine.</p>
+<p>Why It Matters Today:</p>
+<p>Cycle of Hype &amp; AI Winters: The booms and busts following Dartmouth teach us to balance ambition with realism when evaluating modern AI breakthroughs.</p>
+<p>Legacy in Modern Research: Symbolic reasoning and search algorithms from this era underpin today’s knowledge graphs and constraint solving systems.</p>
+<ol>
+<li>Expert Systems Era (1970s–1980s)
+As symbolic AI matured, expert systems emerged—rule‑based programs encoding human expertise as “if–then” statements.</li>
+</ol>
+<p>Core Idea: Encode domain knowledge in production rules:</p>
+<p>java
+Copy
+Edit
+IF symptom = fever AND symptom = rash
+THEN suggest = measles
+Notable Example – MYCIN (1972–1980):</p>
+<p>Built at Stanford, MYCIN contained ~600 rules for diagnosing bacterial infections and recommending antibiotics.</p>
+<p>It queried patient data (age, symptoms), applied its rule base, and in blind tests matched or outperformed human experts.</p>
+<p>Strengths &amp; Limitations:</p>
+<p>Strength: Transparent logic—every recommendation traces back to specific rules.</p>
+<p>Limitation: Required hand‑crafting thousands of rules and handled uncertainty poorly (no probabilistic reasoning).</p>
+<p>Modern Relevance:</p>
+<p>Rule‑based approaches inform decision support in finance and healthcare.</p>
+<p>Today’s hybrid systems combine rules with statistical ML (e.g., regulatory checks plus model‑based scoring).</p>
+<ol>
+<li>Deep Learning Boom (2010s–Present)
+The field’s third surge harnessed large datasets and GPU acceleration to train deep neural networks—models with many layers that learn hierarchical features automatically.</li>
+</ol>
+<p>Key Breakthrough – AlexNet (2012):</p>
+<p>An eight‑layer convolutional neural network (CNN) that halved error rates on the ImageNet challenge (1.2 million labeled images, 1,000 categories).</p>
+<p>Employed ReLU activations, dropout regularization, and GPU‑based training.</p>
+<p>Why Deep Learning Emerged:</p>
+<p>Data: Massive labeled datasets (images, text, speech).</p>
+<p>Compute: GPUs excel at parallel matrix operations critical for neural nets.</p>
+<p>Algorithms: Innovations like batch normalization, architectural search, and optimized backpropagation.</p>
+<p>Transformative Applications:</p>
+<p>Computer Vision: Object detection (self‑driving cars), medical imaging (tumor detection).</p>
+<p>Natural Language Processing: Language translation, text generation (GPT‑style models).</p>
+<p>Speech &amp; Audio: Voice assistants, real‑time translation.</p>
+<p>Why It Matters for You:</p>
+<p>Modern AI frameworks (TensorFlow, PyTorch) are built around neural networks.</p>
+<p>This era explains why subsequent terms focus on coding deep models and leveraging pretrained architectures for rapid deployment.</p>
 <p>C. Probability Basics
 Excerpt (Definition Box):
-Probability Theory – “The mathematical framework for quantifying uncertainty and modeling random phenomena.”
-C1. Introduction
-1.  What Is Chance?
-o   Everyday Analogy: Flipping a coin. You know there are two sides—heads or tails—but you can’t predict which will land face up.
-o   Key Idea: Probability measures how likely something is to happen, on a scale from 0 (impossible) to 1 (certain).
-   Example: A fair coin has probability 0.5 of landing heads.
-2.  Simple Data &amp; Averages
-o   Real World Example: Your test scores this week: 80%, 90%, 70%, 100%, 60%.
-o   Mean (Average): Add them up and divide by the number of tests:
-80+90+70+100+605=80%. \frac{80 + 90 + 70 + 100 + 60}{5} = 80\%.580+90+70+100+60=80%. 
-o   Why It Matters: The mean gives a sense of “typical” performance.
-3.  Measuring Spread (Variance)
-o   Analogy: If all scores are close to 80% (say 75%, 80%, 85%), that’s low spread; if they vary widely (60%, 100%, 70%), that’s high spread.
-o   Step by Step (Scores Example):
-1.  Compute each score’s difference from the mean (80): e.g., 60–80 = –20.
-2.  Square these differences to make them positive: (–20)² = 400.
-3.  Average the squared differences: if squares are [400,100,100,400,400], mean = 280.
-4.  That average (280) is the variance; its square root (≈16.7) is the standard deviation.
-o   Real World Uses:
-   Weather Forecasts: “There’s a 30% chance of rain” guides umbrella choices.
-   Quality Control: A factory measures weight of cereal boxes; variance tells if the filling machine is consistent.
-C2. Formal Definitions &amp; Deep Dive
-1.  Understanding Random Variables
-A random variable XXX formalizes outcomes of random processes by assigning numeric values.
-o   Discrete RV: Takes countable values (e.g., die rolls, number of returned orders).
-   Example: Rolling a six sided die → X∈{1,2,3,4,5,6}X \in {1,2,3,4,5,6}X∈{1,2,3,4,5,6} with P(X=k)=16P(X=k)=\tfrac{1}{6}P(X=k)=61.
-o   Continuous RV: Takes any value in a continuum (e.g., time between machine failures).
-   Example: Time (in minutes) between software crashes might follow an exponential distribution:
-f(t)=λe−λt,t≥0. f(t)=\lambda e^{-\lambda t},\quad t\ge0.f(t)=λe−λt,t≥0. 
-2.  Expectation (Mean)
-The expectation E[X]E[X]E[X] is the long run average if the experiment repeats infinitely.
-o   Formula (Discrete):
-E[X]=∑ixi P(X=xi). E[X] = \sum_{i} x_i\,P(X=x_i).E[X]=i∑xiP(X=xi). 
-o   Formula (Continuous):
-E[X]=∫−∞∞x f(x) dx. E[X] = \int_{-\infty}^{\infty} x\,f(x)\,dx.E[X]=∫−∞∞xf(x)dx. 
-o   Worked Example (Die):
-E[X]=1+2+3+4+5+66=3.5. E[X] = \frac{1 + 2 + 3 + 4 + 5 + 6}{6} = 3.5.E[X]=61+2+3+4+5+6=3.5. 
-o   Relevance: Loss functions like mean squared error minimize expected error; understanding expectation clarifies why we average squared deviations.
-3.  Variance &amp; Standard Deviation
-o   Variance:
-Var(X)=E[(X−E[X])2]. \mathrm{Var}(X) = E\bigl[(X - E[X])^2\bigr].Var(X)=E[(X−E[X])2]. 
-o   Standard Deviation:
-σ=Var(X). \sigma = \sqrt{\mathrm{Var}(X)}.σ=Var(X). 
-o   Worked Example (Die):
-Var(X)=(1−3.5)2+⋯+(6−3.5)26=17.56≈2.92,σ≈1.71. \mathrm{Var}(X) = \frac{(1-3.5)^2 + \dots + (6-3.5)^2}{6} = \frac{17.5}{6} \approx 2.92,\quad \sigma \approx 1.71.Var(X)=6(1−3.5)2+⋯+(6−3.5)2=617.5≈2.92,σ≈1.71. 
-o   Relevance: Guides feature scaling, sets confidence intervals, and underpins uncertainty quantification in finance or anomaly detection.
-4.  Why These Concepts Matter in AI
-o   Model Training: Loss functions (e.g., MSE) rely on expectation of squared errors.
-o   Uncertainty Quantification: Variance informs risk metrics (VaR, confidence intervals).
-o   Feature Engineering: Distribution shapes dictate transformations (e.g., log scaling skewed data).</p>
-<hr />
+Probability Theory – “The mathematical framework for quantifying uncertainty and modeling random phenomena.”</p>
+<p>C1. Introduction
+What Is Chance?</p>
+<p>Everyday Analogy: Flipping a coin. You know there are two sides—heads or tails—but you can’t predict which will land face up.</p>
+<p>Key Idea: Probability measures how likely something is to happen, on a scale from 0 (impossible) to 1 (certain).</p>
+<p>Example: A fair coin has probability 0.5 of landing heads.</p>
+<p>Simple Data &amp; Averages</p>
+<p>Real World Example: Your test scores this week: 80%, 90%, 70%, 100%, 60%.</p>
+<p>Mean (Average): Add them up and divide by the number of tests:
+(
+80
++
+90
++
+70
++
+100
++
+60
+)
+/
+5
+=
+80
+%
+(80+90+70+100+60)/5=80%</p>
+<p>Why It Matters: The mean gives a sense of “typical” performance.</p>
+<p>Measuring Spread (Variance)</p>
+<p>Analogy: If all scores are close to 80% (say 75%, 80%, 85%), that’s low spread; if they vary widely (60%, 100%, 70%), that’s high spread.</p>
+<p>Step by Step (Scores Example):</p>
+<p>Compute each score’s difference from the mean (80): e.g., 60–80 = –20.</p>
+<p>Square these differences to make them positive: (–20)² = 400.</p>
+<p>Average the squared differences: if squares are [400,100,100,400,400], mean = 280.</p>
+<p>That average (280) is the variance; its square root (≈16.7) is the standard deviation.</p>
+<p>Real World Uses:</p>
+<p>Weather Forecasts: “There’s a 30% chance of rain” guides umbrella choices.</p>
+<p>Quality Control: A factory measures weight of cereal boxes; variance tells if the filling machine is consistent.</p>
+<p>C2. Formal Definitions &amp; Deep Dive
+Understanding Random Variables
+A random variable 
+𝑋
+X formalizes outcomes of random processes by assigning numeric values.</p>
+<p>Discrete RV: Takes countable values (e.g., die rolls, number of returned orders).</p>
+<p>Example: Rolling a six‑sided die → 
+𝑋
+∈
+{
+1
+,
+2
+,
+3
+,
+4
+,
+5
+,
+6
+}
+X∈{1,2,3,4,5,6} with 
+𝑃
+(
+𝑋
+=
+𝑘
+)
+=
+1
+6
+P(X=k)= 
+6
+1
+​
+ .</p>
+<p>Continuous RV: Takes any value in a continuum (e.g., time between machine failures).</p>
+<p>Example: Time (in minutes) between software crashes might follow an exponential distribution:
+𝑓
+(
+𝑡
+)
+=
+𝜆
+𝑒
+−
+𝜆
+𝑡
+,
+ 
+𝑡
+≥
+0
+f(t)=λe 
+−λt
+ , t≥0.</p>
+<p>Expectation (Mean)
+The expectation 
+𝐸
+[
+𝑋
+]
+E[X] is the long‑run average if the experiment repeats infinitely.</p>
+<p>Formula (Discrete):
+𝐸
+[
+𝑋
+]
+=
+∑
+𝑖
+𝑥
+𝑖
+ 
+𝑃
+(
+𝑋
+=
+𝑥
+𝑖
+)
+E[X]=∑ 
+i
+​
+ x 
+i
+​
+ P(X=x 
+i
+​
+ )</p>
+<p>Formula (Continuous):
+𝐸
+[
+𝑋
+]
+=
+∫
+−
+∞
+∞
+𝑥
+ 
+𝑓
+(
+𝑥
+)
+ 
+𝑑
+𝑥
+E[X]=∫ 
+−∞
+∞
+​
+ xf(x)dx</p>
+<p>Worked Example (Die):
+𝐸
+[
+𝑋
+]
+=
+1
++
+2
++
+3
++
+4
++
+5
++
+6
+6
+=
+3.5
+E[X]= 
+6
+1+2+3+4+5+6
+​
+ =3.5</p>
+<p>Relevance: Loss functions like mean squared error minimize expected error; understanding expectation clarifies why we average squared deviations.</p>
+<p>Variance &amp; Standard Deviation</p>
+<p>Variance:
+V
+a
+r
+(
+𝑋
+)
+=
+𝐸
+[
+(
+𝑋
+−
+𝐸
+[
+𝑋
+]
+)
+2
+]
+Var(X)=E[(X−E[X]) 
+2
+ ]</p>
+<p>Standard Deviation:
+𝜎
+=
+V
+a
+r
+(
+𝑋
+)
+σ= 
+Var(X)
+​</p>
+<p>Worked Example (Die):
+V
+a
+r
+(
+𝑋
+)
+=
+(
+1
+−
+3.5
+)
+2
++
+⋯
++
+(
+6
+−
+3.5
+)
+2
+6
+=
+17.5
+6
+≈
+2.92
+,
+ 
+𝜎
+≈
+1.71
+Var(X)= 
+6
+(1−3.5) 
+2
+ +⋯+(6−3.5) 
+2</p>
+<p>​
+ = 
+6
+17.5
+​
+ ≈2.92, σ≈1.71</p>
+<p>Relevance: Guides feature scaling, sets confidence intervals, and underpins uncertainty quantification in finance or anomaly detection.</p>
+<p>Why These Concepts Matter in AI</p>
+<p>Model Training: Loss functions (e.g., MSE) rely on expectation of squared errors.</p>
+<p>Uncertainty Quantification: Variance informs risk metrics (VaR, confidence intervals).</p>
+<p>Feature Engineering: Distribution shapes dictate transformations (e.g., log scaling skewed data).</p>
 <p>D. Linear Algebra Basics
 Excerpt (Definition Box):
-Linear Algebra – “The branch of mathematics concerned with vectors, vector spaces, and linear transformations.”
-D1. Introduction
-1.  Vectors as Lists
-o   Analogy: A grocery list: [2 bananas, 1 loaf bread, 500 g cheese].
-o   Key Idea: A vector is just a list of numbers representing “features.”
-2.  Matrices as Tables
-o   Analogy: A seating chart in class: rows are table numbers, columns are seat positions.
-text
-CopyEdit
+Linear Algebra – “The branch of mathematics concerned with vectors, vector spaces, and linear transformations.”</p>
+<p>D1. Introduction
+Vectors as Lists</p>
+<p>Analogy: A grocery list: [2 bananas, 1 loaf bread, 500 g cheese].</p>
+<p>Key Idea: A vector is just a list of numbers representing “features.”</p>
+<p>Matrices as Tables</p>
+<p>Analogy: A seating chart in class: rows are table numbers, columns are seat positions.</p>
+<p>mathematica
+Copy
+Edit
 |    | S1 | S2 | S3 |
 |----|----|----|----|
 | T1 | A  | B  | C  |
 | T2 | D  | E  | F  |
-o   Key Idea: A matrix is multiple vectors “stacked” into rows or columns.
-3.  Dot Product Intuition
-o   Example (Bill Splitting): You and a friend order appetizers ([3, 2] plates) and drinks ([1, 2] each). To compute total cost if plates = $5, drinks = $2:
-[3,2]⋅[5,2]=3×5+2×2=15+4=$19. [3,2]\cdot[5,2] = 3\times5 + 2\times2 = 15 + 4 = \$19.[3,2]⋅[5,2]=3×5+2×2=15+4=$19. 
-o   Why It Matters: Combines quantities and prices; same math as a regression prediction.
-4.  Real World Matrix Use
-o   Recipe scaling: A 4 serving recipe’s ingredients in a matrix, multiply by 1.5 to get 6 servings.
-o   School timetable: Days × hours grid for scheduling classes.
-D2. Formal Definitions &amp; Deep Dive
-1.  Vectors &amp; Their Interpretation
-A vector x∈Rn\mathbf{x}\in\mathbb{R}^nx∈Rn is an ordered list of nnn numbers representing features or data points.
-o   Example:
-x=[age, monthly_spend, num_orders]=[45, 320.5, 12]. \mathbf{x} = [\text{age},\,\text{monthly_spend},\,\text{num_orders}] = [45,\,320.5,\,12].x=[age,monthly_spend,num_orders]=[45,320.5,12]. 
-2.  Matrices &amp; Batch Operations
-A matrix X∈Rm×n\mathbf{X}\in\mathbb{R}^{m\times n}X∈Rm×n stacks mmm row vectors of dimension nnn.
-o   Example:
-X=[45320.51223150.05⋮⋮⋮]. \mathbf{X} = \begin{bmatrix} 45 &amp; 320.5 &amp; 12 \ 23 &amp; 150.0 &amp; 5 \ \vdots &amp; \vdots &amp; \vdots \end{bmatrix}.X=4523⋮320.5150.0⋮125⋮. 
-3.  Dot Product &amp; Linear Transformations
-o   Dot Product:
-a⋅b=∑i=1nai bi. \mathbf{a}\cdot\mathbf{b} = \sum_{i=1}^n a_i\,b_i.a⋅b=i=1∑naibi. 
-Example: [1,2,3]⋅[4,5,6]=32.[1,2,3]\cdot[4,5,6] = 32.[1,2,3]⋅[4,5,6]=32.
-o   Use in AI:
-   Regression: y^=w⋅x+b\hat y = \mathbf{w}\cdot\mathbf{x} + by^=w⋅x+b.
-   Neural Nets: Each neuron computes z=w⋅x+bz=\mathbf{w}\cdot\mathbf{x}+bz=w⋅x+b, then applies an activation.
-4.  Matrix Multiplication
-C=A×B,Cij=∑k=1nAik Bkj. \mathbf{C} = \mathbf{A}\times\mathbf{B},\quad C_{ij} = \sum_{k=1}^n A_{ik}\,B_{kj}.C=A×B,Cij=k=1∑nAikBkj. 
-Example: Transforming feature spaces or chaining layers in a deep network.
-5.  Relevance for AI Practitioners
-o   Batch Processing: GPUs and NumPy rely on vectorized matrix operations.
-o   Model Introspection: Weight matrices and activation maps in CNNs are built on these operations.
-o   Dimensionality Reduction: PCA uses eigenvectors/eigenvalues of covariance matrices to compress data.</p>
-<hr />
+Key Idea: A matrix is multiple vectors “stacked” into rows or columns.</p>
+<p>Dot Product Intuition</p>
+<p>Example (Bill Splitting): You and a friend order appetizers [3, 2] plates and drinks [1, 2] each. To compute total cost if plates = $5, drinks = $2:
+[
+3
+,
+2
+]
+⋅
+[
+5
+,
+2
+]
+=
+3
+×
+5
++
+2
+×
+2
+=
+15
++
+4
+=
+$
+19
+[3,2]⋅[5,2]=3×5+2×2=15+4=$19</p>
+<p>Why It Matters: Combines quantities and prices; same math as a regression prediction.</p>
+<p>Real World Matrix Use</p>
+<p>Recipe scaling: A 4‑serving recipe’s ingredients in a matrix, multiply by 1.5 to get 6 servings.</p>
+<p>School timetable: Days × hours grid for scheduling classes.</p>
+<p>D2. Formal Definitions &amp; Deep Dive
+Vectors &amp; Their Interpretation
+A vector 
+𝑥
+∈
+𝑅
+𝑛
+x∈R 
+n
+  is an ordered list of 
+𝑛
+n numbers representing features or data points.</p>
+<p>Example:
+𝑥
+=
+[
+age
+,
+monthly_spend
+,
+num_orders
+]
+=
+[
+45
+,
+320.5
+,
+12
+]
+x=[age,monthly_spend,num_orders]=[45,320.5,12]</p>
+<p>Matrices &amp; Batch Operations
+A matrix 
+𝑋
+∈
+𝑅
+𝑚
+×
+𝑛
+X∈R 
+m×n
+  stacks 
+𝑚
+m row vectors of dimension 
+𝑛
+n.</p>
+<p>Example:</p>
+<h1 id="x">𝑋</h1>
+<p>[
+45
+320.5
+12
+23
+150.0
+5
+⋮
+⋮
+⋮
+]
+X= 
+​</p>
+<p>45
+23
+⋮
+​</p>
+<p>320.5
+150.0
+⋮
+​</p>
+<p>12
+5
+⋮
+​</p>
+<p>​</p>
+<p>Dot Product &amp; Linear Transformations</p>
+<p>Dot Product:
+𝑎
+⋅
+𝑏
+=
+∑
+𝑖
+=
+1
+𝑛
+𝑎
+𝑖
+ 
+𝑏
+𝑖
+a⋅b=∑ 
+i=1
+n
+​
+ a 
+i
+​
+ b 
+i
+​</p>
+<p>Example: [1,2,3] ⋅ [4,5,6] = 32</p>
+<p>Use in AI:</p>
+<p>Regression: 
+𝑦
+^
+=
+𝑤
+⋅
+𝑥
++
+𝑏
+y
+^
+​
+ =w⋅x+b</p>
+<p>Neural Nets: Each neuron computes 
+𝑧
+=
+𝑤
+⋅
+𝑥
++
+𝑏
+z=w⋅x+b, then applies an activation.</p>
+<p>Matrix Multiplication
+𝐶
+=
+𝐴
+×
+𝐵
+,
+𝐶
+𝑖
+𝑗
+=
+∑
+𝑘
+=
+1
+𝑛
+𝐴
+𝑖
+𝑘
+𝐵
+𝑘
+𝑗
+C=A×B,C 
+ij
+​
+ =∑ 
+k=1
+n
+​
+ A 
+ik
+​
+ B 
+kj
+​</p>
+<p>Example: Transforming feature spaces or chaining layers in a deep network.</p>
+<p>Relevance for AI Practitioners</p>
+<p>Batch Processing: GPUs and NumPy rely on vectorized matrix operations.</p>
+<p>Model Introspection: Weight matrices and activation maps in CNNs are built on these operations.</p>
+<p>Dimensionality Reduction: PCA uses eigenvectors/eigenvalues of covariance matrices to compress data.</p>
 <ol>
 <li>Tools Installation &amp; Setup
-Windows &amp; Mac
-A. Install Python &amp; Anaconda</li>
-<li>Navigate to https://www.anaconda.com/products/distribution</li>
-<li>Download the Python 3.x installer for your OS.</li>
-<li>Run the installer, accept defaults.</li>
-<li>Open Anaconda Navigator from your Start menu (Windows) or Applications folder (Mac).
-B. Launch Jupyter Notebook</li>
-<li>In Anaconda Navigator, click Launch under Jupyter Notebook.</li>
-<li>A browser window opens showing your file system.</li>
-<li>Click New → Python 3.</li>
-<li>Rename the notebook to Week1_AI_Math.ipynb.
-C. Install &amp; Import NumPy &amp; pandas</li>
-<li>In a notebook cell, run:
-bash
-CopyEdit
-!conda install numpy pandas -y</li>
-<li>In the next cell, import the libraries:
-python
-CopyEdit
+Windows &amp; Mac</li>
+</ol>
+<p>A. Install Python &amp; Anaconda
+Navigate to: https://www.anaconda.com/products/distribution</p>
+<p>Download the Python 3.x installer for your OS.</p>
+<p>Run the installer, accept defaults.</p>
+<p>Open Anaconda Navigator from your Start menu (Windows) or Applications folder (Mac).</p>
+<p>B. Launch Jupyter Notebook
+In Anaconda Navigator, click Launch under Jupyter Notebook.</p>
+<p>A browser window opens showing your file system.</p>
+<p>Click New → Python 3.</p>
+<p>Rename the notebook to Week1_AI_Math.ipynb.</p>
+<p>C. Install &amp; Import NumPy &amp; pandas
+In a notebook cell, run:</p>
+<p>bash
+Copy
+Edit
+!conda install numpy pandas -y
+Then, in the next cell:</p>
+<p>python
+Copy
+Edit
 import numpy as np
-import pandas as pd</li>
-</ol>
-<hr />
-<ol>
-<li>Step by Step Exercises
-Exercise 1: Die Roll Simulation &amp; Statistics (Template)</li>
-<li>Exercise Overview &amp; Purpose
-•   What we’re doing: Simulate 1,000 rolls of a fair six sided die in Python to compute the empirical mean and variance.
-•   Why: Reinforces theoretical vs. empirical probability, builds NumPy familiarity, and demonstrates sampling variability.</li>
-<li>Concept Reinforcement
-•   Probability &amp; Random Variables
-•   Expectation &amp; Variance
-•   Sampling Variability</li>
-<li>Real World Relevance
-•   Quality Control (defect rate simulation)
-•   Risk Modeling (Monte Carlo portfolio variance)
-•   Randomized Algorithms &amp; Game Balancing</li>
-<li>Step by Step Instructions
-python
-CopyEdit
-import numpy as np</li>
-</ol>
+import pandas as pd
+5. Step-by-Step Exercises
+Exercise 1: Die Roll Simulation &amp; Statistics (Template)
+Exercise Overview &amp; Purpose</p>
+<p>What we’re doing: Simulate 1,000 rolls of a fair six‑sided die in Python to compute the empirical mean and variance.</p>
+<p>Why: Reinforces theoretical vs. empirical probability, builds NumPy familiarity, and demonstrates sampling variability.</p>
+<p>Concept Reinforcement</p>
+<p>Probability &amp; Random Variables</p>
+<p>Expectation &amp; Variance</p>
+<p>Sampling Variability</p>
+<p>Real World Relevance</p>
+<p>Quality Control (defect rate simulation)</p>
+<p>Risk Modeling (Monte Carlo portfolio variance)</p>
+<p>Randomized Algorithms &amp; Game Balancing</p>
+<p>Step by Step Instructions</p>
+<p>python
+Copy
+Edit
+import numpy as np</p>
 <h1 id="simulate-1000-die-rolls">Simulate 1,000 die rolls</h1>
 <p>rolls = np.random.randint(1, 7, size=1000)</p>
 <h1 id="compute-statistics">Compute statistics</h1>
 <p>mean_rolls = rolls.mean()
-var_rolls = rolls.var()</p>
+var_rolls  = rolls.var()</p>
 <p>print("Simulated Mean:    ", mean_rolls)
 print("Simulated Variance:", var_rolls)
-•   Notes:
-o   np.random.randint(1, 7, size=1000): integers 1–6
-o   .mean(), .var(): compute empirical mean &amp; variance
-5. Expected Outcomes &amp; Interpretation
-•   Mean ≈ 3.5, Variance ≈ 2.92 (± sampling noise)
-•   Larger samples converge closer to theory
-6. Extensions &amp; Variations
-•   Vary sample size (100, 10,000)
-•   Simulate weighted/unfair die
-•   Plot histogram with matplotlib
-7. Additional Notes &amp; Tips
-•   Use np.random.seed(42) for reproducibility
-•   Avoid Python loops; prefer NumPy vectorization
-Exercise 2: Coin Flip Probability Estimation
-1. Overview &amp; Purpose
-Simulate 10,000 coin flips to estimate the probability of heads and tails.
-2. Concept Reinforcement
-•   Discrete random variables
-•   Empirical vs. theoretical probability
-3. Real World Relevance
-•   A/B testing conversion rates (success/failure)
-•   Clinical trial outcomes
-4. Step by Step Instructions
-python
-CopyEdit
+Notes:</p>
+<p>np.random.randint(1, 7, size=1000): integers 1–6</p>
+<p>.mean(), .var(): compute empirical mean &amp; variance</p>
+<p>Expected Outcomes &amp; Interpretation</p>
+<p>Mean ≈ 3.5, Variance ≈ 2.92 (± sampling noise)</p>
+<p>Larger samples converge closer to theory</p>
+<p>Extensions &amp; Variations</p>
+<p>Vary sample size (100, 10,000)</p>
+<p>Simulate weighted/unfair die</p>
+<p>Plot histogram with matplotlib</p>
+<p>Additional Notes &amp; Tips</p>
+<p>Use np.random.seed(42) for reproducibility</p>
+<p>Avoid Python loops; prefer NumPy vectorization</p>
+<p>Exercise 2: Coin Flip Probability Estimation
+Overview &amp; Purpose
+Simulate 10,000 coin flips to estimate the probability of heads and tails.</p>
+<p>Concept Reinforcement</p>
+<p>Discrete random variables</p>
+<p>Empirical vs. theoretical probability</p>
+<p>Real World Relevance</p>
+<p>A/B testing conversion rates (success/failure)</p>
+<p>Clinical trial outcomes</p>
+<p>Step by Step Instructions</p>
+<p>python
+Copy
+Edit
 import numpy as np</p>
 <p>np.random.seed(0)
 flips = np.random.choice(['H','T'], size=10000)
 p_heads = np.mean(flips == 'H')
 p_tails = np.mean(flips == 'T')
 print(f"P(heads): {p_heads:.3f}, P(tails): {p_tails:.3f}")
-5. Expected Outcomes &amp; Interpretation
-~0.5 each, with fluctuations ~±0.01.
-6. Extensions &amp; Variations
-•   Weighted coin (p=['H':0.3,'T':0.7])
-•   Plot bar chart of counts
-7. Additional Notes &amp; Tips
+Expected Outcomes &amp; Interpretation
+~0.5 each, with fluctuations ~±0.01.</p>
+<p>Extensions &amp; Variations</p>
+<p>Weighted coin (p=['H':0.3,'T':0.7])</p>
+<p>Plot bar chart of counts</p>
+<p>Additional Notes &amp; Tips
 Use np.random.seed(…) for reproducibility.</p>
-<hr />
 <p>Exercise 3: Histogram of Die Rolls
-1. Overview &amp; Purpose
-Visualize the distribution of the 1,000 die rolls from Exercise 1.
-2. Concept Reinforcement
-•   Frequency vs. probability
-•   Data visualization basics
-3. Real World Relevance
-•   Sales distribution by category
-•   Error rates by batch
-4. Step by Step Instructions
-python
-CopyEdit
+Overview &amp; Purpose
+Visualize the distribution of the 1,000 die rolls from Exercise 1.</p>
+<p>Concept Reinforcement</p>
+<p>Frequency vs. probability</p>
+<p>Data visualization basics</p>
+<p>Real World Relevance</p>
+<p>Sales distribution by category</p>
+<p>Error rates by batch</p>
+<p>Step by Step Instructions</p>
+<p>python
+Copy
+Edit
 import matplotlib.pyplot as plt</p>
 <p>plt.hist(rolls, bins=range(1,8), align='left', rwidth=0.8)
 plt.xlabel('Die Face')
 plt.ylabel('Frequency')
 plt.title('Histogram of 1,000 Die Rolls')
 plt.show()
-5. Expected Outcomes &amp; Interpretation
-Bars roughly equal height for faces 1–6.
-6. Extensions &amp; Variations
-•   Normalized histogram (density=True)
-•   Overlay theoretical PMF
-7. Additional Notes &amp; Tips
+Expected Outcomes &amp; Interpretation
+Bars roughly equal height for faces 1–6.</p>
+<p>Extensions &amp; Variations</p>
+<p>Normalized histogram (density=True)</p>
+<p>Overlay theoretical PMF</p>
+<p>Additional Notes &amp; Tips
 Ensure bins=range(1,8) to center on integer faces.</p>
-<hr />
 <p>Exercise 4: Exponential Distribution Simulation
-1. Overview &amp; Purpose
-Simulate 5,000 samples from an exponential distribution (mean = 2) and compute mean/variance.
-2. Concept Reinforcement
-•   Continuous random variables
-•   Relationship between distribution parameters and statistics
-3. Real World Relevance
-•   Time between machine failures
-•   Call-center interarrival times
-4. Step by Step Instructions
-python
-CopyEdit
+Overview &amp; Purpose
+Simulate 5,000 samples from an exponential distribution (mean = 2) and compute mean/variance.</p>
+<p>Concept Reinforcement</p>
+<p>Continuous random variables</p>
+<p>Relationship between distribution parameters and statistics</p>
+<p>Real World Relevance</p>
+<p>Time between machine failures</p>
+<p>Call-center interarrival times</p>
+<p>Step by Step Instructions</p>
+<p>python
+Copy
+Edit
 samples = np.random.exponential(scale=2, size=5000)
 print("Empirical Mean:", samples.mean())
 print("Empirical Variance:", samples.var())
-5. Expected Outcomes &amp; Interpretation
-Mean ≈ 2; variance ≈ 4.
-6. Extensions &amp; Variations
-•   Change scale (mean) parameter
-•   Plot histogram + theoretical PDF
-7. Additional Notes &amp; Tips
+Expected Outcomes &amp; Interpretation
+Mean ≈ 2; variance ≈ 4.</p>
+<p>Extensions &amp; Variations</p>
+<p>Change scale (mean) parameter</p>
+<p>Plot histogram + theoretical PDF</p>
+<p>Additional Notes &amp; Tips
 Use np.histogram or matplotlib for PDF overlay.</p>
-<hr />
 <p>Exercise 5: Normal Distribution Sampling
-1. Overview &amp; Purpose
-Draw 10,000 samples from a standard normal (mean 0, σ = 1) and verify statistics.
-2. Concept Reinforcement
-•   Properties of Gaussian distribution
-•   Central Limit Theorem preview
-3. Real World Relevance
-•   Measurement errors
-•   Standardized test score modeling
-4. Step by Step Instructions
-python
-CopyEdit
+Overview &amp; Purpose
+Draw 10,000 samples from a standard normal (mean 0, σ = 1) and verify statistics.</p>
+<p>Concept Reinforcement</p>
+<p>Properties of Gaussian distribution</p>
+<p>Central Limit Theorem preview</p>
+<p>Real World Relevance</p>
+<p>Measurement errors</p>
+<p>Standardized test score modeling</p>
+<p>Step by Step Instructions</p>
+<p>python
+Copy
+Edit
 normals = np.random.randn(10000)
 print("Mean:", normals.mean())
 print("Variance:", normals.var())
-5. Expected Outcomes &amp; Interpretation
-Mean ≈ 0, variance ≈ 1.
-6. Extensions &amp; Variations
-•   Use np.random.normal(loc, scale, size)
-•   QQ plot vs. theoretical normal
-7. Additional Notes &amp; Tips
+Expected Outcomes &amp; Interpretation
+Mean ≈ 0, variance ≈ 1.</p>
+<p>Extensions &amp; Variations</p>
+<p>Use np.random.normal(loc, scale, size)</p>
+<p>QQ plot vs. theoretical normal</p>
+<p>Additional Notes &amp; Tips
 Matplotlib’s plt.hist(..., density=True) for PDF shape.</p>
-<hr />
 <p>Exercise 6: Sampling Distribution of the Mean
-1. Overview &amp; Purpose
-Simulate 1,000 experiments, each of 100 die rolls, record sample means, and examine their distribution.
-2. Concept Reinforcement
-•   Law of Large Numbers
-•   Sampling variability reduction
-3. Real World Relevance
-•   Polling averages
-•   Quality metrics over batches
-4. Step by Step Instructions
-python
-CopyEdit
+Overview &amp; Purpose
+Simulate 1,000 experiments, each of 100 die rolls, record sample means, and examine their distribution.</p>
+<p>Concept Reinforcement</p>
+<p>Law of Large Numbers</p>
+<p>Sampling variability reduction</p>
+<p>Real World Relevance</p>
+<p>Polling averages</p>
+<p>Quality metrics over batches</p>
+<p>Step by Step Instructions</p>
+<p>python
+Copy
+Edit
 means = [np.random.randint(1,7,100).mean() for _ in range(1000)]
 plt.hist(means, bins=20)
 plt.title('Sampling Distribution of Die Roll Means')
 plt.show()
-5. Expected Outcomes &amp; Interpretation
-Histogram approximates normal around 3.5 with narrower spread.
-6. Extensions &amp; Variations
-•   Vary experiment size (n=10, n=1000)
-•   Compute standard error (σ/√n)
-7. Additional Notes &amp; Tips
+Expected Outcomes &amp; Interpretation
+Histogram approximates normal around 3.5 with narrower spread.</p>
+<p>Extensions &amp; Variations</p>
+<p>Vary experiment size (n=10, n=1000)</p>
+<p>Compute standard error (σ/√n)</p>
+<p>Additional Notes &amp; Tips
 List comprehensions vs. loops for clarity.</p>
-<hr />
 <p>Exercise 7: Weighted Dice Simulation
-1. Overview &amp; Purpose
-Simulate 1,000 rolls of a biased die with P(6)=0.5, others equal.
-2. Concept Reinforcement
-•   Custom discrete distributions
-•   Impact of bias on mean/variance
-3. Real World Relevance
-•   Biased processes in manufacturing
-•   Skewed customer behavior models
-4. Step by Step Instructions
-python
-CopyEdit
+Overview &amp; Purpose
+Simulate 1,000 rolls of a biased die with 
+𝑃
+(
+6
+)
+=
+0.5
+P(6)=0.5, others equal.</p>
+<p>Concept Reinforcement</p>
+<p>Custom discrete distributions</p>
+<p>Impact of bias on mean/variance</p>
+<p>Real World Relevance</p>
+<p>Biased processes in manufacturing</p>
+<p>Skewed customer behavior models</p>
+<p>Step by Step Instructions</p>
+<p>python
+Copy
+Edit
 faces = [1,2,3,4,5,6]
 probs = [0.1]*5 + [0.5]
 rolls_biased = np.random.choice(faces, size=1000, p=probs)
 print("Mean:", rolls_biased.mean(), "Variance:", rolls_biased.var())
-5. Expected Outcomes &amp; Interpretation
-Mean &gt; 3.5, variance different from fair die.
-6. Extensions &amp; Variations
-•   Tune probs for different biases
-•   Compare histograms side by side
-7. Additional Notes &amp; Tips
+Expected Outcomes &amp; Interpretation
+Mean &gt; 3.5, variance different from fair die.</p>
+<p>Extensions &amp; Variations</p>
+<p>Tune probs for different biases</p>
+<p>Compare histograms side by side</p>
+<p>Additional Notes &amp; Tips
 Sum of probs must equal 1.</p>
-<hr />
 <p>Exercise 8: Vector Addition &amp; Scaling
-1. Overview &amp; Purpose
-Demonstrate vector addition and scalar multiplication with feature vectors.
-2. Concept Reinforcement
-•   Vector space operations
-•   Geometric interpretation
-3. Real World Relevance
-•   Combining feature influences
-•   Scaling normalized data
-4. Step by Step Instructions
-python
-CopyEdit
+Overview &amp; Purpose
+Demonstrate vector addition and scalar multiplication with feature vectors.</p>
+<p>Concept Reinforcement</p>
+<p>Vector space operations</p>
+<p>Geometric interpretation</p>
+<p>Real World Relevance</p>
+<p>Combining feature influences</p>
+<p>Scaling normalized data</p>
+<p>Step by Step Instructions</p>
+<p>python
+Copy
+Edit
 v1 = np.array([2, 4, 6])
 v2 = np.array([1, 3, 5])
-sum_v = v1 + v2              # vector addition
-scaled_v = 0.5 * v1          # scalar multiplication
+sum_v   = v1 + v2      # vector addition
+scaled_v = 0.5 * v1    # scalar multiplication
 print("Sum:", sum_v)
 print("Scaled:", scaled_v)
-5. Expected Outcomes &amp; Interpretation
-Sum = [3,7,11]; scaled = [1,2,3].
-6. Extensions &amp; Variations
-•   Compute dot product of sum_v and v2
-•   Visualize vectors in 2D/3D
-7. Additional Notes &amp; Tips
+Expected Outcomes &amp; Interpretation
+Sum = [3, 7, 11]; scaled = [1, 2, 3].</p>
+<p>Extensions &amp; Variations</p>
+<p>Compute dot product of sum_v and v2</p>
+<p>Visualize vectors in 2D/3D</p>
+<p>Additional Notes &amp; Tips
 Ensure consistent dimensions.</p>
-<hr />
 <p>Exercise 9: Matrix Multiplication Demonstration
-1. Overview &amp; Purpose
-Multiply a 2×3 matrix by a 3×2 matrix to reinforce matrix multiplication rules.
-2. Concept Reinforcement
-•   Shape compatibility
-•   Summation over inner index
-3. Real World Relevance
-•   Transforming feature spaces
-•   Composition of network layers
-4. Step by Step Instructions
-python
-CopyEdit
+Overview &amp; Purpose
+Multiply a 2×3 matrix by a 3×2 matrix to reinforce matrix multiplication rules.</p>
+<p>Concept Reinforcement</p>
+<p>Shape compatibility</p>
+<p>Summation over inner index</p>
+<p>Real World Relevance</p>
+<p>Transforming feature spaces</p>
+<p>Composition of network layers</p>
+<p>Step by Step Instructions</p>
+<p>python
+Copy
+Edit
 A = np.array([[1,2,3],[4,5,6]])
 B = np.array([[7,8],[9,10],[11,12]])
 C = A.dot(B)
 print("Result:\n", C)
-5. Expected Outcomes &amp; Interpretation
-C = [[58,64],[139,154]].
-6. Extensions &amp; Variations
-•   Reverse multiplication to show error
-•   Use @ operator in Python 3.5+
-7. Additional Notes &amp; Tips
+Expected Outcomes &amp; Interpretation
+C = [[58, 64], [139, 154]].</p>
+<p>Extensions &amp; Variations</p>
+<p>Reverse multiplication to show error</p>
+<p>Use @ operator in Python 3.5+</p>
+<p>Additional Notes &amp; Tips
 Check shapes via A.shape and B.shape.</p>
-<hr />
 <p>Exercise 10: PCA on Toy Dataset
-1. Overview &amp; Purpose
-Perform PCA on a small 2 D dataset to reduce to 1 D and visualize variance capture.
-2. Concept Reinforcement
-•   Eigenvectors/eigenvalues
-•   Dimensionality reduction
-3. Real World Relevance
-•   Compressing image data
-•   Feature extraction for clustering
-4. Step by Step Instructions
-python
-CopyEdit
-from sklearn.decomposition import PCA</p>
+Overview &amp; Purpose
+Perform PCA on a small 2‑D dataset to reduce to 1‑D and visualize variance capture.</p>
+<p>Concept Reinforcement</p>
+<p>Eigenvectors/eigenvalues</p>
+<p>Dimensionality reduction</p>
+<p>Real World Relevance</p>
+<p>Compressing image data</p>
+<p>Feature extraction for clustering</p>
+<p>Step by Step Instructions</p>
+<p>python
+Copy
+Edit
+from sklearn.decomposition import PCA
+import numpy as np</p>
 <p>X = np.array([[2.5,2.4],[0.5,0.7],[2.2,2.9],[1.9,2.2],[3.1,3.0]])
 pca = PCA(n_components=1)
 X_pca = pca.fit_transform(X)
 print("Explained variance ratio:", pca.explained_variance_ratio_)
 print("Projected data:\n", X_pca)
-5. Expected Outcomes &amp; Interpretation
-Most variance captured in first component (≈98%).
-6. Extensions &amp; Variations
-•   Plot original vs. projected points
-•   Try n_components=2
-7. Additional Notes &amp; Tips
-Requires scikit-learn installation.</p>
-<hr />
+Expected Outcomes &amp; Interpretation
+Most variance captured in first component (≈98%).</p>
+<p>Extensions &amp; Variations</p>
+<p>Plot original vs. projected points</p>
+<p>Try n_components=2</p>
+<p>Additional Notes &amp; Tips
+Requires scikit‑learn installation.</p>
 <ol>
 <li>Summary of Week 1
-Throughout this first week, you have:
-•   Traced AI History: From the Dartmouth Workshop to Expert Systems (MYCIN) and the Deep Learning revolution (AlexNet).
-•   Built Probability Skills: Learned random variables, expectation, variance—both by hand and in Python (die rolls, coin flips, exponential and normal sampling).
-•   Visualized Data: Plotted histograms, demonstrated Central Limit Theorem.
-•   Handled Bias: Modeled a weighted die to see effects on distribution.
-•   Applied Linear Algebra: Performed vector ops, matrix multiplication, and PCA for dimensionality reduction.
-These foundational concepts and hands on exercises prepare you for more advanced AI and ML topics.</li>
+Throughout this first week, you have:</li>
 </ol>
-<hr />
+<p>Traced AI History: From the Dartmouth Workshop to Expert Systems (MYCIN) and the Deep Learning revolution (AlexNet).</p>
+<p>Built Probability Skills: Learned random variables, expectation, variance—both by hand and in Python (die rolls, coin flips, exponential and normal sampling).</p>
+<p>Visualized Data: Plotted histograms, demonstrated Central Limit Theorem.</p>
+<p>Handled Bias: Modeled a weighted die to see effects on distribution.</p>
+<p>Applied Linear Algebra: Performed vector ops, matrix multiplication, and PCA for dimensionality reduction.</p>
+<p>These foundational concepts and hands‑on exercises prepare you for more advanced AI and ML topics.</p>
 <ol>
 <li>Additional Resources
-Probability Fundamentals: Khan Academy “Introduction to Probability”
-•   Linear Algebra Visualizations: 3Blue1Brown “Essence of Linear Algebra” series
-•   Python Tutorials: Official Python documentation at python.org</li>
+Probability Fundamentals: Khan Academy “Introduction to Probability”</li>
 </ol>
+<p>Linear Algebra Visualizations: 3Blue1Brown “Essence of Linear Algebra” series</p>
+<p>Python Tutorials: Official Python documentation at python.org</p>
 
 
 
