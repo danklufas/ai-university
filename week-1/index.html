@@ -417,6 +417,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#5-step-by-step-exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Step by Step Exercises
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -780,276 +789,331 @@ Then import:
 <li><strong>pandas:</strong> quick data tables, cleaning, summaries</li>
 </ul>
 </div>
-<ol>
-<li>Step-by-Step Exercises
-Exercise 1: Die Roll Simulation &amp; Statistics (Template)
-Exercise Overview &amp; Purpose</li>
-</ol>
-<p>What we’re doing: Simulate 1,000 rolls of a fair six‑sided die in Python to compute the empirical mean and variance.</p>
-<p>Why: Reinforces theoretical vs. empirical probability, builds NumPy familiarity, and demonstrates sampling variability.</p>
-<p>Concept Reinforcement</p>
-<p>Probability &amp; Random Variables</p>
-<p>Expectation &amp; Variance</p>
-<p>Sampling Variability</p>
-<p>Real World Relevance</p>
-<p>Quality Control (defect rate simulation)</p>
-<p>Risk Modeling (Monte Carlo portfolio variance)</p>
-<p>Randomized Algorithms &amp; Game Balancing</p>
-<p>Step by Step Instructions</p>
-<p>python
-Copy
-Edit
-import numpy as np</p>
-<h1 id="simulate-1000-die-rolls">Simulate 1,000 die rolls</h1>
-<p>rolls = np.random.randint(1, 7, size=1000)</p>
-<h1 id="compute-statistics">Compute statistics</h1>
-<p>mean_rolls = rolls.mean()
-var_rolls  = rolls.var()</p>
-<p>print("Simulated Mean:    ", mean_rolls)
-print("Simulated Variance:", var_rolls)
-Notes:</p>
-<p>np.random.randint(1, 7, size=1000): integers 1–6</p>
-<p>.mean(), .var(): compute empirical mean &amp; variance</p>
-<p>Expected Outcomes &amp; Interpretation</p>
-<p>Mean ≈ 3.5, Variance ≈ 2.92 (± sampling noise)</p>
-<p>Larger samples converge closer to theory</p>
-<p>Extensions &amp; Variations</p>
-<p>Vary sample size (100, 10,000)</p>
-<p>Simulate weighted/unfair die</p>
-<p>Plot histogram with matplotlib</p>
-<p>Additional Notes &amp; Tips</p>
-<p>Use np.random.seed(42) for reproducibility</p>
-<p>Avoid Python loops; prefer NumPy vectorization</p>
-<p>Exercise 2: Coin Flip Probability Estimation
-Overview &amp; Purpose
+<h2 id="5-step-by-step-exercises">5. Step by Step Exercises</h2>
+<details class="example" open="open">
+<summary>Exercise 1: Die Roll Simulation &amp; Statistics</summary>
+<p><strong>1. Overview &amp; Purpose</strong><br />
+Simulate 1,000 rolls of a fair six‑sided die in Python and compute the empirical mean and variance.<br />
+<strong>Why:</strong> Reinforces theoretical vs. empirical probability, builds NumPy familiarity, and demonstrates sampling variability.</p>
+<p><strong>2. Concept Reinforcement</strong><br />
+- Probability &amp; random variables<br />
+- Expectation (mean) &amp; variance<br />
+- Sampling variability / Law of Large Numbers</p>
+<p><strong>3. Real‑World Relevance</strong><br />
+- <strong>Quality control:</strong> simulate defect rates in a batch<br />
+- <strong>Risk modeling:</strong> Monte Carlo estimates of portfolio variance<br />
+- <strong>Game design:</strong> balance randomness in mechanics</p>
+<p><strong>4. Step-by-Step Instructions</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="c1"># Simulate 1,000 die rolls</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>           <span class="c1"># optional: reproducibility</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="n">rolls</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="c1"># Compute statistics</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="n">mean_rolls</span> <span class="o">=</span> <span class="n">rolls</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="n">var_rolls</span>  <span class="o">=</span> <span class="n">rolls</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Simulated Mean:    &quot;</span><span class="p">,</span> <span class="n">mean_rolls</span><span class="p">)</span>
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Simulated Variance:&quot;</span><span class="p">,</span> <span class="n">var_rolls</span><span class="p">)</span>
+</code></pre></div></p>
+<p><strong>Notes:</strong><br />
+- <code>np.random.randint(1, 7, size=1000)</code> → integers 1–6<br />
+- <code>.mean()</code>, <code>.var()</code> → empirical mean &amp; variance (population variance by default)</p>
+<p><strong>5. Expected Outcomes &amp; Interpretation</strong><br />
+- Mean ≈ 3.5, Variance ≈ 2.92 (± sampling noise)<br />
+- Larger sample sizes converge closer to the theoretical values</p>
+<p><strong>6. Extensions &amp; Variations</strong><br />
+- Try sample sizes 100, 10,000 and compare stats<br />
+- Simulate a <strong>weighted/unfair die</strong><br />
+- Plot histogram with <code>matplotlib</code></p>
+<p><strong>7. Additional Notes &amp; Tips</strong><br />
+- Use <code>np.random.seed(...)</code> if you want the same results every run<br />
+- Avoid Python loops when possible—NumPy vectorization is faster</p>
+</details>
+<details class="example" open="open">
+<summary>Exercise 2: Coin Flip Probability Estimation</summary>
+<p><strong>1. Overview &amp; Purpose</strong><br />
 Simulate 10,000 coin flips to estimate the probability of heads and tails.</p>
-<p>Concept Reinforcement</p>
-<p>Discrete random variables</p>
-<p>Empirical vs. theoretical probability</p>
-<p>Real World Relevance</p>
-<p>A/B testing conversion rates (success/failure)</p>
-<p>Clinical trial outcomes</p>
-<p>Step by Step Instructions</p>
-<p>python
-Copy
-Edit
-import numpy as np</p>
-<p>np.random.seed(0)
-flips = np.random.choice(['H','T'], size=10000)
-p_heads = np.mean(flips == 'H')
-p_tails = np.mean(flips == 'T')
-print(f"P(heads): {p_heads:.3f}, P(tails): {p_tails:.3f}")
-Expected Outcomes &amp; Interpretation
-~0.5 each, with fluctuations ~±0.01.</p>
-<p>Extensions &amp; Variations</p>
-<p>Weighted coin (p=['H':0.3,'T':0.7])</p>
-<p>Plot bar chart of counts</p>
-<p>Additional Notes &amp; Tips
-Use np.random.seed(…) for reproducibility.</p>
-<p>Exercise 3: Histogram of Die Rolls
-Overview &amp; Purpose
+<p><strong>2. Concept Reinforcement</strong><br />
+- Discrete random variables<br />
+- Empirical vs. theoretical probability</p>
+<p><strong>3. Real‑World Relevance</strong><br />
+- <strong>A/B testing:</strong> success/failure rates<br />
+- <strong>Clinical trials:</strong> treatment vs. control outcomes</p>
+<p><strong>4. Step-by-Step Instructions</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                      <span class="c1"># optional: reproducibility</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="n">flips</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="n">p_heads</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">flips</span> <span class="o">==</span> <span class="s1">&#39;H&#39;</span><span class="p">)</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="n">p_tails</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">flips</span> <span class="o">==</span> <span class="s1">&#39;T&#39;</span><span class="p">)</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P(heads): </span><span class="si">{</span><span class="n">p_heads</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, P(tails): </span><span class="si">{</span><span class="n">p_tails</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div></p>
+<p><strong>5. Expected Outcomes &amp; Interpretation</strong><br />
+- Both ≈ 0.5, with random fluctuation ~±0.01<br />
+- Larger samples narrow the gap to 0.5</p>
+<p><strong>6. Extensions &amp; Variations</strong><br />
+- Weighted coin: <code>p=['H':0.3, 'T':0.7]</code><br />
+- Plot counts with a bar chart</p>
+<p><strong>7. Additional Notes &amp; Tips</strong><br />
+- Set <code>np.random.seed(...)</code> when you want reproducible runs</p>
+</details>
+<details class="example" open="open">
+<summary>Exercise 3: Histogram of Die Rolls</summary>
+<p><strong>1. Overview &amp; Purpose</strong><br />
 Visualize the distribution of the 1,000 die rolls from Exercise 1.</p>
-<p>Concept Reinforcement</p>
-<p>Frequency vs. probability</p>
-<p>Data visualization basics</p>
-<p>Real World Relevance</p>
-<p>Sales distribution by category</p>
-<p>Error rates by batch</p>
-<p>Step by Step Instructions</p>
-<p>python
-Copy
-Edit
-import matplotlib.pyplot as plt</p>
-<p>plt.hist(rolls, bins=range(1,8), align='left', rwidth=0.8)
-plt.xlabel('Die Face')
-plt.ylabel('Frequency')
-plt.title('Histogram of 1,000 Die Rolls')
-plt.show()
-Expected Outcomes &amp; Interpretation
-Bars roughly equal height for faces 1–6.</p>
-<p>Extensions &amp; Variations</p>
-<p>Normalized histogram (density=True)</p>
-<p>Overlay theoretical PMF</p>
-<p>Additional Notes &amp; Tips
-Ensure bins=range(1,8) to center on integer faces.</p>
-<p>Exercise 4: Exponential Distribution Simulation
-Overview &amp; Purpose
+<p><strong>2. Concept Reinforcement</strong><br />
+- Frequency vs. probability<br />
+- Basic data visualization</p>
+<p><strong>3. Real‑World Relevance</strong><br />
+- Sales distribution by category<br />
+- Error counts per batch in manufacturing</p>
+<p><strong>4. Step-by-Step Instructions</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">rolls</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">rwidth</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Die Face&#39;</span><span class="p">)</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histogram of 1,000 Die Rolls&#39;</span><span class="p">)</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></p>
+<p><strong>5. Expected Outcomes &amp; Interpretation</strong><br />
+- Bars roughly equal for faces 1–6 (random noise is okay)</p>
+<p><strong>6. Extensions &amp; Variations</strong><br />
+- Normalized histogram: <code>plt.hist(..., density=True)</code><br />
+- Overlay the theoretical PMF as a line/bar plot</p>
+<p><strong>7. Additional Notes &amp; Tips</strong><br />
+- <code>bins=range(1,8)</code> centers bars on integer faces<br />
+- If you reused <code>rolls</code> from Exercise 1, you don’t need to re‑simulate</p>
+</details>
+<details class="example" open="open">
+<summary>Exercise 4: Exponential Distribution Simulation</summary>
+<p><strong>1. Overview &amp; Purpose</strong><br />
 Simulate 5,000 samples from an exponential distribution (mean = 2) and compute mean/variance.</p>
-<p>Concept Reinforcement</p>
-<p>Continuous random variables</p>
-<p>Relationship between distribution parameters and statistics</p>
-<p>Real World Relevance</p>
-<p>Time between machine failures</p>
-<p>Call-center interarrival times</p>
-<p>Step by Step Instructions</p>
-<p>python
-Copy
-Edit
-samples = np.random.exponential(scale=2, size=5000)
-print("Empirical Mean:", samples.mean())
-print("Empirical Variance:", samples.var())
-Expected Outcomes &amp; Interpretation
-Mean ≈ 2; variance ≈ 4.</p>
-<p>Extensions &amp; Variations</p>
-<p>Change scale (mean) parameter</p>
-<p>Plot histogram + theoretical PDF</p>
-<p>Additional Notes &amp; Tips
-Use np.histogram or matplotlib for PDF overlay.</p>
-<p>Exercise 5: Normal Distribution Sampling
-Overview &amp; Purpose
-Draw 10,000 samples from a standard normal (mean 0, σ = 1) and verify statistics.</p>
-<p>Concept Reinforcement</p>
-<p>Properties of Gaussian distribution</p>
-<p>Central Limit Theorem preview</p>
-<p>Real World Relevance</p>
-<p>Measurement errors</p>
-<p>Standardized test score modeling</p>
-<p>Step by Step Instructions</p>
-<p>python
-Copy
-Edit
-normals = np.random.randn(10000)
-print("Mean:", normals.mean())
-print("Variance:", normals.var())
-Expected Outcomes &amp; Interpretation
-Mean ≈ 0, variance ≈ 1.</p>
-<p>Extensions &amp; Variations</p>
-<p>Use np.random.normal(loc, scale, size)</p>
-<p>QQ plot vs. theoretical normal</p>
-<p>Additional Notes &amp; Tips
-Matplotlib’s plt.hist(..., density=True) for PDF shape.</p>
-<p>Exercise 6: Sampling Distribution of the Mean
-Overview &amp; Purpose
-Simulate 1,000 experiments, each of 100 die rolls, record sample means, and examine their distribution.</p>
-<p>Concept Reinforcement</p>
-<p>Law of Large Numbers</p>
-<p>Sampling variability reduction</p>
-<p>Real World Relevance</p>
-<p>Polling averages</p>
-<p>Quality metrics over batches</p>
-<p>Step by Step Instructions</p>
-<p>python
-Copy
-Edit
-means = [np.random.randint(1,7,100).mean() for _ in range(1000)]
-plt.hist(means, bins=20)
-plt.title('Sampling Distribution of Die Roll Means')
-plt.show()
-Expected Outcomes &amp; Interpretation
-Histogram approximates normal around 3.5 with narrower spread.</p>
-<p>Extensions &amp; Variations</p>
-<p>Vary experiment size (n=10, n=1000)</p>
-<p>Compute standard error (σ/√n)</p>
-<p>Additional Notes &amp; Tips
-List comprehensions vs. loops for clarity.</p>
-<p>Exercise 7: Weighted Dice Simulation
-Overview &amp; Purpose
-Simulate 1,000 rolls of a biased die with 
-𝑃
-(
-6
-)
-=
-0.5
-P(6)=0.5, others equal.</p>
-<p>Concept Reinforcement</p>
-<p>Custom discrete distributions</p>
-<p>Impact of bias on mean/variance</p>
-<p>Real World Relevance</p>
-<p>Biased processes in manufacturing</p>
-<p>Skewed customer behavior models</p>
-<p>Step by Step Instructions</p>
-<p>python
-Copy
-Edit
-faces = [1,2,3,4,5,6]
-probs = [0.1]*5 + [0.5]
-rolls_biased = np.random.choice(faces, size=1000, p=probs)
-print("Mean:", rolls_biased.mean(), "Variance:", rolls_biased.var())
-Expected Outcomes &amp; Interpretation
-Mean &gt; 3.5, variance different from fair die.</p>
-<p>Extensions &amp; Variations</p>
-<p>Tune probs for different biases</p>
-<p>Compare histograms side by side</p>
-<p>Additional Notes &amp; Tips
-Sum of probs must equal 1.</p>
-<p>Exercise 8: Vector Addition &amp; Scaling
-Overview &amp; Purpose
-Demonstrate vector addition and scalar multiplication with feature vectors.</p>
-<p>Concept Reinforcement</p>
-<p>Vector space operations</p>
-<p>Geometric interpretation</p>
-<p>Real World Relevance</p>
-<p>Combining feature influences</p>
-<p>Scaling normalized data</p>
-<p>Step by Step Instructions</p>
-<p>python
-Copy
-Edit
-v1 = np.array([2, 4, 6])
-v2 = np.array([1, 3, 5])
-sum_v   = v1 + v2      # vector addition
-scaled_v = 0.5 * v1    # scalar multiplication
-print("Sum:", sum_v)
-print("Scaled:", scaled_v)
-Expected Outcomes &amp; Interpretation
-Sum = [3, 7, 11]; scaled = [1, 2, 3].</p>
-<p>Extensions &amp; Variations</p>
-<p>Compute dot product of sum_v and v2</p>
-<p>Visualize vectors in 2D/3D</p>
-<p>Additional Notes &amp; Tips
-Ensure consistent dimensions.</p>
-<p>Exercise 9: Matrix Multiplication Demonstration
-Overview &amp; Purpose
-Multiply a 2×3 matrix by a 3×2 matrix to reinforce matrix multiplication rules.</p>
-<p>Concept Reinforcement</p>
-<p>Shape compatibility</p>
-<p>Summation over inner index</p>
-<p>Real World Relevance</p>
-<p>Transforming feature spaces</p>
-<p>Composition of network layers</p>
-<p>Step by Step Instructions</p>
-<p>python
-Copy
-Edit
-A = np.array([[1,2,3],[4,5,6]])
-B = np.array([[7,8],[9,10],[11,12]])
-C = A.dot(B)
-print("Result:\n", C)
-Expected Outcomes &amp; Interpretation
-C = [[58, 64], [139, 154]].</p>
-<p>Extensions &amp; Variations</p>
-<p>Reverse multiplication to show error</p>
-<p>Use @ operator in Python 3.5+</p>
-<p>Additional Notes &amp; Tips
-Check shapes via A.shape and B.shape.</p>
-<p>Exercise 10: PCA on Toy Dataset
-Overview &amp; Purpose
-Perform PCA on a small 2‑D dataset to reduce to 1‑D and visualize variance capture.</p>
-<p>Concept Reinforcement</p>
-<p>Eigenvectors/eigenvalues</p>
-<p>Dimensionality reduction</p>
-<p>Real World Relevance</p>
-<p>Compressing image data</p>
-<p>Feature extraction for clustering</p>
-<p>Step by Step Instructions</p>
-<p>python
-Copy
-Edit
-from sklearn.decomposition import PCA
-import numpy as np</p>
-<p>X = np.array([[2.5,2.4],[0.5,0.7],[2.2,2.9],[1.9,2.2],[3.1,3.0]])
-pca = PCA(n_components=1)
-X_pca = pca.fit_transform(X)
-print("Explained variance ratio:", pca.explained_variance_ratio_)
-print("Projected data:\n", X_pca)
-Expected Outcomes &amp; Interpretation
-Most variance captured in first component (≈98%).</p>
-<p>Extensions &amp; Variations</p>
-<p>Plot original vs. projected points</p>
-<p>Try n_components=2</p>
-<p>Additional Notes &amp; Tips
-Requires scikit‑learn installation.</p>
+<p><strong>2. Concept Reinforcement</strong><br />
+- Continuous random variables<br />
+- Relationship between distribution parameters and statistics</p>
+<p><strong>3. Real‑World Relevance</strong><br />
+- Time between machine failures<br />
+- Call‑center interarrival times</p>
+<p><strong>4. Step-by-Step Instructions</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                         <span class="c1"># optional</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Empirical Mean:   &quot;</span><span class="p">,</span> <span class="n">samples</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Empirical Variance:&quot;</span><span class="p">,</span> <span class="n">samples</span><span class="o">.</span><span class="n">var</span><span class="p">())</span>
+</code></pre></div></p>
+<p><strong>5. Expected Outcomes &amp; Interpretation</strong><br />
+- Mean ≈ 2<br />
+- Variance ≈ 4<br />
+Small deviations are normal due to randomness.</p>
+<p><strong>6. Extensions &amp; Variations</strong><br />
+- Change <code>scale</code> (mean) parameter<br />
+- Plot histogram and overlay the theoretical PDF</p>
+<p><strong>7. Additional Notes &amp; Tips</strong><br />
+- <code>scale</code> in NumPy’s exponential is ( 1/λ ) (i.e., the mean)<br />
+- Use <code>matplotlib</code> or <code>seaborn</code> for quick visual checks</p>
+</details>
+<details class="example" open="open">
+<summary>Exercise 5: Normal Distribution Sampling</summary>
+<p><strong>1. Overview &amp; Purpose</strong><br />
+Draw 10,000 samples from a standard normal distribution (mean 0, σ = 1) and verify statistics.</p>
+<p><strong>2. Concept Reinforcement</strong><br />
+- Properties of the Gaussian distribution<br />
+- Central Limit Theorem (preview)</p>
+<p><strong>3. Real‑World Relevance</strong><br />
+- Measurement error modeling<br />
+- Standardized test scores / z‑scores</p>
+<p><strong>4. Step-by-Step Instructions</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                    <span class="c1"># optional</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="n">normals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>     <span class="c1"># mean=0, std=1</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean:&quot;</span><span class="p">,</span> <span class="n">normals</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Variance:&quot;</span><span class="p">,</span> <span class="n">normals</span><span class="o">.</span><span class="n">var</span><span class="p">())</span>
+</code></pre></div></p>
+<p><strong>5. Expected Outcomes &amp; Interpretation</strong><br />
+- Mean ≈ 0, Variance ≈ 1 (allow small deviation)</p>
+<p><strong>6. Extensions &amp; Variations</strong><br />
+- Use <code>np.random.normal(loc, scale, size)</code> for non‑standard normals<br />
+- Make a QQ plot vs. theoretical normal to check normality</p>
+<p><strong>7. Additional Notes &amp; Tips</strong><br />
+- <code>plt.hist(normals, density=True)</code> to visualize the bell curve</p>
+</details>
+<details class="example" open="open">
+<summary>Exercise 6: Sampling Distribution of the Mean</summary>
+<p><strong>1. Overview &amp; Purpose</strong><br />
+Run 1,000 “mini‑experiments.” Each experiment rolls a die 100 times, records the mean, and we plot the distribution of those means.</p>
+<p><strong>2. Concept Reinforcement</strong><br />
+- Law of Large Numbers<br />
+- Sampling variability decreases as sample size increases<br />
+- Sampling distribution &amp; standard error</p>
+<p><strong>3. Real‑World Relevance</strong><br />
+- <strong>Polling averages:</strong> many small samples → distribution of means<br />
+- <strong>Quality control:</strong> batch averages instead of single measurements</p>
+<p><strong>4. Step-by-Step Instructions</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># optional</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="n">means</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)]</span>
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">means</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sampling Distribution of Die Roll Means&#39;</span><span class="p">)</span>
+<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Sample Mean&#39;</span><span class="p">)</span>
+<a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></p>
+<p><strong>5. Expected Outcomes &amp; Interpretation</strong><br />
+- Histogram looks roughly normal, centered near 3.5<br />
+- Spread is much narrower than individual die outcomes</p>
+<p><strong>6. Extensions &amp; Variations</strong><br />
+- Change experiment size: n=10 vs. n=1000 → compare spreads<br />
+- Compute <strong>standard error</strong>: σ / √n (use σ ≈ 1.71 for a die)</p>
+<p><strong>7. Additional Notes &amp; Tips</strong><br />
+- List comprehensions are fine here; for speed, you can vectorize with NumPy</p>
+</details>
+<details class="example" open="open">
+<summary>Exercise 7: Weighted Dice Simulation</summary>
+<p><strong>1. Overview &amp; Purpose</strong><br />
+Simulate 1,000 rolls of a <strong>biased</strong> die where P(6) = 0.5 and the other faces share the remaining probability.</p>
+<p><strong>2. Concept Reinforcement</strong><br />
+- Custom discrete distributions<br />
+- How bias shifts mean and variance</p>
+<p><strong>3. Real‑World Relevance</strong><br />
+- Biased processes in manufacturing (defect more likely on one line)<br />
+- Skewed customer behavior (one product far more popular)</p>
+<p><strong>4. Step-by-Step Instructions</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># optional</span>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="n">faces</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="n">probs</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">]</span><span class="o">*</span><span class="mi">5</span> <span class="o">+</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">]</span>     <span class="c1"># 0.1 each for 1–5, 0.5 for 6</span>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="n">rolls_biased</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">faces</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">probs</span><span class="p">)</span>
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>
+<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean:&quot;</span><span class="p">,</span> <span class="n">rolls_biased</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="s2">&quot;Variance:&quot;</span><span class="p">,</span> <span class="n">rolls_biased</span><span class="o">.</span><span class="n">var</span><span class="p">())</span>
+</code></pre></div></p>
+<p><strong>5. Expected Outcomes &amp; Interpretation</strong><br />
+- Mean <strong>&gt; 3.5</strong> due to heavy weight on 6<br />
+- Variance will differ from the fair‑die case</p>
+<p><strong>6. Extensions &amp; Variations</strong><br />
+- Tweak <code>probs</code> for different biases<br />
+- Plot histograms for fair vs. biased dice side‑by‑side</p>
+<p><strong>7. Additional Notes &amp; Tips</strong><br />
+- Ensure <code>sum(probs) == 1</code> or NumPy will error<br />
+- You can simulate many biased scenarios to stress‑test models</p>
+</details>
+<details class="example" open="open">
+<summary>Exercise 8: Vector Addition &amp; Scaling</summary>
+<p><strong>1. Overview &amp; Purpose</strong><br />
+Demonstrate vector addition and scalar multiplication using simple feature vectors.</p>
+<p><strong>2. Concept Reinforcement</strong><br />
+- Vector space operations (add, scale)<br />
+- Geometric interpretation (direction &amp; length)</p>
+<p><strong>3. Real‑World Relevance</strong><br />
+- Combine feature effects (e.g., marketing channels)<br />
+- Scale normalized data or weights</p>
+<p><strong>4. Step-by-Step Instructions</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="n">v1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="n">v2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="n">sum_v</span>   <span class="o">=</span> <span class="n">v1</span> <span class="o">+</span> <span class="n">v2</span>        <span class="c1"># vector addition</span>
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="n">scaled_v</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">v1</span>      <span class="c1"># scalar multiplication</span>
+<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>
+<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sum:   &quot;</span><span class="p">,</span> <span class="n">sum_v</span><span class="p">)</span>
+<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Scaled:&quot;</span><span class="p">,</span> <span class="n">scaled_v</span><span class="p">)</span>
+</code></pre></div></p>
+<p><strong>5. Expected Outcomes &amp; Interpretation</strong><br />
+- <code>Sum</code> = <code>[3, 7, 11]</code><br />
+- <code>Scaled</code> = <code>[1, 2, 3]</code></p>
+<p><strong>6. Extensions &amp; Variations</strong><br />
+- Compute the <strong>dot product</strong>: <code>v1.dot(v2)</code><br />
+- Visualize 2D/3D vectors (e.g., with matplotlib quiver)</p>
+<p><strong>7. Additional Notes &amp; Tips</strong><br />
+- Ensure vectors have the same length for element‑wise ops<br />
+- Scalar multiplication stretches/shrinks the vector length</p>
+</details>
+<details class="example" open="open">
+<summary>Exercise 9: Matrix Multiplication Demonstration</summary>
+<p><strong>1. Overview &amp; Purpose</strong><br />
+Multiply a 2×3 matrix by a 3×2 matrix to reinforce matrix‑multiplication rules and shape compatibility.</p>
+<p><strong>2. Concept Reinforcement</strong><br />
+- Shape rules (inner dimensions must match)<br />
+- Summation over the inner index (k)</p>
+<p><strong>3. Real‑World Relevance</strong><br />
+- Transforming feature spaces<br />
+- Chaining layers in neural networks (each layer = a matrix multiply)</p>
+<p><strong>4. Step-by-Step Instructions</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>              <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>          <span class="c1"># shape (2, 3)</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span> <span class="mi">7</span><span class="p">,</span>  <span class="mi">8</span><span class="p">],</span>
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a>              <span class="p">[</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a>              <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]])</span>          <span class="c1"># shape (3, 2)</span>
+<a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a>
+<a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a><span class="n">C</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>            <span class="c1"># or: C = A @ B in Python 3.5+</span>
+<a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Result:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+</code></pre></div></p>
+<p><strong>5. Expected Outcomes &amp; Interpretation</strong><br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>[[ 58  64]
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a> [139 154]]
+</code></pre></div>
+- You can verify: first row × first column → 1<em>7 + 2</em>9 + 3*11 = 58</p>
+<p><strong>6. Extensions &amp; Variations</strong><br />
+- Try <code>B @ A</code> to see the shape error<br />
+- Use larger random matrices to test performance</p>
+<p><strong>7. Additional Notes &amp; Tips</strong><br />
+- Check shapes with <code>A.shape</code>, <code>B.shape</code><br />
+- <code>@</code> is shorthand for matrix multiply (<code>dot</code>) in NumPy/Python 3.5+</p>
+</details>
+<details class="example" open="open">
+<summary>Exercise 10: PCA on Toy Dataset</summary>
+<p><strong>1. Overview &amp; Purpose</strong><br />
+Perform PCA on a tiny 2‑D dataset, reduce it to 1‑D, and see how much variance is captured.</p>
+<p><strong>2. Concept Reinforcement</strong><br />
+- Eigenvectors / eigenvalues<br />
+- Dimensionality reduction &amp; variance explained</p>
+<p><strong>3. Real‑World Relevance</strong><br />
+- Compressing image or sensor data<br />
+- Feature extraction before clustering or modeling</p>
+<p><strong>4. Step-by-Step Instructions</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>    <span class="p">[</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.4</span><span class="p">],</span>
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>    <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">],</span>
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>    <span class="p">[</span><span class="mf">2.2</span><span class="p">,</span> <span class="mf">2.9</span><span class="p">],</span>
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>    <span class="p">[</span><span class="mf">1.9</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">],</span>
+<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a>    <span class="p">[</span><span class="mf">3.1</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">]</span>
+<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a><span class="p">])</span>
+<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a>
+<a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a><span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a><span class="n">X_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a>
+<a id="__codelineno-29-15" name="__codelineno-29-15" href="#__codelineno-29-15"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Explained variance ratio:&quot;</span><span class="p">,</span> <span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">)</span>
+<a id="__codelineno-29-16" name="__codelineno-29-16" href="#__codelineno-29-16"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Projected data:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">X_pca</span><span class="p">)</span>
+</code></pre></div></p>
+<p><strong>5. Expected Outcomes &amp; Interpretation</strong><br />
+- First component should capture ~98% of variance for this toy set<br />
+- Projected 1‑D data preserves most “information” (spread)</p>
+<p><strong>6. Extensions &amp; Variations</strong><br />
+- Plot original 2‑D vs. projected 1‑D points<br />
+- Try <code>n_components=2</code> (no reduction) and inspect components</p>
+<p><strong>7. Additional Notes &amp; Tips</strong><br />
+- Requires <code>scikit-learn</code> (<code>pip install scikit-learn</code> if missing)<br />
+- PCA assumes linear structure; nonlinear data may need t‑SNE/UMAP</p>
+</details>
 <ol>
 <li>Summary of Week 1
 Throughout this first week, you have:</li>
