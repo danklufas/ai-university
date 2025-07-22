@@ -18,7 +18,7 @@
     
     
       
-        <title>Cheat Sheet - AI University Curriculum</title>
+        <title>Cheat Sheets - AI University Curriculum</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#quick-reminder-cheat-sheets" class="md-skip">
+        <a href="#1-everyday-workflow-edit-preview-commit-deploy" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Cheat Sheet
+              Cheat Sheets
             
           </span>
         </div>
@@ -172,7 +172,9 @@
 
 
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href=".." title="AI University Curriculum" class="md-nav__button md-logo" aria-label="AI University Curriculum" data-md-component="logo">
       
@@ -264,15 +266,13 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
-      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
   
   <span class="md-ellipsis">
-    Cheat Sheet
+    Cheat Sheets
     
   </span>
   
@@ -285,7 +285,7 @@
   
   
   <span class="md-ellipsis">
-    Cheat Sheet
+    Cheat Sheets
     
   </span>
   
@@ -297,8 +297,6 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
-  
-    
   
   
     <label class="md-nav__title" for="__toc">
@@ -313,6 +311,57 @@
       1. Everyday Workflow (Edit → Preview → Commit → Deploy)
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-common-git-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Common Git Commands
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-mkdocs-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. MkDocs Basics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. MkDocs Basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add-a-new-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add a new page
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github-pages-not-updated" class="md-nav__link">
+    <span class="md-ellipsis">
+      GitHub Pages not updated
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#site-shows-up-in-git-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      site/ shows up in Git changes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -331,41 +380,6 @@
               </div>
             
             
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-everyday-workflow-edit-preview-commit-deploy" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Everyday Workflow (Edit → Preview → Commit → Deploy)
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
           
           
             <div class="md-content" data-md-component="content">
@@ -375,90 +389,78 @@
 
 
 
-<h1 id="quick-reminder-cheat-sheets">Quick Reminder Cheat Sheets</h1>
+  <h1>Cheat Sheets</h1>
+
+<p>Quick Reminder Cheat Sheets</p>
 <h2 id="1-everyday-workflow-edit-preview-commit-deploy">1. Everyday Workflow (Edit → Preview → Commit → Deploy)</h2>
-<p><strong>Local preview</strong>
-```bash
-python -m mkdocs serve
-Open: http://127.0.0.1:8000/
-(Leave terminal running; Ctrl+C stops it.)</p>
-<p>Commit &amp; push</p>
-<p>bash
-Copy
-Edit
-git add docs/...
-git commit -m "Your message"
-git push origin main
-Publish to GitHub Pages</p>
-<p>bash
-Copy
-Edit
-python -m mkdocs gh-deploy
-2. Common Git Commands
-bash
-Copy
-Edit
-git status                 # see what changed
-git add <file>             # stage a file
-git add .                  # stage everything
-git commit -m "message"    # commit staged changes
-git push origin main       # push to GitHub
-git pull origin main       # pull latest from GitHub
-Undo a staged file:</p>
-<p>bash
-Copy
-Edit
-git restore --staged <file>
-3. MkDocs Basics
-Edit pages in docs/</p>
-<p>Navigation lives in mkdocs.yml under nav:</p>
-<p>Rebuild local site: python -m mkdocs serve</p>
-<p>Deploy: python -m mkdocs gh-deploy</p>
-<p>Add a new page
-Create docs/new-page.md</p>
-<p>Add to mkdocs.yml:</p>
-<p>yaml
-Copy
-Edit
-nav:
-  - Home: index.md
-  - Week 1: week-1.md
-  - Week 2: week-2.md
-  - Cheat Sheets: cheat-sheets.md
-  - New Page: new-page.md
-4. VS Code Tips
-Toggle terminal: Ctrl + `</p>
-<p>Command Palette: Ctrl + Shift + P</p>
-<p>Find/Replace regex: Ctrl + H, click .*</p>
-<p>Reload the window (fix UI glitches): Developer: Reload Window</p>
+<p><strong>Local preview</strong></p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>python<span class="w"> </span>-m<span class="w"> </span>mkdocs<span class="w"> </span>serve
+</code></pre></div>
+Open: <a href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a>
+(Leave terminal running; <strong>Ctrl+C</strong> stops it.)</p>
+<p><strong>Commit &amp; push</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>git<span class="w"> </span>add<span class="w"> </span>docs/...
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Your message&quot;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div>
+<strong>Publish to GitHub Pages</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>python<span class="w"> </span>-m<span class="w"> </span>mkdocs<span class="w"> </span>gh-deploy
+</code></pre></div></p>
+<h2 id="2-common-git-commands">2. Common Git Commands</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git<span class="w"> </span>status<span class="w">                 </span><span class="c1"># see what changed</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>git<span class="w"> </span>add<span class="w"> </span>&lt;file&gt;<span class="w">             </span><span class="c1"># stage a file</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>git<span class="w"> </span>add<span class="w"> </span>.<span class="w">                  </span><span class="c1"># stage everything</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;message&quot;</span><span class="w">    </span><span class="c1"># commit staged changes</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main<span class="w">       </span><span class="c1"># push to GitHub</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main<span class="w">       </span><span class="c1"># pull latest from GitHub</span>
+</code></pre></div>
+<p>Undo a staged file:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>git<span class="w"> </span>restore<span class="w"> </span>--staged<span class="w"> </span>&lt;file&gt;
+</code></pre></div></p>
+<h2 id="3-mkdocs-basics">3. MkDocs Basics</h2>
+<p>Edit pages in <code>docs/</code>
+Navigation lives in <code>mkdocs.yml</code> under <code>nav:</code></p>
+<p><strong>Rebuild local site</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>python<span class="w"> </span>-m<span class="w"> </span>mkdocs<span class="w"> </span>serve
+</code></pre></div></p>
+<p><strong>Deploy to GitHub Pages</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>python<span class="w"> </span>-m<span class="w"> </span>mkdocs<span class="w"> </span>gh-deploy
+</code></pre></div></p>
+<h3 id="add-a-new-page">Add a new page</h3>
 <ol>
-<li>Troubleshooting
-Local site won’t load</li>
+<li>Create <code>docs/new-page.md</code></li>
+<li>Add to <code>mkdocs.yml</code>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nt">nav</span><span class="p">:</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Home</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">index.md</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Week 1</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">week-1.md</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Week 2</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">week-2.md</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Cheat Sheets</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cheat-sheet.md</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">New Page</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">new-page.md</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">  </span><span class="err">```</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="c1">## 4. VS Code Tips</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="nt">Toggle terminal</span><span class="p">:</span><span class="w"> </span><span class="err">*</span><span class="nv">*Ctrl</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">+ `**</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="nt">Command Palette</span><span class="p">:</span><span class="w"> </span><span class="err">*</span><span class="nv">*Ctrl</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">+ Shift + P**</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="nt">Find/Replace regex</span><span class="p">:</span><span class="w"> </span><span class="err">*</span><span class="nv">*Ctrl</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">+ H**, click `.*`</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="nt">Reload the window (fix UI glitches): **Developer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Reload Window**</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">## 5. Troubleshooting</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="err">```</span><span class="l l-Scalar l-Scalar-Plain">bash</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="l l-Scalar l-Scalar-Plain">python -m mkdocs serve</span>
+</code></pre></div></li>
 </ol>
-<p>Make sure python -m mkdocs serve is running</p>
-<p>Use http://127.0.0.1:8000/ (colon, not dot)</p>
-<p>GitHub Pages not updated</p>
-<p>Did you run python -m mkdocs gh-deploy after pushing?</p>
-<p>Wait ~30 seconds and refresh</p>
-<p>site/ shows up in Git changes</p>
-<p>Ensure .gitignore contains site/</p>
-<p>If already tracked:</p>
-<p>bash
-Copy
-Edit
-git rm -r --cached site
-git commit -m "Remove generated site"
-git push origin main
-(Add anything else you want to remember here as you go.)</p>
-<p>yaml
-Copy
-Edit</p>
-<ol>
-<li>Save the file (<strong>Ctrl+S</strong>).</li>
-</ol>
-<hr />
-<p>Reply <strong>“done”</strong> after you’ve saved <code>cheat-sheets.md</code>.<br />
-Then we’ll do <strong>Step 2: add it to the nav and push/deploy</strong>.</p>
+<p>Use <code>http://127.0.0.1:8000/</code> (colon, not dot).</p>
+<h3 id="github-pages-not-updated">GitHub Pages not updated</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>python<span class="w"> </span>-m<span class="w"> </span>mkdocs<span class="w"> </span>gh-deploy
+</code></pre></div>
+<p>Wait ~30 seconds and refresh the live site.</p>
+<h3 id="site-shows-up-in-git-changes"><code>site/</code> shows up in Git changes</h3>
+<p>Ensure <code>.gitignore</code> contains <code>site/</code>.</p>
+<p>If it's already tracked:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>git<span class="w"> </span>rm<span class="w"> </span>-r<span class="w"> </span>--cached<span class="w"> </span>site
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Remove generated site&quot;</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div></p>
 
 
 
@@ -478,6 +480,12 @@ Then we’ll do <strong>Step 2: add it to the nav and push/deploy</strong>.</p>
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
         
       </main>
       
@@ -507,7 +515,7 @@ Then we’ll do <strong>Step 2: add it to the nav and push/deploy</strong>.</p>
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.instant", "navigation.top", "toc.integrate"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.56ea9cef.min.js"></script>
