@@ -662,25 +662,102 @@ import pandas as pd
     - Requires `scikit-learn` (`pip install scikit-learn` if missing)  
     - PCA assumes linear structure; nonlinear data may need t‑SNE/UMAP
 
-6. Summary of Week 1
-Throughout this first week, you have:
+## 6. Week 1 Summary & What You Can Now Do
 
-Traced AI History: From the Dartmouth Workshop to Expert Systems (MYCIN) and the Deep Learning revolution (AlexNet).
+!!! success "You can now…"
+    - **Explain key AI milestones**: Dartmouth (1956), Expert Systems (1970s–80s), Deep Learning boom (2010s–present) and why each wave mattered.  
+    - **Use probability concepts** (random variables, mean, variance) and verify them empirically in Python.  
+    - **Work with basic linear algebra objects** (vectors, matrices, dot products, matrix multiplication) and see how they power ML models.  
+    - **Install and run core tools** (Anaconda, Jupyter, NumPy, pandas) to explore data and math interactively.
 
-Built Probability Skills: Learned random variables, expectation, variance—both by hand and in Python (die rolls, coin flips, exponential and normal sampling).
+### A. AI History in One Breath
+- **Dartmouth Workshop (1956):** coined “AI”; optimism about simulating intelligence.  
+  *Lesson:* Ambition vs. realism—avoid hype traps.  
+- **Expert Systems (’70s–’80s):** rule-based IF–THEN logic (e.g., MYCIN).  
+  *Lesson:* Transparency is great, but brittle without probabilities.  
+- **Deep Learning (2010s–):** data + GPUs + better algorithms (AlexNet etc.) → breakthroughs.  
+  *Lesson:* Modern toolkits (TensorFlow/PyTorch) center on neural nets.
 
-Visualized Data: Plotted histograms, demonstrated Central Limit Theorem.
+### B. Probability: From Intuition to Math
+- **Random Variables:** discrete (die, coin), continuous (time-to-failure).  
+- **Expectation & Variance:** long-run average and spread—computed by hand and via NumPy.  
+- **Why it matters:** Loss functions, risk estimation, feature engineering all use these ideas.  
+- **Real world ties:** A/B tests, forecasting demand spikes, Monte Carlo risk simulations.
 
-Handled Bias: Modeled a weighted die to see effects on distribution.
+!!! note "Anchor formulas"
+    - Discrete mean: \\(E[X] = \sum x_i P(X=x_i)\\)  
+    - Variance: \\(\mathrm{Var}(X) = E[(X - E[X])^2]\\)
 
-Applied Linear Algebra: Performed vector ops, matrix multiplication, and PCA for dimensionality reduction.
+### C. Linear Algebra: The Language of ML
+- **Vectors:** feature lists (e.g., `[age, spend, orders]`).  
+- **Matrices:** batches of vectors; all your data at once.  
+- **Dot Product:** core of regression and neuron activations.  
+- **Matrix Multiplication:** chaining transformations (layers) in neural nets.  
+- **Why it matters:** Speed (GPU vectorization), interpretability (weights are matrices), compression (PCA).
 
-These foundational concepts and hands‑on exercises prepare you for more advanced AI and ML topics.
+### D. Tools & Workflow Locked In
+- **Anaconda & Jupyter:** you spun up a notebook and ran code.  
+- **NumPy/pandas:** you handled arrays, stats, and basic data manipulation.  
+- **Workflow habits:** preview locally (`mkdocs serve`), commit/push, deploy (`gh-deploy`).
 
-7. Additional Resources
-Probability Fundamentals: Khan Academy “Introduction to Probability”
+### E. Exercises Recap (What each taught you)
+| Exercise | Core Idea | Concept Reinforced | Real‑World Parallel |
+|---|---|---|---|
+| 1. Die roll stats | Empirical vs. theoretical | Mean, variance, sampling noise | QC sampling, Monte Carlo |
+| 2. Coin flips | Bernoulli trials | Discrete RVs, proportions | A/B tests, pass/fail outcomes |
+| 3. Histogram | Visual distributions | Frequency vs. prob., plotting | Category sales distributions |
+| 4. Exponential sim | Time-to-event model | Continuous RVs, λ & scale | Failure rates, wait times |
+| 5. Normal samples | Gaussian basics | CLT preview, z-scores | Measurement error, scores |
+| 6. Sampling means | Distribution of means | Law of Large Numbers | Polling averages, batch metrics |
+| 7. Weighted die | Biased distributions | Shifted mean/var, custom PMFs | Skewed demand, unfair odds |
+| 8. Vector ops | Add/scale vectors | Vector spaces | Feature scaling, weight tuning |
+| 9. Matrix multiply | Shapes & transforms | Linear maps, dot sums | NN layers, feature transforms |
+|10. PCA toy data | Dimensionality reduction | Eigenvectors/variance explained | Data compression, preprocessing |
 
-Linear Algebra Visualizations: 3Blue1Brown “Essence of Linear Algebra” series
 
-Python Tutorials: Official Python documentation at python.org
+
+## 7. Additional Resources
+
+!!! tip "Probability & Statistics"
+- **Khan Academy – Introduction to Probability**  
+  Beginner‑friendly videos and practice problems.  
+  <https://www.khanacademy.org/math/statistics-probability/probability-library>
+- **Seeing Theory (Brown University)**  
+  Interactive visual explanations of probability concepts.  
+  <https://seeing-theory.brown.edu/>
+
+!!! tip "Linear Algebra"
+- **3Blue1Brown – *Essence of Linear Algebra*** (YouTube series)  
+  Beautiful visuals for vectors, matrices, dot products, eigenvectors.  
+  <https://www.youtube.com/playlist?list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr>
+- **Khan Academy – Linear Algebra**  
+  Step‑by‑step lessons with exercises.  
+  <https://www.khanacademy.org/math/linear-algebra>
+
+!!! tip "Python, NumPy & pandas"
+- **Official Python Docs** – Syntax, stdlib, tutorials.  
+  <https://docs.python.org/3/>
+- **NumPy User Guide** – Arrays, broadcasting, linear algebra.  
+  <https://numpy.org/doc/stable/user/>
+- **pandas Getting Started** – DataFrames, cleaning, transforms.  
+  <https://pandas.pydata.org/docs/getting_started/index.html>
+
+!!! note "AI History & Overviews"
+- **“Competing in the Age of AI” (Iansiti & Lakhani) – Ch. 1–3** *(already on your list)*  
+- **“Deep Learning” (Goodfellow, Bengio, Courville) – Intro & Ch. 6–7** (free online)  
+  <https://www.deeplearningbook.org/>
+
+!!! info "Visualization & Math Intuition"
+- **Matplotlib Gallery** – Quick plot recipes.  
+  <https://matplotlib.org/stable/gallery/index.html>
+- **Desmos Graphing Calculator** – Fast function plots and geometry.  
+  <https://www.desmos.com/calculator>
+
+!!! success "Bonus Cheat Sheets"
+- **Markdown Syntax Cheat Sheet** (for editing your site)  
+  <https://www.markdownguide.org/cheat-sheet/>
+- **NumPy/Pandas one‑pagers** (various printable PDFs)  
+  <https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf>  
+  <https://www.dataquest.io/blog/numpy-cheat-sheet/>
+
 
