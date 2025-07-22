@@ -239,456 +239,428 @@ By the end of this lesson, you will be able to:
     - **Model Insight:** Weights, activations, attention maps are matrices/vectors.  
     - **Dimensionality Reduction:** PCA, SVD use eigenvectors/values to compress data.
 
-4. Tools Installation & Setup
-Windows & Mac
+## 4. Tools Installation & Setup
 
-A. Install Python & Anaconda
-Navigate to: https://www.anaconda.com/products/distribution
+!!! info "You’ll do this once, then reuse the environment all term."
 
-Download the Python 3.x installer for your OS.
+### A. Install Python & Anaconda (Windows & Mac)
+```bash
+# Visit this in your browser:
+https://www.anaconda.com/products/distribution
+```
+1. Download the **Python 3.x** installer for your OS.  
+2. Run the installer, accept defaults.  
+3. Open **Anaconda Navigator** (Start Menu on Windows / Applications on Mac).
 
-Run the installer, accept defaults.
+### B. Launch Jupyter Notebook
+1. In Anaconda Navigator, click **Launch** under **Jupyter Notebook**.  
+2. A browser window opens showing your files.  
+3. Click **New → Python 3**.  
+4. Rename it to **Week1_AI_Math.ipynb**.
 
-Open Anaconda Navigator from your Start menu (Windows) or Applications folder (Mac).
-
-B. Launch Jupyter Notebook
-In Anaconda Navigator, click Launch under Jupyter Notebook.
-
-A browser window opens showing your file system.
-
-Click New → Python 3.
-
-Rename the notebook to Week1_AI_Math.ipynb.
-
-C. Install & Import NumPy & pandas
+### C. Install & Import NumPy & pandas
 In a notebook cell, run:
-
-bash
-Copy
-Edit
+```bash
 !conda install numpy pandas -y
-Then, in the next cell:
-
-python
-Copy
-Edit
+```
+Then import:
+```python
 import numpy as np
 import pandas as pd
-5. Step-by-Step Exercises
-Exercise 1: Die Roll Simulation & Statistics (Template)
-Exercise Overview & Purpose
+```
+
+!!! tip "Why these tools?"
+    - **Python/Jupyter:** interactive coding & math demos  
+    - **NumPy:** fast vectors/matrices (used everywhere in ML)  
+    - **pandas:** quick data tables, cleaning, summaries
+  
+## 5. Step by Step Exercises
+
+???+ example "Exercise 1: Die Roll Simulation & Statistics"
+    **1. Overview & Purpose**  
+    Simulate 1,000 rolls of a fair six‑sided die in Python and compute the empirical mean and variance.  
+    **Why:** Reinforces theoretical vs. empirical probability, builds NumPy familiarity, and demonstrates sampling variability.
+
+    **2. Concept Reinforcement**  
+    - Probability & random variables  
+    - Expectation (mean) & variance  
+    - Sampling variability / Law of Large Numbers
+
+    **3. Real‑World Relevance**  
+    - **Quality control:** simulate defect rates in a batch  
+    - **Risk modeling:** Monte Carlo estimates of portfolio variance  
+    - **Game design:** balance randomness in mechanics
+
+    **4. Step-by-Step Instructions**
+    ```python
+    import numpy as np
+
+    # Simulate 1,000 die rolls
+    np.random.seed(42)           # optional: reproducibility
+    rolls = np.random.randint(1, 7, size=1000)
+
+    # Compute statistics
+    mean_rolls = rolls.mean()
+    var_rolls  = rolls.var()
+
+    print("Simulated Mean:    ", mean_rolls)
+    print("Simulated Variance:", var_rolls)
+    ```
+
+    **Notes:**  
+    - `np.random.randint(1, 7, size=1000)` → integers 1–6  
+    - `.mean()`, `.var()` → empirical mean & variance (population variance by default)
+
+    **5. Expected Outcomes & Interpretation**  
+    - Mean ≈ 3.5, Variance ≈ 2.92 (± sampling noise)  
+    - Larger sample sizes converge closer to the theoretical values
+
+    **6. Extensions & Variations**  
+    - Try sample sizes 100, 10,000 and compare stats  
+    - Simulate a **weighted/unfair die**  
+    - Plot histogram with `matplotlib`
+
+    **7. Additional Notes & Tips**  
+    - Use `np.random.seed(...)` if you want the same results every run  
+    - Avoid Python loops when possible—NumPy vectorization is faster
+
+???+ example "Exercise 2: Coin Flip Probability Estimation"
+    **1. Overview & Purpose**  
+    Simulate 10,000 coin flips to estimate the probability of heads and tails.
+
+    **2. Concept Reinforcement**  
+    - Discrete random variables  
+    - Empirical vs. theoretical probability
+
+    **3. Real‑World Relevance**  
+    - **A/B testing:** success/failure rates  
+    - **Clinical trials:** treatment vs. control outcomes
+
+    **4. Step-by-Step Instructions**
+    ```python
+    import numpy as np
+
+    np.random.seed(0)                      # optional: reproducibility
+    flips = np.random.choice(['H', 'T'], size=10000)
+
+    p_heads = np.mean(flips == 'H')
+    p_tails = np.mean(flips == 'T')
+
+    print(f"P(heads): {p_heads:.3f}, P(tails): {p_tails:.3f}")
+    ```
+
+    **5. Expected Outcomes & Interpretation**  
+    - Both ≈ 0.5, with random fluctuation ~±0.01  
+    - Larger samples narrow the gap to 0.5
+
+    **6. Extensions & Variations**  
+    - Weighted coin: `p=['H':0.3, 'T':0.7]`  
+    - Plot counts with a bar chart
+
+    **7. Additional Notes & Tips**  
+    - Set `np.random.seed(...)` when you want reproducible runs
+
+???+ example "Exercise 3: Histogram of Die Rolls"
+    **1. Overview & Purpose**  
+    Visualize the distribution of the 1,000 die rolls from Exercise 1.
 
-What we’re doing: Simulate 1,000 rolls of a fair six‑sided die in Python to compute the empirical mean and variance.
+    **2. Concept Reinforcement**  
+    - Frequency vs. probability  
+    - Basic data visualization
 
-Why: Reinforces theoretical vs. empirical probability, builds NumPy familiarity, and demonstrates sampling variability.
+    **3. Real‑World Relevance**  
+    - Sales distribution by category  
+    - Error counts per batch in manufacturing
 
-Concept Reinforcement
+    **4. Step-by-Step Instructions**
+    ```python
+    import matplotlib.pyplot as plt
 
-Probability & Random Variables
+    plt.hist(rolls, bins=range(1, 8), align='left', rwidth=0.8)
+    plt.xlabel('Die Face')
+    plt.ylabel('Frequency')
+    plt.title('Histogram of 1,000 Die Rolls')
+    plt.show()
+    ```
 
-Expectation & Variance
+    **5. Expected Outcomes & Interpretation**  
+    - Bars roughly equal for faces 1–6 (random noise is okay)
 
-Sampling Variability
+    **6. Extensions & Variations**  
+    - Normalized histogram: `plt.hist(..., density=True)`  
+    - Overlay the theoretical PMF as a line/bar plot
+
+    **7. Additional Notes & Tips**  
+    - `bins=range(1,8)` centers bars on integer faces  
+    - If you reused `rolls` from Exercise 1, you don’t need to re‑simulate
+
+???+ example "Exercise 4: Exponential Distribution Simulation"
+    **1. Overview & Purpose**  
+    Simulate 5,000 samples from an exponential distribution (mean = 2) and compute mean/variance.
+
+    **2. Concept Reinforcement**  
+    - Continuous random variables  
+    - Relationship between distribution parameters and statistics
+
+    **3. Real‑World Relevance**  
+    - Time between machine failures  
+    - Call‑center interarrival times
+
+    **4. Step-by-Step Instructions**
+    ```python
+    import numpy as np
+
+    np.random.seed(0)                         # optional
+    samples = np.random.exponential(scale=2, size=5000)
+
+    print("Empirical Mean:   ", samples.mean())
+    print("Empirical Variance:", samples.var())
+    ```
+
+    **5. Expected Outcomes & Interpretation**  
+    - Mean ≈ 2  
+    - Variance ≈ 4  
+    Small deviations are normal due to randomness.
+
+    **6. Extensions & Variations**  
+    - Change `scale` (mean) parameter  
+    - Plot histogram and overlay the theoretical PDF
+
+    **7. Additional Notes & Tips**  
+    - `scale` in NumPy’s exponential is \( 1/λ \) (i.e., the mean)  
+    - Use `matplotlib` or `seaborn` for quick visual checks
+
+???+ example "Exercise 5: Normal Distribution Sampling"
+    **1. Overview & Purpose**  
+    Draw 10,000 samples from a standard normal distribution (mean 0, σ = 1) and verify statistics.
+
+    **2. Concept Reinforcement**  
+    - Properties of the Gaussian distribution  
+    - Central Limit Theorem (preview)
+
+    **3. Real‑World Relevance**  
+    - Measurement error modeling  
+    - Standardized test scores / z‑scores
+
+    **4. Step-by-Step Instructions**
+    ```python
+    import numpy as np
+
+    np.random.seed(0)                    # optional
+    normals = np.random.randn(10000)     # mean=0, std=1
+
+    print("Mean:", normals.mean())
+    print("Variance:", normals.var())
+    ```
+
+    **5. Expected Outcomes & Interpretation**  
+    - Mean ≈ 0, Variance ≈ 1 (allow small deviation)
 
-Real World Relevance
+    **6. Extensions & Variations**  
+    - Use `np.random.normal(loc, scale, size)` for non‑standard normals  
+    - Make a QQ plot vs. theoretical normal to check normality
 
-Quality Control (defect rate simulation)
+    **7. Additional Notes & Tips**  
+    - `plt.hist(normals, density=True)` to visualize the bell curve
 
-Risk Modeling (Monte Carlo portfolio variance)
+???+ example "Exercise 6: Sampling Distribution of the Mean"
+    **1. Overview & Purpose**  
+    Run 1,000 “mini‑experiments.” Each experiment rolls a die 100 times, records the mean, and we plot the distribution of those means.
 
-Randomized Algorithms & Game Balancing
+    **2. Concept Reinforcement**  
+    - Law of Large Numbers  
+    - Sampling variability decreases as sample size increases  
+    - Sampling distribution & standard error
 
-Step by Step Instructions
+    **3. Real‑World Relevance**  
+    - **Polling averages:** many small samples → distribution of means  
+    - **Quality control:** batch averages instead of single measurements
 
-python
-Copy
-Edit
-import numpy as np
+    **4. Step-by-Step Instructions**
+    ```python
+    import numpy as np
+    import matplotlib.pyplot as plt
 
-# Simulate 1,000 die rolls
-rolls = np.random.randint(1, 7, size=1000)
+    np.random.seed(0)  # optional
+    means = [np.random.randint(1, 7, 100).mean() for _ in range(1000)]
 
-# Compute statistics
-mean_rolls = rolls.mean()
-var_rolls  = rolls.var()
+    plt.hist(means, bins=20)
+    plt.title('Sampling Distribution of Die Roll Means')
+    plt.xlabel('Sample Mean')
+    plt.ylabel('Frequency')
+    plt.show()
+    ```
 
-print("Simulated Mean:    ", mean_rolls)
-print("Simulated Variance:", var_rolls)
-Notes:
+    **5. Expected Outcomes & Interpretation**  
+    - Histogram looks roughly normal, centered near 3.5  
+    - Spread is much narrower than individual die outcomes
 
-np.random.randint(1, 7, size=1000): integers 1–6
+    **6. Extensions & Variations**  
+    - Change experiment size: n=10 vs. n=1000 → compare spreads  
+    - Compute **standard error**: σ / √n (use σ ≈ 1.71 for a die)
 
-.mean(), .var(): compute empirical mean & variance
+    **7. Additional Notes & Tips**  
+    - List comprehensions are fine here; for speed, you can vectorize with NumPy
 
-Expected Outcomes & Interpretation
+???+ example "Exercise 7: Weighted Dice Simulation"
+    **1. Overview & Purpose**  
+    Simulate 1,000 rolls of a **biased** die where P(6) = 0.5 and the other faces share the remaining probability.
 
-Mean ≈ 3.5, Variance ≈ 2.92 (± sampling noise)
+    **2. Concept Reinforcement**  
+    - Custom discrete distributions  
+    - How bias shifts mean and variance
+
+    **3. Real‑World Relevance**  
+    - Biased processes in manufacturing (defect more likely on one line)  
+    - Skewed customer behavior (one product far more popular)
+
+    **4. Step-by-Step Instructions**
+    ```python
+    import numpy as np
+
+    np.random.seed(0)  # optional
+    faces = [1, 2, 3, 4, 5, 6]
+    probs = [0.1]*5 + [0.5]     # 0.1 each for 1–5, 0.5 for 6
+    rolls_biased = np.random.choice(faces, size=1000, p=probs)
 
-Larger samples converge closer to theory
-
-Extensions & Variations
-
-Vary sample size (100, 10,000)
-
-Simulate weighted/unfair die
-
-Plot histogram with matplotlib
-
-Additional Notes & Tips
-
-Use np.random.seed(42) for reproducibility
-
-Avoid Python loops; prefer NumPy vectorization
-
-Exercise 2: Coin Flip Probability Estimation
-Overview & Purpose
-Simulate 10,000 coin flips to estimate the probability of heads and tails.
-
-Concept Reinforcement
-
-Discrete random variables
-
-Empirical vs. theoretical probability
-
-Real World Relevance
-
-A/B testing conversion rates (success/failure)
-
-Clinical trial outcomes
-
-Step by Step Instructions
-
-python
-Copy
-Edit
-import numpy as np
-
-np.random.seed(0)
-flips = np.random.choice(['H','T'], size=10000)
-p_heads = np.mean(flips == 'H')
-p_tails = np.mean(flips == 'T')
-print(f"P(heads): {p_heads:.3f}, P(tails): {p_tails:.3f}")
-Expected Outcomes & Interpretation
-~0.5 each, with fluctuations ~±0.01.
-
-Extensions & Variations
-
-Weighted coin (p=['H':0.3,'T':0.7])
-
-Plot bar chart of counts
-
-Additional Notes & Tips
-Use np.random.seed(…) for reproducibility.
-
-Exercise 3: Histogram of Die Rolls
-Overview & Purpose
-Visualize the distribution of the 1,000 die rolls from Exercise 1.
-
-Concept Reinforcement
-
-Frequency vs. probability
-
-Data visualization basics
-
-Real World Relevance
-
-Sales distribution by category
-
-Error rates by batch
-
-Step by Step Instructions
-
-python
-Copy
-Edit
-import matplotlib.pyplot as plt
-
-plt.hist(rolls, bins=range(1,8), align='left', rwidth=0.8)
-plt.xlabel('Die Face')
-plt.ylabel('Frequency')
-plt.title('Histogram of 1,000 Die Rolls')
-plt.show()
-Expected Outcomes & Interpretation
-Bars roughly equal height for faces 1–6.
-
-Extensions & Variations
-
-Normalized histogram (density=True)
-
-Overlay theoretical PMF
-
-Additional Notes & Tips
-Ensure bins=range(1,8) to center on integer faces.
-
-Exercise 4: Exponential Distribution Simulation
-Overview & Purpose
-Simulate 5,000 samples from an exponential distribution (mean = 2) and compute mean/variance.
-
-Concept Reinforcement
-
-Continuous random variables
-
-Relationship between distribution parameters and statistics
-
-Real World Relevance
-
-Time between machine failures
-
-Call-center interarrival times
-
-Step by Step Instructions
-
-python
-Copy
-Edit
-samples = np.random.exponential(scale=2, size=5000)
-print("Empirical Mean:", samples.mean())
-print("Empirical Variance:", samples.var())
-Expected Outcomes & Interpretation
-Mean ≈ 2; variance ≈ 4.
-
-Extensions & Variations
-
-Change scale (mean) parameter
-
-Plot histogram + theoretical PDF
-
-Additional Notes & Tips
-Use np.histogram or matplotlib for PDF overlay.
-
-Exercise 5: Normal Distribution Sampling
-Overview & Purpose
-Draw 10,000 samples from a standard normal (mean 0, σ = 1) and verify statistics.
-
-Concept Reinforcement
-
-Properties of Gaussian distribution
-
-Central Limit Theorem preview
-
-Real World Relevance
-
-Measurement errors
-
-Standardized test score modeling
-
-Step by Step Instructions
-
-python
-Copy
-Edit
-normals = np.random.randn(10000)
-print("Mean:", normals.mean())
-print("Variance:", normals.var())
-Expected Outcomes & Interpretation
-Mean ≈ 0, variance ≈ 1.
-
-Extensions & Variations
-
-Use np.random.normal(loc, scale, size)
-
-QQ plot vs. theoretical normal
-
-Additional Notes & Tips
-Matplotlib’s plt.hist(..., density=True) for PDF shape.
-
-Exercise 6: Sampling Distribution of the Mean
-Overview & Purpose
-Simulate 1,000 experiments, each of 100 die rolls, record sample means, and examine their distribution.
-
-Concept Reinforcement
-
-Law of Large Numbers
-
-Sampling variability reduction
-
-Real World Relevance
-
-Polling averages
-
-Quality metrics over batches
-
-Step by Step Instructions
-
-python
-Copy
-Edit
-means = [np.random.randint(1,7,100).mean() for _ in range(1000)]
-plt.hist(means, bins=20)
-plt.title('Sampling Distribution of Die Roll Means')
-plt.show()
-Expected Outcomes & Interpretation
-Histogram approximates normal around 3.5 with narrower spread.
-
-Extensions & Variations
-
-Vary experiment size (n=10, n=1000)
-
-Compute standard error (σ/√n)
-
-Additional Notes & Tips
-List comprehensions vs. loops for clarity.
-
-Exercise 7: Weighted Dice Simulation
-Overview & Purpose
-Simulate 1,000 rolls of a biased die with 
-𝑃
-(
-6
-)
-=
-0.5
-P(6)=0.5, others equal.
-
-Concept Reinforcement
-
-Custom discrete distributions
-
-Impact of bias on mean/variance
-
-Real World Relevance
-
-Biased processes in manufacturing
-
-Skewed customer behavior models
-
-Step by Step Instructions
-
-python
-Copy
-Edit
-faces = [1,2,3,4,5,6]
-probs = [0.1]*5 + [0.5]
-rolls_biased = np.random.choice(faces, size=1000, p=probs)
-print("Mean:", rolls_biased.mean(), "Variance:", rolls_biased.var())
-Expected Outcomes & Interpretation
-Mean > 3.5, variance different from fair die.
-
-Extensions & Variations
-
-Tune probs for different biases
-
-Compare histograms side by side
-
-Additional Notes & Tips
-Sum of probs must equal 1.
-
-Exercise 8: Vector Addition & Scaling
-Overview & Purpose
-Demonstrate vector addition and scalar multiplication with feature vectors.
-
-Concept Reinforcement
-
-Vector space operations
-
-Geometric interpretation
-
-Real World Relevance
-
-Combining feature influences
-
-Scaling normalized data
-
-Step by Step Instructions
-
-python
-Copy
-Edit
-v1 = np.array([2, 4, 6])
-v2 = np.array([1, 3, 5])
-sum_v   = v1 + v2      # vector addition
-scaled_v = 0.5 * v1    # scalar multiplication
-print("Sum:", sum_v)
-print("Scaled:", scaled_v)
-Expected Outcomes & Interpretation
-Sum = [3, 7, 11]; scaled = [1, 2, 3].
-
-Extensions & Variations
-
-Compute dot product of sum_v and v2
-
-Visualize vectors in 2D/3D
-
-Additional Notes & Tips
-Ensure consistent dimensions.
-
-Exercise 9: Matrix Multiplication Demonstration
-Overview & Purpose
-Multiply a 2×3 matrix by a 3×2 matrix to reinforce matrix multiplication rules.
-
-Concept Reinforcement
-
-Shape compatibility
-
-Summation over inner index
-
-Real World Relevance
-
-Transforming feature spaces
-
-Composition of network layers
-
-Step by Step Instructions
-
-python
-Copy
-Edit
-A = np.array([[1,2,3],[4,5,6]])
-B = np.array([[7,8],[9,10],[11,12]])
-C = A.dot(B)
-print("Result:\n", C)
-Expected Outcomes & Interpretation
-C = [[58, 64], [139, 154]].
-
-Extensions & Variations
-
-Reverse multiplication to show error
-
-Use @ operator in Python 3.5+
-
-Additional Notes & Tips
-Check shapes via A.shape and B.shape.
-
-Exercise 10: PCA on Toy Dataset
-Overview & Purpose
-Perform PCA on a small 2‑D dataset to reduce to 1‑D and visualize variance capture.
-
-Concept Reinforcement
-
-Eigenvectors/eigenvalues
-
-Dimensionality reduction
-
-Real World Relevance
-
-Compressing image data
-
-Feature extraction for clustering
-
-Step by Step Instructions
-
-python
-Copy
-Edit
-from sklearn.decomposition import PCA
-import numpy as np
-
-X = np.array([[2.5,2.4],[0.5,0.7],[2.2,2.9],[1.9,2.2],[3.1,3.0]])
-pca = PCA(n_components=1)
-X_pca = pca.fit_transform(X)
-print("Explained variance ratio:", pca.explained_variance_ratio_)
-print("Projected data:\n", X_pca)
-Expected Outcomes & Interpretation
-Most variance captured in first component (≈98%).
-
-Extensions & Variations
-
-Plot original vs. projected points
-
-Try n_components=2
-
-Additional Notes & Tips
-Requires scikit‑learn installation.
+    print("Mean:", rolls_biased.mean(), "Variance:", rolls_biased.var())
+    ```
+
+    **5. Expected Outcomes & Interpretation**  
+    - Mean **> 3.5** due to heavy weight on 6  
+    - Variance will differ from the fair‑die case
+
+    **6. Extensions & Variations**  
+    - Tweak `probs` for different biases  
+    - Plot histograms for fair vs. biased dice side‑by‑side
+
+    **7. Additional Notes & Tips**  
+    - Ensure `sum(probs) == 1` or NumPy will error  
+    - You can simulate many biased scenarios to stress‑test models
+
+???+ example "Exercise 8: Vector Addition & Scaling"
+    **1. Overview & Purpose**  
+    Demonstrate vector addition and scalar multiplication using simple feature vectors.
+
+    **2. Concept Reinforcement**  
+    - Vector space operations (add, scale)  
+    - Geometric interpretation (direction & length)
+
+    **3. Real‑World Relevance**  
+    - Combine feature effects (e.g., marketing channels)  
+    - Scale normalized data or weights
+
+    **4. Step-by-Step Instructions**
+    ```python
+    import numpy as np
+
+    v1 = np.array([2, 4, 6])
+    v2 = np.array([1, 3, 5])
+
+    sum_v   = v1 + v2        # vector addition
+    scaled_v = 0.5 * v1      # scalar multiplication
+
+    print("Sum:   ", sum_v)
+    print("Scaled:", scaled_v)
+    ```
+
+    **5. Expected Outcomes & Interpretation**  
+    - `Sum` = `[3, 7, 11]`  
+    - `Scaled` = `[1, 2, 3]`
+
+    **6. Extensions & Variations**  
+    - Compute the **dot product**: `v1.dot(v2)`  
+    - Visualize 2D/3D vectors (e.g., with matplotlib quiver)
+
+    **7. Additional Notes & Tips**  
+    - Ensure vectors have the same length for element‑wise ops  
+    - Scalar multiplication stretches/shrinks the vector length
+
+???+ example "Exercise 9: Matrix Multiplication Demonstration"
+    **1. Overview & Purpose**  
+    Multiply a 2×3 matrix by a 3×2 matrix to reinforce matrix‑multiplication rules and shape compatibility.
+
+    **2. Concept Reinforcement**  
+    - Shape rules (inner dimensions must match)  
+    - Summation over the inner index (k)
+
+    **3. Real‑World Relevance**  
+    - Transforming feature spaces  
+    - Chaining layers in neural networks (each layer = a matrix multiply)
+
+    **4. Step-by-Step Instructions**
+    ```python
+    import numpy as np
+
+    A = np.array([[1, 2, 3],
+                  [4, 5, 6]])          # shape (2, 3)
+
+    B = np.array([[ 7,  8],
+                  [ 9, 10],
+                  [11, 12]])          # shape (3, 2)
+
+    C = A.dot(B)            # or: C = A @ B in Python 3.5+
+    print("Result:\n", C)
+    ```
+
+    **5. Expected Outcomes & Interpretation**  
+    ```
+    [[ 58  64]
+     [139 154]]
+    ```
+    - You can verify: first row × first column → 1*7 + 2*9 + 3*11 = 58
+
+    **6. Extensions & Variations**  
+    - Try `B @ A` to see the shape error  
+    - Use larger random matrices to test performance
+
+    **7. Additional Notes & Tips**  
+    - Check shapes with `A.shape`, `B.shape`  
+    - `@` is shorthand for matrix multiply (`dot`) in NumPy/Python 3.5+
+
+???+ example "Exercise 10: PCA on Toy Dataset"
+    **1. Overview & Purpose**  
+    Perform PCA on a tiny 2‑D dataset, reduce it to 1‑D, and see how much variance is captured.
+
+    **2. Concept Reinforcement**  
+    - Eigenvectors / eigenvalues  
+    - Dimensionality reduction & variance explained
+
+    **3. Real‑World Relevance**  
+    - Compressing image or sensor data  
+    - Feature extraction before clustering or modeling
+
+    **4. Step-by-Step Instructions**
+    ```python
+    import numpy as np
+    from sklearn.decomposition import PCA
+
+    X = np.array([
+        [2.5, 2.4],
+        [0.5, 0.7],
+        [2.2, 2.9],
+        [1.9, 2.2],
+        [3.1, 3.0]
+    ])
+
+    pca = PCA(n_components=1)
+    X_pca = pca.fit_transform(X)
+
+    print("Explained variance ratio:", pca.explained_variance_ratio_)
+    print("Projected data:\n", X_pca)
+    ```
+
+    **5. Expected Outcomes & Interpretation**  
+    - First component should capture ~98% of variance for this toy set  
+    - Projected 1‑D data preserves most “information” (spread)
+
+    **6. Extensions & Variations**  
+    - Plot original 2‑D vs. projected 1‑D points  
+    - Try `n_components=2` (no reduction) and inspect components
+
+    **7. Additional Notes & Tips**  
+    - Requires `scikit-learn` (`pip install scikit-learn` if missing)  
+    - PCA assumes linear structure; nonlinear data may need t‑SNE/UMAP
 
 6. Summary of Week 1
 Throughout this first week, you have:
