@@ -375,6 +375,48 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#4-tools-installation-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Tools Installation &amp; Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Tools Installation &amp; Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-install-python-anaconda-windows-mac" class="md-nav__link">
+    <span class="md-ellipsis">
+      A. Install Python &amp; Anaconda (Windows &amp; Mac)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-launch-jupyter-notebook" class="md-nav__link">
+    <span class="md-ellipsis">
+      B. Launch Jupyter Notebook
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-install-import-numpy-pandas" class="md-nav__link">
+    <span class="md-ellipsis">
+      C. Install &amp; Import NumPy &amp; pandas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -704,35 +746,45 @@ In summer 1956, John McCarthy, Marvin Minsky, Nathaniel Rochester, and Cla
 <li><strong>Dimensionality Reduction:</strong> PCA, SVD use eigenvectors/values to compress data.</li>
 </ul>
 </details>
+<h2 id="4-tools-installation-setup">4. Tools Installation &amp; Setup</h2>
+<div class="admonition info">
+<p class="admonition-title">You’ll do this once, then reuse the environment all term.</p>
+</div>
+<h3 id="a-install-python-anaconda-windows-mac">A. Install Python &amp; Anaconda (Windows &amp; Mac)</h3>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># Visit this in your browser:</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>https://www.anaconda.com/products/distribution
+</code></pre></div>
+1. Download the <strong>Python 3.x</strong> installer for your OS.<br />
+2. Run the installer, accept defaults.<br />
+3. Open <strong>Anaconda Navigator</strong> (Start Menu on Windows / Applications on Mac).</p>
+<h3 id="b-launch-jupyter-notebook">B. Launch Jupyter Notebook</h3>
 <ol>
-<li>Tools Installation &amp; Setup
-Windows &amp; Mac</li>
+<li>In Anaconda Navigator, click <strong>Launch</strong> under <strong>Jupyter Notebook</strong>.  </li>
+<li>A browser window opens showing your files.  </li>
+<li>Click <strong>New → Python 3</strong>.  </li>
+<li>Rename it to <strong>Week1_AI_Math.ipynb</strong>.</li>
 </ol>
-<p>A. Install Python &amp; Anaconda
-Navigate to: https://www.anaconda.com/products/distribution</p>
-<p>Download the Python 3.x installer for your OS.</p>
-<p>Run the installer, accept defaults.</p>
-<p>Open Anaconda Navigator from your Start menu (Windows) or Applications folder (Mac).</p>
-<p>B. Launch Jupyter Notebook
-In Anaconda Navigator, click Launch under Jupyter Notebook.</p>
-<p>A browser window opens showing your file system.</p>
-<p>Click New → Python 3.</p>
-<p>Rename the notebook to Week1_AI_Math.ipynb.</p>
-<p>C. Install &amp; Import NumPy &amp; pandas
-In a notebook cell, run:</p>
-<p>bash
-Copy
-Edit
-!conda install numpy pandas -y
-Then, in the next cell:</p>
-<p>python
-Copy
-Edit
-import numpy as np
-import pandas as pd
-5. Step-by-Step Exercises
+<h3 id="c-install-import-numpy-pandas">C. Install &amp; Import NumPy &amp; pandas</h3>
+<p>In a notebook cell, run:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>!conda<span class="w"> </span>install<span class="w"> </span>numpy<span class="w"> </span>pandas<span class="w"> </span>-y
+</code></pre></div>
+Then import:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</code></pre></div></p>
+<div class="admonition tip">
+<p class="admonition-title">Why these tools?</p>
+<ul>
+<li><strong>Python/Jupyter:</strong> interactive coding &amp; math demos  </li>
+<li><strong>NumPy:</strong> fast vectors/matrices (used everywhere in ML)  </li>
+<li><strong>pandas:</strong> quick data tables, cleaning, summaries</li>
+</ul>
+</div>
+<ol>
+<li>Step-by-Step Exercises
 Exercise 1: Die Roll Simulation &amp; Statistics (Template)
-Exercise Overview &amp; Purpose</p>
+Exercise Overview &amp; Purpose</li>
+</ol>
 <p>What we’re doing: Simulate 1,000 rolls of a fair six‑sided die in Python to compute the empirical mean and variance.</p>
 <p>Why: Reinforces theoretical vs. empirical probability, builds NumPy familiarity, and demonstrates sampling variability.</p>
 <p>Concept Reinforcement</p>
