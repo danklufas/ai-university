@@ -257,130 +257,375 @@ By the end of this lesson, you will be able to:
 
 #### B2. Formal Definitions & Deep Dive
 
-???+ info "1. Random Variables"
-    A **random variable (RV)** assigns numbers to random outcomes.
+???+ info "Random Variables (Discrete & Continuous)"
+    **Plain-English idea:** A *random variable* (RV) is just a number that comes from a random process.  
+    - **Discrete RV:** Jumps between separate values you can list or count. *Example:* A die roll → {1,2,3,4,5,6}.  
+    - **Continuous RV:** Can take any value in a range. *Example:* Time between website sign-ups (could be 3.1 min, 3.11 min, …).
 
-    - **Discrete RV:** countable values (die roll, number of returns)  
-      Example: Fair die →  
-      ```text
-      X ∈ {1,2,3,4,5,6},   P(X = k) = 1/6
-      ```
-    - **Continuous RV:** any value in a range (time between failures)  
-      Example: Exponential distribution for time \( t ≥ 0 \):  
-      ```text
-      f(t) = λ e^{−λ t}
-      ```
+    **Formal bits:**  
+    - Discrete RV has a **Probability Mass Function (PMF)**: `P(X = x_i)` gives the probability of each value.  
+    - Continuous RV has a **Probability Density Function (PDF)**: `f(x)` where probabilities come from areas: `P(a ≤ X ≤ b) = ∫_a^b f(x) dx`.  
+    - **CDF (Cumulative Distribution Function):** `F(x) = P(X ≤ x)` (works for both types).
 
-???+ info "2. Expectation (Mean)"
-    Long‑run average outcome if you repeat forever.
+    **Quick table:**
 
-    - **Discrete:**  
-      ```text
-      E[X] = Σ x_i · P(X = x_i)
-      ```
-    - **Continuous:**  
-      ```text
-      E[X] = ∫ x f(x) dx
-      ```
+    | Type       | Notation example | How you get probability                  | Typical example              |
+    |------------|-------------------|-------------------------------------------|------------------------------|
+    | Discrete   | `P(X = k)`        | Direct from PMF                           | Die face, number of returns  |
+    | Continuous | `P(a ≤ X ≤ b)`    | Integrate PDF from `a` to `b`             | Time until failure, height   |
+
+    **Worked examples:**
+    - *Discrete:* Fair die ⇒ `P(X = k) = 1/6` for k = 1…6.  
+    - *Continuous:* Exponential with rate λ=0.5 (`mean = 2`) ⇒ `f(t)=0.5 e^{-0.5 t}`, t ≥ 0.
+
+    ```python
+    # Simulate both kinds quickly
+    import numpy as np
+
+    # Discrete die
+    rolls = np.random.randint(1, 7, size=10_000)
+
+    # Continuous exponential (mean=2 -> scale=2)
+    exp_samples = np.random.exponential(scale=2, size=10_000)
+    ```
+
+    !!! tip "Why you care (AI/business)"
+        - Choosing **loss functions** or **evaluation metrics** often assumes a distribution (Gaussian errors, Poisson counts, etc.).  
+        - In SaaS ops, “time between failures” or “days between churn events” are continuous RVs; “number of support tickets” is discrete.
+
+---
+
+???+ info "Expectation (Mean)"
+    **Plain-English idea:** The *expectation* is the long-run average you’d get if you could repeat the random experiment forever.
+
+    **Formulas:**  
+    - **Discrete:** `E[X] = Σ x_i · P(X = x_i)`  
+    - **Continuous:** `E[X] = ∫_{-∞}^{∞} x · f(x) dx`
+
+    **Linearity of expectation:** `E[aX + bY] = aE[X] + bE[Y]` (no independence needed). This is why averages of many variables are easy to reason about.
+
+    **Worked example (discrete die):**  
+    `E[X] = (1+2+3+4+5+6)/6 = 3.5`
+
+    ```python
+    import numpy as np
+    rolls = np.random.randint(1, 7, size=1000)
+    empirical_mean = rolls.mean()
+    print(empirical_mean)  # ~3.5
+    ```
+
+    !!! note "Where it shows up in ML"
+        - **Mean Squared Error (MSE)** = expected squared difference between prediction and truth.  
+        - **Baseline models**: predicting the average is often the simplest benchmark.
+
+    !!! example "Business angle"
+        - Average order value, average time-to-resolution, expected downtime—these are all expectations that guide KPIs and decisions.
+
+---
+
+???+ info "Variance & Standard Deviation"
+    **Plain-English idea:** Variance measures how *spread out* values are around the mean. Standard deviation (σ) is the square root of variance—same units as the data.
+
+    **Formulas:**  
+    - `Var(X) = E[(X - E[X])^2]`  
+    - `σ = √Var(X)`
+
+    **Shortcut (discrete):** `Var(X) = E[X^2] - (E[X])^2`  
+    (Often easier to compute.)
+
     **Worked example (die):**  
-    ```text
-    E[X] = (1+2+3+4+5+6) / 6 = 3.5
-    ```
-    **Relevance:** Loss functions (e.g., MSE) minimize expected error → expectation is baked into training.
+    1. `E[X] = 3.5`  
+    2. `E[X^2] = (1^2+2^2+...+6^2)/6 = 91/6 ≈ 15.17`  
+    3. `Var(X) = 15.17 - (3.5)^2 = 15.17 - 12.25 ≈ 2.92`  
+       `σ ≈ 1.71`
 
-???+ info "3. Variance & Standard Deviation"
-    **Variance:** average squared distance from the mean.  
-    ```text
-    Var(X) = E[(X − E[X])^2]
+    ```python
+    import numpy as np
+    rolls = np.random.randint(1, 7, size=1000)
+    var_emp = rolls.var()          # population variance by default
+    std_emp = rolls.std()
+    print(var_emp, std_emp)
     ```
-    **Std. dev.:**  
-    ```text
-    σ = √Var(X)
-    ```
-    **Die example:**  
-    ```text
-    Var ≈ 2.92,  σ ≈ 1.71
-    ```
-    **Why it matters:** Tells you how uncertain predictions are, helps build confidence intervals, drives anomaly detection.
 
-!!! note "Why Probability Matters in AI"
-    - **Model Training:** Errors are expectations (means) over data.  
-    - **Uncertainty:** Variance underpins confidence, risk, anomaly flags.  
-    - **Feature Engineering:** Understanding distributions guides transformations (e.g., log scales for skewed data).
+    !!! warning "Population vs. sample formulas"
+        - NumPy’s default `var()` uses the population formula (divide by N).  
+        - For *sample* variance, use `ddof=1`: `rolls.var(ddof=1)` (divide by N-1).
+
+    !!! tip "Why you care (AI/business)"
+        - **Risk & uncertainty:** Higher variance = higher risk (finance, ops).  
+        - **Feature engineering:** Highly skewed or high-variance features often need scaling or transformation (log, z-score).  
+        - **Model confidence:** Prediction intervals depend on estimated variance.
+
+---
+
 
 
 ### C. Linear Algebra Basics
 
-!!! abstract "Definition"
-    **Linear Algebra** – “The branch of mathematics concerned with vectors, vector spaces, and linear transformations.”
+> **Linear Algebra** – “The branch of mathematics concerned with vectors, vector spaces, and linear transformations.”
 
-#### C1. Gentle Introduction 
+#### D1. Gentle Introduction
 
-???+ tip "1. Vectors as Lists"
-    **Analogy:** A grocery list: `[2 bananas, 1 loaf bread, 500 g cheese]`  
-    **Key idea:** A **vector** is just a list of numbers representing features.
+???+ info "Vectors as Lists (Plain-Language Start)"
+    **Think grocery list:** `[2 bananas, 1 loaf bread, 500 g cheese]` → a vector is just an ordered list of numbers.  
+    In AI, those numbers are usually **features** about something (a customer, a product, a pixel).
 
-???+ tip "2. Matrices as Tables"
-    **Analogy:** A seating chart (rows = tables, columns = seats):  
     ```text
-           S1  S2  S3
-        T1  A   B   C
-        T2  D   E   F
-    ```
-    **Key idea:** A **matrix** stacks many vectors into rows or columns.
-
-???+ tip "3. Dot Product Intuition"
-    **Example (bill splitting):**  
-    - You & a friend order appetizers `[3, 2]` and drinks `[1, 2]`.  
-    - Prices: appetizers = \$5, drinks = \$2 →  
-    ```text
-    [3, 2] · [5, 2] = 3×5 + 2×2 = 19
-    ```
-    **Why it matters:** Same math as a simple regression prediction (weights × features).
-
-???+ tip "4. Real‑World Matrix Uses"
-    - **Recipe scaling:** Multiply ingredient matrix by 1.5 to go from 4 to 6 servings.  
-    - **School timetable:** Days × hours grid to schedule classes.
-
-#### C2. Formal Definitions & Deep Dive
-
-???+ info "1. Vectors & Their Interpretation"
-    A vector **x ∈ ℝⁿ** is an ordered list of n numbers (features).  
-    **Example:**
-    ```text
-    x = [age, monthly_spend, num_orders] = [45, 320.5, 12]
+    Customer vector x = [age, monthly_spend, num_orders] = [45, 320.5, 12]
     ```
 
-???+ info "2. Matrices & Batch Operations"
-    A matrix **X ∈ ℝ^{m×n}** stacks m row‑vectors of length n.  
-    **Example (customer table):**
-    ```text
-    X = [
-      [45, 320.5, 12],
-      [23, 150.0,  5],
-      ...
-    ]
+    **Why it matters:** Every row in your dataset (spreadsheet) is a vector. Models read and manipulate these vectors constantly.
+
+---
+
+???+ info "Matrices as Tables"
+    **Think spreadsheet or seating chart:** Rows × Columns.
+
+    |    | S1 | S2 | S3 |
+    |----|----|----|----|
+    | T1 | A  | B  | C  |
+    | T2 | D  | E  | F  |
+
+    A **matrix** stacks many vectors. If you have 100 customers, each with 3 features, you can store them as a 100×3 matrix.
+
+    ```python
+    import numpy as np
+    X = np.array([
+        [45, 320.5, 12],
+        [23, 150.0,  5],
+        # ...
+    ])
+    print(X.shape)  # (100, 3) for 100 rows, 3 columns
     ```
 
-???+ info "3. Dot Product & Linear Transformations"
-    **Dot product:**
-    ```text
-    a · b = Σ (a_i * b_i)
-    ```
-    **Use in AI:**
-    - **Regression:**  ŷ = w · x + b  
-    - **Neural nets:**  z = w · x + b, then apply activation (e.g., ReLU)
+    **Why it matters:** Most ML libraries assume your training data is in one big matrix `X` (rows = samples, columns = features).
 
-???+ info "4. Matrix Multiplication"
-    ```text
-    C = A × B,   C_{ij} = Σ_k A_{ik} B_{kj}
-    ```
-    **Example:** Combine/transform features or chain neural network layers.
+---
 
-???+ success "Why Linear Algebra Matters in AI"
-    - **Speed:** GPUs/NumPy rely on vectorized (matrix) ops for efficiency.  
-    - **Model Insight:** Weights, activations, attention maps are matrices/vectors.  
-    - **Dimensionality Reduction:** PCA, SVD use eigenvectors/values to compress data.
+???+ info "Dot Product Intuition"
+    **Bill splitting analogy:**  
+    Quantities `[3 appetizers, 2 drinks]` • Prices `[5, 2]` → Total cost = `3*5 + 2*2 = 19`.
+
+    That’s the **dot product**.
+
+    ```text
+    [3, 2] · [5, 2] = 15 + 4 = 19
+    ```
+
+    **AI link:** A linear regression prediction is a dot product of weights and features:  
+    \[
+    \hat{y} = \mathbf{w} \cdot \mathbf{x} + b
+    \]
+
+---
+
+???+ info "Real-World Matrix Use"
+    - **Recipe scaling:** Multiply ingredient matrix by 1.5 to feed more people.  
+    - **Scheduling grid:** Matrix of days × hours helps visualize time slots.  
+    - **Image data:** A color image is height × width × 3 (RGB channels)—essentially a stack of matrices.
+
+---
+
+#### D2. Formal Definitions & Deep Dive
+
+##### D2.1 From Lists to Arrows (Extra-Gentle Bridge)
+
+???+ info "Vectors as arrows you can move around"
+    - **Picture it:** A vector is an **arrow** — it has a length (how big) and a direction (which way).  
+      You can slide it around the page without changing it (only length + direction matter).
+    - **Add arrows = add effects:** Put one arrow’s tail on the other’s head: the new arrow is the sum.  
+      This is the same as adding two feature lists in code.
+    - **Stretch/Shrink arrows:** Multiply by 2 makes it twice as long (stronger effect); multiply by −1 flips direction (opposite effect).
+
+    ```python
+    import numpy as np
+    a = np.array([2, 1])     # arrow 1
+    b = np.array([1, 3])     # arrow 2
+    print(a + b)             # [3 4]
+    print(-1 * a)            # [-2 -1]
+    ```
+
+    **Real-world feelers:**
+    - **Marketing metrics combo:** “Email opens” + “Ad clicks” vectors → one bigger “engagement” vector.  
+    - **Portfolio weights:** A weight vector `[0.5, 0.3, 0.2]` says “50% stock A, 30% stock B, 20% stock C.”
+
+---
+
+##### D2.2 Formal Definitions (Yes, This Gets Mathy)
+
+!!! note "Heads up!"
+    Don’t stress if this feels heavy. You **do not** need to memorize every axiom.  
+    The goal: recognize the terminology when you see it in books/docs and know roughly what it means.
+
+???+ info "Vector space (over the real numbers)"
+    A **vector space** \(V\) over \(\mathbb{R}\) is a set of “things” (vectors) where you can:
+    1. **Add** any two vectors and stay in the set.
+    2. **Multiply** any vector by a real number (scalar) and stay in the set.
+
+    More formally, it satisfies a bunch of rules (axioms) like:  
+    - Addition is commutative & associative.  
+    - There’s a **zero vector** (acts like 0).  
+    - Every vector has an additive inverse (acts like −v).  
+    - Scalar multiplication distributes over vector addition, etc.
+
+    **Basis & dimension:**  
+    - A **basis** is a minimal set of vectors that can build every other vector (by addition & scaling).  
+    - The **dimension** is how many vectors are in a basis.  
+      Example: In ordinary 3D space, any vector can be made from `[1,0,0]`, `[0,1,0]`, `[0,0,1]`, so dimension = 3.
+
+    **Subspace:**  
+    A smaller vector space inside a bigger one.  
+    Example: All 2D points of the form `[x, 2x]` is a line through the origin — it’s closed under add/scale ⇒ a subspace.
+
+    | Concept      | Plain Words                           | Why It Shows Up in ML/AI                           |
+    |--------------|---------------------------------------|-----------------------------------------------------|
+    | Vector space | A safe sandbox for add/scale          | We add gradients, scale loss terms, etc.            |
+    | Basis        | Minimal “building blocks”              | PCA finds a new basis to compress data              |
+    | Dimension    | How many numbers you need to describe | “High-dimensional data” = many features             |
+    | Subspace     | Smaller sandbox inside the big one     | Feature constraints (“sum to 1” weights) form one   |
+
+---
+
+##### D2.3 How ML & Business Actually Use This (No Scary Math)
+
+???+ info "Spreadsheet view → Matrix view"
+    - Your CSV file with rows = customers and columns = features is a **matrix** `X`.  
+    - A column (one feature across all customers) is a **vector**.  
+    - A model’s weights are another vector `w`. Prediction is basically:  
+      \[
+        \text{prediction} = X \cdot w
+      \]  
+      (matrix × vector = new vector of predictions)
+
+    ```python
+    import numpy as np
+    X = np.array([[45, 320.5, 12],
+                  [23, 150.0,  5]])     # 2 customers × 3 features
+    w = np.array([0.02, 0.001, 0.5])    # weights
+    preds = X.dot(w)                    # predicted score/value
+    print(preds)
+    ```
+
+    **Real-world examples:**
+    - **Lead scoring:** Combine features (opens, clicks, revenue) with weights to get a score.  
+    - **Inventory forecasting:** Multiply a matrix of past sales by learned coefficients to get tomorrow’s demand.  
+    - **Chatbot embeddings:** Words/sentences live as long vectors; comparing them (dot product) tells how similar meanings are.
+
+    !!! tip "GPU magic = fast matrix math"
+        Training deep nets is mostly giant matrix multiplications. GPUs are great at doing many of these in parallel.
+
+---
+
+##### D2.M Matrices, Shape & Transpose
+
+???+ info "From Spreadsheet to Shape (Extra‑Gentle Bridge)"
+    - **Matrix = big spreadsheet of numbers.** Rows = things/people/items. Columns = features about them.  
+    - Shape tells you “how many rows by how many columns”: `(rows, columns)`.  
+    - **Transpose** just flips rows ↔ columns. Think of turning the sheet on its side.
+
+    ```python
+    import numpy as np
+    X = np.array([[45, 320.5, 12],
+                  [23, 150.0,  5]])
+    print(X.shape)   # (2, 3): 2 rows, 3 columns
+    print(X.T.shape) # (3, 2): transposed
+    ```
+
+    **Real‑world angle:**  
+    - A customer table (rows=customers, cols=metrics) is your `X`.  
+    - Transpose shows each feature as a vector of length “number of customers”.
+
+!!! note "Formal corner (OK to skim!)"
+    - A matrix \( \mathbf{X} \in \mathbb{R}^{m \times n} \) is an array with \(m\) rows and \(n\) columns.  
+    - The **transpose** \( \mathbf{X}^T \in \mathbb{R}^{n \times m} \) satisfies \( (\mathbf{X}^T)_{ij} = \mathbf{X}_{ji} \).  
+    - Rows are often denoted \( \mathbf{x}_i^T \) (row vectors), columns \( \mathbf{x}^{(j)} \) (column vectors).
+
+???+ info "How ML/Business Uses Shapes"
+    - Libraries assume: `X.shape = (num_samples, num_features)`.  
+    - If shapes don’t align, your code errors (or silently gives wrong math).  
+    - **ETL sanity check:** a sudden shape change can mean broken data ingestion.
+---
+
+##### D2.D Dot Product, Norms & Geometric View
+
+???+ info "Extra‑Gentle: ‘How aligned are two arrows?’"
+    - **Dot product** measures how much two vectors “point the same way.”  
+      If they point in opposite directions, the dot is negative; if perpendicular, ~0.
+
+    ```python
+    import numpy as np
+    a = np.array([1, 2, 3])
+    b = np.array([4, 5, 6])
+    print(a.dot(b))              # 32
+    print(np.linalg.norm(a))     # length of a
+    ```
+
+    - **Norm** = length of the arrow (vector). Like measuring the “size” of an effect.
+
+    **Plain examples:**  
+    - Product pricing: quantities · prices = total bill (dot product).  
+    - “Similarity” score between two customer profiles = dot product of their feature vectors.
+
+!!! note "Formal corner (breathe… you’re fine)"
+    - Dot product: \( \mathbf{a} \cdot \mathbf{b} = \sum_{i=1}^n a_i b_i \).  
+    - Norm (Euclidean): \( \|\mathbf{a}\| = \sqrt{\mathbf{a} \cdot \mathbf{a}} \).  
+    - Angle relation: \( \mathbf{a} \cdot \mathbf{b} = \|\mathbf{a}\|\|\mathbf{b}\|\cos\theta \).
+
+???+ info "ML/AI Tie‑ins (Simple View)"
+    - **Regression prediction:** \( \hat{y} = \mathbf{w} \cdot \mathbf{x} + b \).  
+    - **Embedding similarity (NLP, Recommenders):** cosine similarity = normalized dot product.  
+    - **Gradient steps:** length (norm) of gradient controls learning rate effect.
+---
+
+##### D2.MM Matrix Multiplication (What Really Happens)
+
+???+ info "Extra‑Gentle: Combine many dots at once"
+    - Matrix multiplication is just doing **lots of dot products**.  
+      Each output cell = dot(row from A, column from B).
+
+    ```python
+    import numpy as np
+    A = np.array([[1,2,3],
+                  [4,5,6]])        # 2x3
+    B = np.array([[7,8],
+                  [9,10],
+                  [11,12]])        # 3x2
+    C = A.dot(B)                    # 2x2 result
+    print(C)
+    # [[ 58  64]
+    #  [139 154]]
+    ```
+
+    - **Shape rule:** (m×n) · (n×p) → (m×p). The inside numbers must match.
+
+!!! note "Formal corner (notation time)"
+    - \( C_{ij} = \sum_{k=1}^{n} A_{ik} B_{kj} \)  
+    - It’s associative: \( (AB)C = A(BC) \).  
+    - Not commutative: \( AB \neq BA \) in general.
+
+???+ info "Why ML cares (plain English)"
+    - A neural network layer is: `output = input @ weights + bias`.  
+    - GPUs are optimized to do **huge matrix multiplications** fast → deep learning is feasible.  
+    - Batch predictions: one matrix multiply gives predictions for thousands of rows at once.
+---
+
+##### D2.I Identity, Inverse & Rank (Quick Glimpse)
+
+???+ info "Gentle Pass"
+    - **Identity matrix \(I\):** like multiplying a number by 1 — it leaves things unchanged.  
+    - **Inverse \(A^{-1}\):** the matrix that “undoes” \(A\) (if it exists).  
+    - **Rank:** how many truly independent columns/rows you have (redundant columns lower rank).
+
+!!! note "Formal corner (skim ok!)"
+    - \( AI = IA = A \).  
+    - \( A^{-1} A = AA^{-1} = I \) (only for invertible/square matrices).  
+    - Rank is the dimension of the column space (or row space). Full rank ⇒ columns are linearly independent.
+
+???+ info "Simple Business/ML Uses"
+    - **Identity** appears in regularization terms (e.g., \( \lambda I \) in ridge regression).  
+    - **Non-invertible (singular) matrix:** means features are perfectly correlated → model can’t find unique weights.  
+    - **Rank checks** help detect multicollinearity before training.
+
 
 ## 4. Tools Installation & Setup
 
