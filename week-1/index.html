@@ -427,20 +427,89 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#c1-gentle-introduction" class="md-nav__link">
+  <a href="#d1-gentle-introduction" class="md-nav__link">
     <span class="md-ellipsis">
-      C1. Gentle Introduction
+      D1. Gentle Introduction
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#c2-formal-definitions-deep-dive" class="md-nav__link">
+  <a href="#d2-formal-definitions-deep-dive" class="md-nav__link">
     <span class="md-ellipsis">
-      C2. Formal Definitions &amp; Deep Dive
+      D2. Formal Definitions &amp; Deep Dive
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="D2. Formal Definitions &amp; Deep Dive">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#d21-from-lists-to-arrows-extra-gentle-bridge" class="md-nav__link">
+    <span class="md-ellipsis">
+      D2.1 From Lists to Arrows (Extra-Gentle Bridge)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d22-formal-definitions-yes-this-gets-mathy" class="md-nav__link">
+    <span class="md-ellipsis">
+      D2.2 Formal Definitions (Yes, This Gets Mathy)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d23-how-ml-business-actually-use-this-no-scary-math" class="md-nav__link">
+    <span class="md-ellipsis">
+      D2.3 How ML &amp; Business Actually Use This (No Scary Math)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d2m-matrices-shape-transpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      D2.M Matrices, Shape &amp; Transpose
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d2d-dot-product-norms-geometric-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      D2.D Dot Product, Norms &amp; Geometric View
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d2mm-matrix-multiplication-what-really-happens" class="md-nav__link">
+    <span class="md-ellipsis">
+      D2.MM Matrix Multiplication (What Really Happens)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d2i-identity-inverse-rank-quick-glimpse" class="md-nav__link">
+    <span class="md-ellipsis">
+      D2.I Identity, Inverse &amp; Rank (Quick Glimpse)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -975,132 +1044,441 @@ Your edge = knowing <strong>when to mix them</strong> for real business value.</
 </details>
 <h4 id="b2-formal-definitions-deep-dive">B2. Formal Definitions &amp; Deep Dive</h4>
 <details class="info" open="open">
-<summary>1. Random Variables</summary>
-<p>A <strong>random variable (RV)</strong> assigns numbers to random outcomes.</p>
+<summary>Random Variables (Discrete &amp; Continuous)</summary>
+<p><strong>Plain-English idea:</strong> A <em>random variable</em> (RV) is just a number that comes from a random process.<br />
+- <strong>Discrete RV:</strong> Jumps between separate values you can list or count. <em>Example:</em> A die roll → {1,2,3,4,5,6}.<br />
+- <strong>Continuous RV:</strong> Can take any value in a range. <em>Example:</em> Time between website sign-ups (could be 3.1 min, 3.11 min, …).</p>
+<p><strong>Formal bits:</strong><br />
+- Discrete RV has a <strong>Probability Mass Function (PMF)</strong>: <code>P(X = x_i)</code> gives the probability of each value.<br />
+- Continuous RV has a <strong>Probability Density Function (PDF)</strong>: <code>f(x)</code> where probabilities come from areas: <code>P(a ≤ X ≤ b) = ∫_a^b f(x) dx</code>.<br />
+- <strong>CDF (Cumulative Distribution Function):</strong> <code>F(x) = P(X ≤ x)</code> (works for both types).</p>
+<p><strong>Quick table:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Notation example</th>
+<th>How you get probability</th>
+<th>Typical example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Discrete</td>
+<td><code>P(X = k)</code></td>
+<td>Direct from PMF</td>
+<td>Die face, number of returns</td>
+</tr>
+<tr>
+<td>Continuous</td>
+<td><code>P(a ≤ X ≤ b)</code></td>
+<td>Integrate PDF from <code>a</code> to <code>b</code></td>
+<td>Time until failure, height</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Worked examples:</strong>
+- <em>Discrete:</em> Fair die ⇒ <code>P(X = k) = 1/6</code> for k = 1…6.<br />
+- <em>Continuous:</em> Exponential with rate λ=0.5 (<code>mean = 2</code>) ⇒ <code>f(t)=0.5 e^{-0.5 t}</code>, t ≥ 0.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Simulate both kinds quickly</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Discrete die</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">rolls</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10_000</span><span class="p">)</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># Continuous exponential (mean=2 -&gt; scale=2)</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="n">exp_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10_000</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Why you care (AI/business)</p>
 <ul>
-<li><strong>Discrete RV:</strong> countable values (die roll, number of returns)<br />
-  Example: Fair die →<br />
-  <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>X ∈ {1,2,3,4,5,6},   P(X = k) = 1/6
-</code></pre></div></li>
-<li><strong>Continuous RV:</strong> any value in a range (time between failures)<br />
-  Example: Exponential distribution for time ( t ≥ 0 ):<br />
-  <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>f(t) = λ e^{−λ t}
-</code></pre></div></li>
+<li>Choosing <strong>loss functions</strong> or <strong>evaluation metrics</strong> often assumes a distribution (Gaussian errors, Poisson counts, etc.).  </li>
+<li>In SaaS ops, “time between failures” or “days between churn events” are continuous RVs; “number of support tickets” is discrete.</li>
+</ul>
+</div>
+</details>
+<hr />
+<details class="info" open="open">
+<summary>Expectation (Mean)</summary>
+<p><strong>Plain-English idea:</strong> The <em>expectation</em> is the long-run average you’d get if you could repeat the random experiment forever.</p>
+<p><strong>Formulas:</strong><br />
+- <strong>Discrete:</strong> <code>E[X] = Σ x_i · P(X = x_i)</code><br />
+- <strong>Continuous:</strong> <code>E[X] = ∫_{-∞}^{∞} x · f(x) dx</code></p>
+<p><strong>Linearity of expectation:</strong> <code>E[aX + bY] = aE[X] + bE[Y]</code> (no independence needed). This is why averages of many variables are easy to reason about.</p>
+<p><strong>Worked example (discrete die):</strong><br />
+<code>E[X] = (1+2+3+4+5+6)/6 = 3.5</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">rolls</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">empirical_mean</span> <span class="o">=</span> <span class="n">rolls</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">empirical_mean</span><span class="p">)</span>  <span class="c1"># ~3.5</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Where it shows up in ML</p>
+<ul>
+<li><strong>Mean Squared Error (MSE)</strong> = expected squared difference between prediction and truth.  </li>
+<li><strong>Baseline models</strong>: predicting the average is often the simplest benchmark.</li>
+</ul>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Business angle</p>
+<ul>
+<li>Average order value, average time-to-resolution, expected downtime—these are all expectations that guide KPIs and decisions.</li>
+</ul>
+</div>
+</details>
+<hr />
+<details class="info" open="open">
+<summary>Variance &amp; Standard Deviation</summary>
+<p><strong>Plain-English idea:</strong> Variance measures how <em>spread out</em> values are around the mean. Standard deviation (σ) is the square root of variance—same units as the data.</p>
+<p><strong>Formulas:</strong><br />
+- <code>Var(X) = E[(X - E[X])^2]</code><br />
+- <code>σ = √Var(X)</code></p>
+<p><strong>Shortcut (discrete):</strong> <code>Var(X) = E[X^2] - (E[X])^2</code><br />
+(Often easier to compute.)</p>
+<p><strong>Worked example (die):</strong><br />
+1. <code>E[X] = 3.5</code><br />
+2. <code>E[X^2] = (1^2+2^2+...+6^2)/6 = 91/6 ≈ 15.17</code><br />
+3. <code>Var(X) = 15.17 - (3.5)^2 = 15.17 - 12.25 ≈ 2.92</code><br />
+<code>σ ≈ 1.71</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">rolls</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">var_emp</span> <span class="o">=</span> <span class="n">rolls</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>          <span class="c1"># population variance by default</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">std_emp</span> <span class="o">=</span> <span class="n">rolls</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">var_emp</span><span class="p">,</span> <span class="n">std_emp</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Population vs. sample formulas</p>
+<ul>
+<li>NumPy’s default <code>var()</code> uses the population formula (divide by N).  </li>
+<li>For <em>sample</em> variance, use <code>ddof=1</code>: <code>rolls.var(ddof=1)</code> (divide by N-1).</li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Why you care (AI/business)</p>
+<ul>
+<li><strong>Risk &amp; uncertainty:</strong> Higher variance = higher risk (finance, ops).  </li>
+<li><strong>Feature engineering:</strong> Highly skewed or high-variance features often need scaling or transformation (log, z-score).  </li>
+<li><strong>Model confidence:</strong> Prediction intervals depend on estimated variance.</li>
+</ul>
+</div>
+</details>
+<hr />
+<h3 id="c-linear-algebra-basics">C. Linear Algebra Basics</h3>
+<blockquote>
+<p><strong>Linear Algebra</strong> – “The branch of mathematics concerned with vectors, vector spaces, and linear transformations.”</p>
+</blockquote>
+<h4 id="d1-gentle-introduction">D1. Gentle Introduction</h4>
+<details class="info" open="open">
+<summary>Vectors as Lists (Plain-Language Start)</summary>
+<p><strong>Think grocery list:</strong> <code>[2 bananas, 1 loaf bread, 500 g cheese]</code> → a vector is just an ordered list of numbers.<br />
+In AI, those numbers are usually <strong>features</strong> about something (a customer, a product, a pixel).</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Customer vector x = [age, monthly_spend, num_orders] = [45, 320.5, 12]
+</code></pre></div>
+<p><strong>Why it matters:</strong> Every row in your dataset (spreadsheet) is a vector. Models read and manipulate these vectors constantly.</p>
+</details>
+<hr />
+<details class="info" open="open">
+<summary>Matrices as Tables</summary>
+<p><strong>Think spreadsheet or seating chart:</strong> Rows × Columns.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>S1</th>
+<th>S2</th>
+<th>S3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T1</td>
+<td>A</td>
+<td>B</td>
+<td>C</td>
+</tr>
+<tr>
+<td>T2</td>
+<td>D</td>
+<td>E</td>
+<td>F</td>
+</tr>
+</tbody>
+</table>
+<p>A <strong>matrix</strong> stacks many vectors. If you have 100 customers, each with 3 features, you can store them as a 100×3 matrix.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    <span class="p">[</span><span class="mi">45</span><span class="p">,</span> <span class="mf">320.5</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>    <span class="p">[</span><span class="mi">23</span><span class="p">,</span> <span class="mf">150.0</span><span class="p">,</span>  <span class="mi">5</span><span class="p">],</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>    <span class="c1"># ...</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="p">])</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># (100, 3) for 100 rows, 3 columns</span>
+</code></pre></div>
+<p><strong>Why it matters:</strong> Most ML libraries assume your training data is in one big matrix <code>X</code> (rows = samples, columns = features).</p>
+</details>
+<hr />
+<details class="info" open="open">
+<summary>Dot Product Intuition</summary>
+<p><strong>Bill splitting analogy:</strong><br />
+Quantities <code>[3 appetizers, 2 drinks]</code> • Prices <code>[5, 2]</code> → Total cost = <code>3*5 + 2*2 = 19</code>.</p>
+<p>That’s the <strong>dot product</strong>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>[3, 2] · [5, 2] = 15 + 4 = 19
+</code></pre></div>
+<p><strong>AI link:</strong> A linear regression prediction is a dot product of weights and features:<br />
+[
+\hat{y} = \mathbf{w} \cdot \mathbf{x} + b
+]</p>
+</details>
+<hr />
+<details class="info" open="open">
+<summary>Real-World Matrix Use</summary>
+<ul>
+<li><strong>Recipe scaling:</strong> Multiply ingredient matrix by 1.5 to feed more people.  </li>
+<li><strong>Scheduling grid:</strong> Matrix of days × hours helps visualize time slots.  </li>
+<li><strong>Image data:</strong> A color image is height × width × 3 (RGB channels)—essentially a stack of matrices.</li>
 </ul>
 </details>
+<hr />
+<h4 id="d2-formal-definitions-deep-dive">D2. Formal Definitions &amp; Deep Dive</h4>
+<h5 id="d21-from-lists-to-arrows-extra-gentle-bridge">D2.1 From Lists to Arrows (Extra-Gentle Bridge)</h5>
 <details class="info" open="open">
-<summary>2. Expectation (Mean)</summary>
-<p>Long‑run average outcome if you repeat forever.</p>
+<summary>Vectors as arrows you can move around</summary>
 <ul>
-<li><strong>Discrete:</strong><br />
-  <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>E[X] = Σ x_i · P(X = x_i)
-</code></pre></div></li>
-<li><strong>Continuous:</strong><br />
-  <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>E[X] = ∫ x f(x) dx
-</code></pre></div>
-<strong>Worked example (die):</strong><br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>E[X] = (1+2+3+4+5+6) / 6 = 3.5
-</code></pre></div>
-<strong>Relevance:</strong> Loss functions (e.g., MSE) minimize expected error → expectation is baked into training.</li>
+<li><strong>Picture it:</strong> A vector is an <strong>arrow</strong> — it has a length (how big) and a direction (which way).<br />
+  You can slide it around the page without changing it (only length + direction matter).</li>
+<li><strong>Add arrows = add effects:</strong> Put one arrow’s tail on the other’s head: the new arrow is the sum.<br />
+  This is the same as adding two feature lists in code.</li>
+<li><strong>Stretch/Shrink arrows:</strong> Multiply by 2 makes it twice as long (stronger effect); multiply by −1 flips direction (opposite effect).</li>
 </ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>     <span class="c1"># arrow 1</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>     <span class="c1"># arrow 2</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>             <span class="c1"># [3 4]</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="nb">print</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>            <span class="c1"># [-2 -1]</span>
+</code></pre></div>
+<p><strong>Real-world feelers:</strong>
+- <strong>Marketing metrics combo:</strong> “Email opens” + “Ad clicks” vectors → one bigger “engagement” vector.<br />
+- <strong>Portfolio weights:</strong> A weight vector <code>[0.5, 0.3, 0.2]</code> says “50% stock A, 30% stock B, 20% stock C.”</p>
 </details>
+<hr />
+<h5 id="d22-formal-definitions-yes-this-gets-mathy">D2.2 Formal Definitions (Yes, This Gets Mathy)</h5>
+<div class="admonition note">
+<p class="admonition-title">Heads up!</p>
+<p>Don’t stress if this feels heavy. You <strong>do not</strong> need to memorize every axiom.<br />
+The goal: recognize the terminology when you see it in books/docs and know roughly what it means.</p>
+</div>
 <details class="info" open="open">
-<summary>3. Variance &amp; Standard Deviation</summary>
-<p><strong>Variance:</strong> average squared distance from the mean.<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>Var(X) = E[(X − E[X])^2]
+<summary>Vector space (over the real numbers)</summary>
+<p>A <strong>vector space</strong> (V) over (\mathbb{R}) is a set of “things” (vectors) where you can:
+1. <strong>Add</strong> any two vectors and stay in the set.
+2. <strong>Multiply</strong> any vector by a real number (scalar) and stay in the set.</p>
+<p>More formally, it satisfies a bunch of rules (axioms) like:<br />
+- Addition is commutative &amp; associative.<br />
+- There’s a <strong>zero vector</strong> (acts like 0).<br />
+- Every vector has an additive inverse (acts like −v).<br />
+- Scalar multiplication distributes over vector addition, etc.</p>
+<p><strong>Basis &amp; dimension:</strong><br />
+- A <strong>basis</strong> is a minimal set of vectors that can build every other vector (by addition &amp; scaling).<br />
+- The <strong>dimension</strong> is how many vectors are in a basis.<br />
+  Example: In ordinary 3D space, any vector can be made from <code>[1,0,0]</code>, <code>[0,1,0]</code>, <code>[0,0,1]</code>, so dimension = 3.</p>
+<p><strong>Subspace:</strong><br />
+A smaller vector space inside a bigger one.<br />
+Example: All 2D points of the form <code>[x, 2x]</code> is a line through the origin — it’s closed under add/scale ⇒ a subspace.</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Plain Words</th>
+<th>Why It Shows Up in ML/AI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vector space</td>
+<td>A safe sandbox for add/scale</td>
+<td>We add gradients, scale loss terms, etc.</td>
+</tr>
+<tr>
+<td>Basis</td>
+<td>Minimal “building blocks”</td>
+<td>PCA finds a new basis to compress data</td>
+</tr>
+<tr>
+<td>Dimension</td>
+<td>How many numbers you need to describe</td>
+<td>“High-dimensional data” = many features</td>
+</tr>
+<tr>
+<td>Subspace</td>
+<td>Smaller sandbox inside the big one</td>
+<td>Feature constraints (“sum to 1” weights) form one</td>
+</tr>
+</tbody>
+</table>
+</details>
+<hr />
+<h5 id="d23-how-ml-business-actually-use-this-no-scary-math">D2.3 How ML &amp; Business Actually Use This (No Scary Math)</h5>
+<details class="info" open="open">
+<summary>Spreadsheet view → Matrix view</summary>
+<ul>
+<li>Your CSV file with rows = customers and columns = features is a <strong>matrix</strong> <code>X</code>.  </li>
+<li>A column (one feature across all customers) is a <strong>vector</strong>.  </li>
+<li>A model’s weights are another vector <code>w</code>. Prediction is basically:<br />
+  [
+    \text{prediction} = X \cdot w
+  ]<br />
+  (matrix × vector = new vector of predictions)</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">45</span><span class="p">,</span> <span class="mf">320.5</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>              <span class="p">[</span><span class="mi">23</span><span class="p">,</span> <span class="mf">150.0</span><span class="p">,</span>  <span class="mi">5</span><span class="p">]])</span>     <span class="c1"># 2 customers × 3 features</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>    <span class="c1"># weights</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="n">preds</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>                    <span class="c1"># predicted score/value</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">preds</span><span class="p">)</span>
 </code></pre></div>
-<strong>Std. dev.:</strong><br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>σ = √Var(X)
+<p><strong>Real-world examples:</strong>
+- <strong>Lead scoring:</strong> Combine features (opens, clicks, revenue) with weights to get a score.<br />
+- <strong>Inventory forecasting:</strong> Multiply a matrix of past sales by learned coefficients to get tomorrow’s demand.<br />
+- <strong>Chatbot embeddings:</strong> Words/sentences live as long vectors; comparing them (dot product) tells how similar meanings are.</p>
+<div class="admonition tip">
+<p class="admonition-title">GPU magic = fast matrix math</p>
+<p>Training deep nets is mostly giant matrix multiplications. GPUs are great at doing many of these in parallel.</p>
+</div>
+</details>
+<hr />
+<h5 id="d2m-matrices-shape-transpose">D2.M Matrices, Shape &amp; Transpose</h5>
+<details class="info" open="open">
+<summary>From Spreadsheet to Shape (Extra‑Gentle Bridge)</summary>
+<ul>
+<li><strong>Matrix = big spreadsheet of numbers.</strong> Rows = things/people/items. Columns = features about them.  </li>
+<li>Shape tells you “how many rows by how many columns”: <code>(rows, columns)</code>.  </li>
+<li><strong>Transpose</strong> just flips rows ↔ columns. Think of turning the sheet on its side.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">45</span><span class="p">,</span> <span class="mf">320.5</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>              <span class="p">[</span><span class="mi">23</span><span class="p">,</span> <span class="mf">150.0</span><span class="p">,</span>  <span class="mi">5</span><span class="p">]])</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>   <span class="c1"># (2, 3): 2 rows, 3 columns</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1"># (3, 2): transposed</span>
 </code></pre></div>
-<strong>Die example:</strong><br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Var ≈ 2.92,  σ ≈ 1.71
-</code></pre></div>
-<strong>Why it matters:</strong> Tells you how uncertain predictions are, helps build confidence intervals, drives anomaly detection.</p>
+<p><strong>Real‑world angle:</strong><br />
+- A customer table (rows=customers, cols=metrics) is your <code>X</code>.<br />
+- Transpose shows each feature as a vector of length “number of customers”.</p>
 </details>
 <div class="admonition note">
-<p class="admonition-title">Why Probability Matters in AI</p>
+<p class="admonition-title">Formal corner (OK to skim!)</p>
 <ul>
-<li><strong>Model Training:</strong> Errors are expectations (means) over data.  </li>
-<li><strong>Uncertainty:</strong> Variance underpins confidence, risk, anomaly flags.  </li>
-<li><strong>Feature Engineering:</strong> Understanding distributions guides transformations (e.g., log scales for skewed data).</li>
+<li>A matrix ( \mathbf{X} \in \mathbb{R}^{m \times n} ) is an array with (m) rows and (n) columns.  </li>
+<li>The <strong>transpose</strong> ( \mathbf{X}^T \in \mathbb{R}^{n \times m} ) satisfies ( (\mathbf{X}^T)<em>{ij} = \mathbf{X}</em>{ji} ).  </li>
+<li>Rows are often denoted ( \mathbf{x}_i^T ) (row vectors), columns ( \mathbf{x}^{(j)} ) (column vectors).</li>
 </ul>
 </div>
-<h3 id="c-linear-algebra-basics">C. Linear Algebra Basics</h3>
-<div class="admonition abstract">
-<p class="admonition-title">Definition</p>
-<p><strong>Linear Algebra</strong> – “The branch of mathematics concerned with vectors, vector spaces, and linear transformations.”</p>
-</div>
-<h4 id="c1-gentle-introduction">C1. Gentle Introduction</h4>
-<details class="tip" open="open">
-<summary>1. Vectors as Lists</summary>
-<p><strong>Analogy:</strong> A grocery list: <code>[2 bananas, 1 loaf bread, 500 g cheese]</code><br />
-<strong>Key idea:</strong> A <strong>vector</strong> is just a list of numbers representing features.</p>
-</details>
-<details class="tip" open="open">
-<summary>2. Matrices as Tables</summary>
-<p><strong>Analogy:</strong> A seating chart (rows = tables, columns = seats):<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>       S1  S2  S3
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    T1  A   B   C
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>    T2  D   E   F
-</code></pre></div>
-<strong>Key idea:</strong> A <strong>matrix</strong> stacks many vectors into rows or columns.</p>
-</details>
-<details class="tip" open="open">
-<summary>3. Dot Product Intuition</summary>
-<p><strong>Example (bill splitting):</strong><br />
-- You &amp; a friend order appetizers <code>[3, 2]</code> and drinks <code>[1, 2]</code>.<br />
-- Prices: appetizers = \$5, drinks = \$2 →<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>[3, 2] · [5, 2] = 3×5 + 2×2 = 19
-</code></pre></div>
-<strong>Why it matters:</strong> Same math as a simple regression prediction (weights × features).</p>
-</details>
-<details class="tip" open="open">
-<summary>4. Real‑World Matrix Uses</summary>
+<details class="info" open="open">
+<summary>How ML/Business Uses Shapes</summary>
 <ul>
-<li><strong>Recipe scaling:</strong> Multiply ingredient matrix by 1.5 to go from 4 to 6 servings.  </li>
-<li><strong>School timetable:</strong> Days × hours grid to schedule classes.</li>
+<li>Libraries assume: <code>X.shape = (num_samples, num_features)</code>.  </li>
+<li>If shapes don’t align, your code errors (or silently gives wrong math).  </li>
+<li><strong>ETL sanity check:</strong> a sudden shape change can mean broken data ingestion.</li>
 </ul>
 </details>
-<h4 id="c2-formal-definitions-deep-dive">C2. Formal Definitions &amp; Deep Dive</h4>
+<hr />
+<h5 id="d2d-dot-product-norms-geometric-view">D2.D Dot Product, Norms &amp; Geometric View</h5>
 <details class="info" open="open">
-<summary>1. Vectors &amp; Their Interpretation</summary>
-<p>A vector <strong>x ∈ ℝⁿ</strong> is an ordered list of n numbers (features).<br />
-<strong>Example:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>x = [age, monthly_spend, num_orders] = [45, 320.5, 12]
-</code></pre></div></p>
-</details>
-<details class="info" open="open">
-<summary>2. Matrices &amp; Batch Operations</summary>
-<p>A matrix <strong>X ∈ ℝ^{m×n}</strong> stacks m row‑vectors of length n.<br />
-<strong>Example (customer table):</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>X = [
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>  [45, 320.5, 12],
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>  [23, 150.0,  5],
-<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>  ...
-<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>]
-</code></pre></div></p>
-</details>
-<details class="info" open="open">
-<summary>3. Dot Product &amp; Linear Transformations</summary>
-<p><strong>Dot product:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>a · b = Σ (a_i * b_i)
-</code></pre></div>
-<strong>Use in AI:</strong>
-- <strong>Regression:</strong>  ŷ = w · x + b<br />
-- <strong>Neural nets:</strong>  z = w · x + b, then apply activation (e.g., ReLU)</p>
-</details>
-<details class="info" open="open">
-<summary>4. Matrix Multiplication</summary>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>C = A × B,   C_{ij} = Σ_k A_{ik} B_{kj}
-</code></pre></div>
-<strong>Example:</strong> Combine/transform features or chain neural network layers.</p>
-</details>
-<details class="success" open="open">
-<summary>Why Linear Algebra Matters in AI</summary>
+<summary>Extra‑Gentle: ‘How aligned are two arrows?’</summary>
 <ul>
-<li><strong>Speed:</strong> GPUs/NumPy rely on vectorized (matrix) ops for efficiency.  </li>
-<li><strong>Model Insight:</strong> Weights, activations, attention maps are matrices/vectors.  </li>
-<li><strong>Dimensionality Reduction:</strong> PCA, SVD use eigenvectors/values to compress data.</li>
+<li><strong>Dot product</strong> measures how much two vectors “point the same way.”<br />
+  If they point in opposite directions, the dot is negative; if perpendicular, ~0.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>              <span class="c1"># 32</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>     <span class="c1"># length of a</span>
+</code></pre></div>
+<ul>
+<li><strong>Norm</strong> = length of the arrow (vector). Like measuring the “size” of an effect.</li>
+</ul>
+<p><strong>Plain examples:</strong><br />
+- Product pricing: quantities · prices = total bill (dot product).<br />
+- “Similarity” score between two customer profiles = dot product of their feature vectors.</p>
+</details>
+<div class="admonition note">
+<p class="admonition-title">Formal corner (breathe… you’re fine)</p>
+<ul>
+<li>Dot product: ( \mathbf{a} \cdot \mathbf{b} = \sum_{i=1}^n a_i b_i ).  </li>
+<li>Norm (Euclidean): ( |\mathbf{a}| = \sqrt{\mathbf{a} \cdot \mathbf{a}} ).  </li>
+<li>Angle relation: ( \mathbf{a} \cdot \mathbf{b} = |\mathbf{a}||\mathbf{b}|\cos\theta ).</li>
+</ul>
+</div>
+<details class="info" open="open">
+<summary>ML/AI Tie‑ins (Simple View)</summary>
+<ul>
+<li><strong>Regression prediction:</strong> ( \hat{y} = \mathbf{w} \cdot \mathbf{x} + b ).  </li>
+<li><strong>Embedding similarity (NLP, Recommenders):</strong> cosine similarity = normalized dot product.  </li>
+<li><strong>Gradient steps:</strong> length (norm) of gradient controls learning rate effect.</li>
+</ul>
+</details>
+<hr />
+<h5 id="d2mm-matrix-multiplication-what-really-happens">D2.MM Matrix Multiplication (What Really Happens)</h5>
+<details class="info" open="open">
+<summary>Extra‑Gentle: Combine many dots at once</summary>
+<ul>
+<li>Matrix multiplication is just doing <strong>lots of dot products</strong>.<br />
+  Each output cell = dot(row from A, column from B).</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>              <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>        <span class="c1"># 2x3</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">],</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>              <span class="p">[</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>              <span class="p">[</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">]])</span>        <span class="c1"># 3x2</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="n">C</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>                    <span class="c1"># 2x2 result</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="nb">print</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="c1"># [[ 58  64]</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="c1">#  [139 154]]</span>
+</code></pre></div>
+<ul>
+<li><strong>Shape rule:</strong> (m×n) · (n×p) → (m×p). The inside numbers must match.</li>
+</ul>
+</details>
+<div class="admonition note">
+<p class="admonition-title">Formal corner (notation time)</p>
+<ul>
+<li>( C_{ij} = \sum_{k=1}^{n} A_{ik} B_{kj} )  </li>
+<li>It’s associative: ( (AB)C = A(BC) ).  </li>
+<li>Not commutative: ( AB \neq BA ) in general.</li>
+</ul>
+</div>
+<details class="info" open="open">
+<summary>Why ML cares (plain English)</summary>
+<ul>
+<li>A neural network layer is: <code>output = input @ weights + bias</code>.  </li>
+<li>GPUs are optimized to do <strong>huge matrix multiplications</strong> fast → deep learning is feasible.  </li>
+<li>Batch predictions: one matrix multiply gives predictions for thousands of rows at once.</li>
+</ul>
+</details>
+<hr />
+<h5 id="d2i-identity-inverse-rank-quick-glimpse">D2.I Identity, Inverse &amp; Rank (Quick Glimpse)</h5>
+<details class="info" open="open">
+<summary>Gentle Pass</summary>
+<ul>
+<li><strong>Identity matrix (I):</strong> like multiplying a number by 1 — it leaves things unchanged.  </li>
+<li><strong>Inverse (A^{-1}):</strong> the matrix that “undoes” (A) (if it exists).  </li>
+<li><strong>Rank:</strong> how many truly independent columns/rows you have (redundant columns lower rank).</li>
+</ul>
+</details>
+<div class="admonition note">
+<p class="admonition-title">Formal corner (skim ok!)</p>
+<ul>
+<li>( AI = IA = A ).  </li>
+<li>( A^{-1} A = AA^{-1} = I ) (only for invertible/square matrices).  </li>
+<li>Rank is the dimension of the column space (or row space). Full rank ⇒ columns are linearly independent.</li>
+</ul>
+</div>
+<details class="info" open="open">
+<summary>Simple Business/ML Uses</summary>
+<ul>
+<li><strong>Identity</strong> appears in regularization terms (e.g., ( \lambda I ) in ridge regression).  </li>
+<li><strong>Non-invertible (singular) matrix:</strong> means features are perfectly correlated → model can’t find unique weights.  </li>
+<li><strong>Rank checks</strong> help detect multicollinearity before training.</li>
 </ul>
 </details>
 <h2 id="4-tools-installation-setup">4. Tools Installation &amp; Setup</h2>
@@ -1108,8 +1486,8 @@ Your edge = knowing <strong>when to mix them</strong> for real business value.</
 <p class="admonition-title">You’ll do this once, then reuse the environment all term.</p>
 </div>
 <h3 id="a-install-python-anaconda-windows-mac">A. Install Python &amp; Anaconda (Windows &amp; Mac)</h3>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># Visit this in your browser:</span>
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>https://www.anaconda.com/products/distribution
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># Visit this in your browser:</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>https://www.anaconda.com/products/distribution
 </code></pre></div>
 1. Download the <strong>Python 3.x</strong> installer for your OS.<br />
 2. Run the installer, accept defaults.<br />
@@ -1123,11 +1501,11 @@ Your edge = knowing <strong>when to mix them</strong> for real business value.</
 </ol>
 <h3 id="c-install-import-numpy-pandas">C. Install &amp; Import NumPy &amp; pandas</h3>
 <p>In a notebook cell, run:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>!conda<span class="w"> </span>install<span class="w"> </span>numpy<span class="w"> </span>pandas<span class="w"> </span>-y
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>!conda<span class="w"> </span>install<span class="w"> </span>numpy<span class="w"> </span>pandas<span class="w"> </span>-y
 </code></pre></div>
 Then import:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 </code></pre></div></p>
 <div class="admonition tip">
 <p class="admonition-title">Why these tools?</p>
@@ -1152,18 +1530,18 @@ Simulate 1,000 rolls of a fair six‑sided die in Python and compute the empiric
 - <strong>Risk modeling:</strong> Monte Carlo estimates of portfolio variance<br />
 - <strong>Game design:</strong> balance randomness in mechanics</p>
 <p><strong>4. Step-by-Step Instructions</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>
-<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="c1"># Simulate 1,000 die rolls</span>
-<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>           <span class="c1"># optional: reproducibility</span>
-<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="n">rolls</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
-<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>
-<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="c1"># Compute statistics</span>
-<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="n">mean_rolls</span> <span class="o">=</span> <span class="n">rolls</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="n">var_rolls</span>  <span class="o">=</span> <span class="n">rolls</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
-<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a>
-<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Simulated Mean:    &quot;</span><span class="p">,</span> <span class="n">mean_rolls</span><span class="p">)</span>
-<a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Simulated Variance:&quot;</span><span class="p">,</span> <span class="n">var_rolls</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="c1"># Simulate 1,000 die rolls</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>           <span class="c1"># optional: reproducibility</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="n">rolls</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="c1"># Compute statistics</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="n">mean_rolls</span> <span class="o">=</span> <span class="n">rolls</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="n">var_rolls</span>  <span class="o">=</span> <span class="n">rolls</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Simulated Mean:    &quot;</span><span class="p">,</span> <span class="n">mean_rolls</span><span class="p">)</span>
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Simulated Variance:&quot;</span><span class="p">,</span> <span class="n">var_rolls</span><span class="p">)</span>
 </code></pre></div></p>
 <p><strong>Notes:</strong><br />
 - <code>np.random.randint(1, 7, size=1000)</code> → integers 1–6<br />
@@ -1190,15 +1568,15 @@ Simulate 10,000 coin flips to estimate the probability of heads and tails.</p>
 - <strong>A/B testing:</strong> success/failure rates<br />
 - <strong>Clinical trials:</strong> treatment vs. control outcomes</p>
 <p><strong>4. Step-by-Step Instructions</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>
-<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                      <span class="c1"># optional: reproducibility</span>
-<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="n">flips</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
-<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>
-<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="n">p_heads</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">flips</span> <span class="o">==</span> <span class="s1">&#39;H&#39;</span><span class="p">)</span>
-<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="n">p_tails</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">flips</span> <span class="o">==</span> <span class="s1">&#39;T&#39;</span><span class="p">)</span>
-<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>
-<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P(heads): </span><span class="si">{</span><span class="n">p_heads</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, P(tails): </span><span class="si">{</span><span class="n">p_tails</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                      <span class="c1"># optional: reproducibility</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="n">flips</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="n">p_heads</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">flips</span> <span class="o">==</span> <span class="s1">&#39;H&#39;</span><span class="p">)</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="n">p_tails</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">flips</span> <span class="o">==</span> <span class="s1">&#39;T&#39;</span><span class="p">)</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P(heads): </span><span class="si">{</span><span class="n">p_heads</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, P(tails): </span><span class="si">{</span><span class="n">p_tails</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div></p>
 <p><strong>5. Expected Outcomes &amp; Interpretation</strong><br />
 - Both ≈ 0.5, with random fluctuation ~±0.01<br />
@@ -1220,13 +1598,13 @@ Visualize the distribution of the 1,000 die rolls from Exercise 1.</p>
 - Sales distribution by category<br />
 - Error counts per batch in manufacturing</p>
 <p><strong>4. Step-by-Step Instructions</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>
-<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">rolls</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">rwidth</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
-<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Die Face&#39;</span><span class="p">)</span>
-<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
-<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histogram of 1,000 Die Rolls&#39;</span><span class="p">)</span>
-<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">rolls</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">rwidth</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Die Face&#39;</span><span class="p">)</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histogram of 1,000 Die Rolls&#39;</span><span class="p">)</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></p>
 <p><strong>5. Expected Outcomes &amp; Interpretation</strong><br />
 - Bars roughly equal for faces 1–6 (random noise is okay)</p>
@@ -1248,13 +1626,13 @@ Simulate 5,000 samples from an exponential distribution (mean = 2) and compu
 - Time between machine failures<br />
 - Call‑center interarrival times</p>
 <p><strong>4. Step-by-Step Instructions</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>
-<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                         <span class="c1"># optional</span>
-<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
-<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>
-<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Empirical Mean:   &quot;</span><span class="p">,</span> <span class="n">samples</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
-<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Empirical Variance:&quot;</span><span class="p">,</span> <span class="n">samples</span><span class="o">.</span><span class="n">var</span><span class="p">())</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                         <span class="c1"># optional</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Empirical Mean:   &quot;</span><span class="p">,</span> <span class="n">samples</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Empirical Variance:&quot;</span><span class="p">,</span> <span class="n">samples</span><span class="o">.</span><span class="n">var</span><span class="p">())</span>
 </code></pre></div></p>
 <p><strong>5. Expected Outcomes &amp; Interpretation</strong><br />
 - Mean ≈ 2<br />
@@ -1278,13 +1656,13 @@ Draw 10,000 samples from a standard normal distribution (mean 0, σ = 1) a
 - Measurement error modeling<br />
 - Standardized test scores / z‑scores</p>
 <p><strong>4. Step-by-Step Instructions</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>
-<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                    <span class="c1"># optional</span>
-<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="n">normals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>     <span class="c1"># mean=0, std=1</span>
-<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>
-<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean:&quot;</span><span class="p">,</span> <span class="n">normals</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
-<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Variance:&quot;</span><span class="p">,</span> <span class="n">normals</span><span class="o">.</span><span class="n">var</span><span class="p">())</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                    <span class="c1"># optional</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="n">normals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>     <span class="c1"># mean=0, std=1</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean:&quot;</span><span class="p">,</span> <span class="n">normals</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Variance:&quot;</span><span class="p">,</span> <span class="n">normals</span><span class="o">.</span><span class="n">var</span><span class="p">())</span>
 </code></pre></div></p>
 <p><strong>5. Expected Outcomes &amp; Interpretation</strong><br />
 - Mean ≈ 0, Variance ≈ 1 (allow small deviation)</p>
@@ -1306,17 +1684,17 @@ Run 1,000 “mini‑experiments.” Each experiment rolls a die 100 times, recor
 - <strong>Polling averages:</strong> many small samples → distribution of means<br />
 - <strong>Quality control:</strong> batch averages instead of single measurements</p>
 <p><strong>4. Step-by-Step Instructions</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>
-<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># optional</span>
-<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="n">means</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)]</span>
-<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a>
-<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">means</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sampling Distribution of Die Roll Means&#39;</span><span class="p">)</span>
-<a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Sample Mean&#39;</span><span class="p">)</span>
-<a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
-<a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># optional</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="n">means</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)]</span>
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">means</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sampling Distribution of Die Roll Means&#39;</span><span class="p">)</span>
+<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Sample Mean&#39;</span><span class="p">)</span>
+<a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></p>
 <p><strong>5. Expected Outcomes &amp; Interpretation</strong><br />
 - Histogram looks roughly normal, centered near 3.5<br />
@@ -1338,14 +1716,14 @@ Simulate 1,000 rolls of a <strong>biased</strong> die where P(6) = 0.5 and the o
 - Biased processes in manufacturing (defect more likely on one line)<br />
 - Skewed customer behavior (one product far more popular)</p>
 <p><strong>4. Step-by-Step Instructions</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>
-<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># optional</span>
-<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="n">faces</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
-<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="n">probs</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">]</span><span class="o">*</span><span class="mi">5</span> <span class="o">+</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">]</span>     <span class="c1"># 0.1 each for 1–5, 0.5 for 6</span>
-<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="n">rolls_biased</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">faces</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">probs</span><span class="p">)</span>
-<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a>
-<a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean:&quot;</span><span class="p">,</span> <span class="n">rolls_biased</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="s2">&quot;Variance:&quot;</span><span class="p">,</span> <span class="n">rolls_biased</span><span class="o">.</span><span class="n">var</span><span class="p">())</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># optional</span>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="n">faces</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="n">probs</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">]</span><span class="o">*</span><span class="mi">5</span> <span class="o">+</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">]</span>     <span class="c1"># 0.1 each for 1–5, 0.5 for 6</span>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="n">rolls_biased</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">faces</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">probs</span><span class="p">)</span>
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>
+<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean:&quot;</span><span class="p">,</span> <span class="n">rolls_biased</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="s2">&quot;Variance:&quot;</span><span class="p">,</span> <span class="n">rolls_biased</span><span class="o">.</span><span class="n">var</span><span class="p">())</span>
 </code></pre></div></p>
 <p><strong>5. Expected Outcomes &amp; Interpretation</strong><br />
 - Mean <strong>&gt; 3.5</strong> due to heavy weight on 6<br />
@@ -1368,16 +1746,16 @@ Demonstrate vector addition and scalar multiplication using simple feature vecto
 - Combine feature effects (e.g., marketing channels)<br />
 - Scale normalized data or weights</p>
 <p><strong>4. Step-by-Step Instructions</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>
-<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="n">v1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
-<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="n">v2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
-<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>
-<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="n">sum_v</span>   <span class="o">=</span> <span class="n">v1</span> <span class="o">+</span> <span class="n">v2</span>        <span class="c1"># vector addition</span>
-<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="n">scaled_v</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">v1</span>      <span class="c1"># scalar multiplication</span>
-<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>
-<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sum:   &quot;</span><span class="p">,</span> <span class="n">sum_v</span><span class="p">)</span>
-<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Scaled:&quot;</span><span class="p">,</span> <span class="n">scaled_v</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="n">v1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="n">v2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="n">sum_v</span>   <span class="o">=</span> <span class="n">v1</span> <span class="o">+</span> <span class="n">v2</span>        <span class="c1"># vector addition</span>
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="n">scaled_v</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">v1</span>      <span class="c1"># scalar multiplication</span>
+<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>
+<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sum:   &quot;</span><span class="p">,</span> <span class="n">sum_v</span><span class="p">)</span>
+<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Scaled:&quot;</span><span class="p">,</span> <span class="n">scaled_v</span><span class="p">)</span>
 </code></pre></div></p>
 <p><strong>5. Expected Outcomes &amp; Interpretation</strong><br />
 - <code>Sum</code> = <code>[3, 7, 11]</code><br />
@@ -1400,21 +1778,21 @@ Multiply a 2×3 matrix by a 3×2 matrix to reinforce matrix‑multiplication rul
 - Transforming feature spaces<br />
 - Chaining layers in neural networks (each layer = a matrix multiply)</p>
 <p><strong>4. Step-by-Step Instructions</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>
-<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
-<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>              <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>          <span class="c1"># shape (2, 3)</span>
-<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>
-<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a><span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span> <span class="mi">7</span><span class="p">,</span>  <span class="mi">8</span><span class="p">],</span>
-<a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a>              <span class="p">[</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
-<a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a>              <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]])</span>          <span class="c1"># shape (3, 2)</span>
-<a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a>
-<a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a><span class="n">C</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>            <span class="c1"># or: C = A @ B in Python 3.5+</span>
-<a id="__codelineno-30-11" name="__codelineno-30-11" href="#__codelineno-30-11"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Result:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>              <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>          <span class="c1"># shape (2, 3)</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span> <span class="mi">7</span><span class="p">,</span>  <span class="mi">8</span><span class="p">],</span>
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a>              <span class="p">[</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a>              <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]])</span>          <span class="c1"># shape (3, 2)</span>
+<a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a>
+<a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a><span class="n">C</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>            <span class="c1"># or: C = A @ B in Python 3.5+</span>
+<a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Result:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
 </code></pre></div></p>
 <p><strong>5. Expected Outcomes &amp; Interpretation</strong><br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>[[ 58  64]
-<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a> [139 154]]
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>[[ 58  64]
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a> [139 154]]
 </code></pre></div>
 - You can verify: first row × first column → 1<em>7 + 2</em>9 + 3*11 = 58</p>
 <p><strong>6. Extensions &amp; Variations</strong><br />
@@ -1435,22 +1813,22 @@ Perform PCA on a tiny 2‑D dataset, reduce it to 1‑D, and see how much varian
 - Compressing image or sensor data<br />
 - Feature extraction before clustering or modeling</p>
 <p><strong>4. Step-by-Step Instructions</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
-<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>
-<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>    <span class="p">[</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.4</span><span class="p">],</span>
-<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>    <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">],</span>
-<a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>    <span class="p">[</span><span class="mf">2.2</span><span class="p">,</span> <span class="mf">2.9</span><span class="p">],</span>
-<a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>    <span class="p">[</span><span class="mf">1.9</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">],</span>
-<a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a>    <span class="p">[</span><span class="mf">3.1</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">]</span>
-<a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a><span class="p">])</span>
-<a id="__codelineno-32-11" name="__codelineno-32-11" href="#__codelineno-32-11"></a>
-<a id="__codelineno-32-12" name="__codelineno-32-12" href="#__codelineno-32-12"></a><span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<a id="__codelineno-32-13" name="__codelineno-32-13" href="#__codelineno-32-13"></a><span class="n">X_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<a id="__codelineno-32-14" name="__codelineno-32-14" href="#__codelineno-32-14"></a>
-<a id="__codelineno-32-15" name="__codelineno-32-15" href="#__codelineno-32-15"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Explained variance ratio:&quot;</span><span class="p">,</span> <span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">)</span>
-<a id="__codelineno-32-16" name="__codelineno-32-16" href="#__codelineno-32-16"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Projected data:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">X_pca</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>    <span class="p">[</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.4</span><span class="p">],</span>
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>    <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">],</span>
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>    <span class="p">[</span><span class="mf">2.2</span><span class="p">,</span> <span class="mf">2.9</span><span class="p">],</span>
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>    <span class="p">[</span><span class="mf">1.9</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">],</span>
+<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a>    <span class="p">[</span><span class="mf">3.1</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">]</span>
+<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a><span class="p">])</span>
+<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a>
+<a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a><span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a><span class="n">X_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a>
+<a id="__codelineno-29-15" name="__codelineno-29-15" href="#__codelineno-29-15"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Explained variance ratio:&quot;</span><span class="p">,</span> <span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">)</span>
+<a id="__codelineno-29-16" name="__codelineno-29-16" href="#__codelineno-29-16"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Projected data:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">X_pca</span><span class="p">)</span>
 </code></pre></div></p>
 <p><strong>5. Expected Outcomes &amp; Interpretation</strong><br />
 - First component should capture ~98% of variance for this toy set<br />
