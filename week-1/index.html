@@ -384,13 +384,46 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#c-probability-basics" class="md-nav__link">
+  <a href="#b-probability-basics" class="md-nav__link">
     <span class="md-ellipsis">
-      C. Probability Basics
+      B. Probability Basics
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="C. Probability Basics">
+    <nav class="md-nav" aria-label="B. Probability Basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#b1-gentle-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      B1. Gentle Introduction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b2-formal-definitions-deep-dive" class="md-nav__link">
+    <span class="md-ellipsis">
+      B2. Formal Definitions &amp; Deep Dive
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-linear-algebra-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      C. Linear Algebra Basics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="C. Linear Algebra Basics">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -406,39 +439,6 @@
   <a href="#c2-formal-definitions-deep-dive" class="md-nav__link">
     <span class="md-ellipsis">
       C2. Formal Definitions &amp; Deep Dive
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#d-linear-algebra-basics" class="md-nav__link">
-    <span class="md-ellipsis">
-      D. Linear Algebra Basics
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="D. Linear Algebra Basics">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#d1-gentle-introduction" class="md-nav__link">
-    <span class="md-ellipsis">
-      D1. Gentle Introduction
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#d2-formal-definitions-deep-dive" class="md-nav__link">
-    <span class="md-ellipsis">
-      D2. Formal Definitions &amp; Deep Dive
     </span>
   </a>
   
@@ -763,70 +763,192 @@
 </table>
 <h2 id="3-concept-sections">3. Concept Sections</h2>
 <h3 id="a-ai-milestones">A. AI Milestones</h3>
+<blockquote>
+<p><strong>Artificial Intelligence (AI)</strong> – “The science and engineering of making intelligent machines, especially intelligent computer programs.” — John McCarthy, 1956</p>
+</blockquote>
 <details class="info" open="open">
 <summary>The Dartmouth Workshop (1956)</summary>
-<p><strong>What happened:</strong><br />
+<p><strong>What happened (kept):</strong><br />
 In summer 1956, John McCarthy, Marvin Minsky, Nathaniel Rochester, and Claude Shannon met at Dartmouth College to ask: <em>“Can machines simulate human intelligence?”</em> They coined <strong>“Artificial Intelligence”</strong> and proposed studying how machines might “learn from experience,” “make abstractions,” and “use language.”</p>
-<p><strong>Context &amp; significance:</strong><br />
+<p><strong>Context &amp; significance (kept):</strong><br />
 - Pre‑1956, computers = number crunchers. Dartmouth reframed them as <strong>potential thinking machines</strong>.<br />
 - Sparked optimism (and funding) that small teams could crack “every aspect of learning.”</p>
+<p><strong>First programs (kept):</strong><br />
+- <strong>Logic Theorist (1955)</strong> – Newell &amp; Simon proved logic theorems with a program.<br />
+- <strong>General Problem Solver (1957)</strong> – Early universal reasoning attempt.</p>
+<div class="admonition note">
+<p class="admonition-title">Why this still matters (kept)</p>
+<ul>
+<li>Understanding the <strong>hype → disappointment → AI winters</strong> cycle helps you stay realistic about today’s claims.  </li>
+<li>Symbolic reasoning/search ideas from this era live on in <strong>knowledge graphs</strong> and <strong>constraint solvers</strong>.</li>
+</ul>
+</div>
+<hr />
+<p><strong>Deeper Context</strong><br />
+- <strong>Computing state:</strong> Transistors were new; programming languages just emerging (FORTRAN in 1957).<br />
+- <strong>Intellectual backdrop:</strong> Cybernetics &amp; information theory showed feedback/communication could be formalized—why not “intelligence”?<br />
+- <strong>People &amp; ideas:</strong> McCarthy later created LISP (1958); Minsky founded MIT AI Lab; Newell &amp; Simon argued a “physical symbol system” can generate intelligence.</p>
+<p><strong>Core Technical Ideas (plain → precise)</strong><br />
+- Treat problems as <strong>symbol strings</strong>; solving = <strong>searching</strong> through legal symbol transformations.<br />
+- <strong>Heuristics</strong> prune search trees (A* algorithm later builds on this mindset).<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Problem → Encode as symbols
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>        → Define legal operations (rules)
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        → Search for a sequence of operations to reach the goal
+</code></pre></div></p>
+<p><strong>Business &amp; Societal Impact (Then vs. Now)</strong><br />
+- <em>Then:</em> Government/academic funding—no commercial AI market yet.<br />
+- <em>Now:</em> Symbolic engines persist in compliance, tax, scheduling, and planning software.</p>
+<p><strong>Why It Matters to Dan (CEO/Entrepreneur)</strong><br />
+- Separate <strong>vision</strong> from <strong>roadmap</strong>. Dartmouth overpromised timelines—avoid that trap.<br />
+- Use <strong>hybrid systems</strong>: rules for constraints, ML for patterns (common in finance/ops).</p>
+<p><strong>Misconceptions &amp; Lessons</strong><br />
+- Myth: “AI began with neural nets.” → It began symbolically.<br />
+- Lesson: Each wave leaves <strong>usable tools</strong>—don’t discard “old” tech.</p>
+<p><strong>Mini Timeline Callout</strong><br />
+| Year | Event | Why It Matters |
+|------|-------|----------------|
+| 1950 | Turing’s “Imitation Game” paper | First formal test of “machine intelligence” |
+| 1955 | Logic Theorist | Proved math theorems—machines can “reason” |
+| 1956 | Dartmouth Workshop | AI term coined; field launched |
+| 1957 | General Problem Solver | Shows limits of “universal” reasoning |
+| 1958 | LISP created | Dominant AI language for decades |</p>
+<p><strong>See Also</strong><br />
+- Week 4 (Neural Network Basics) for a contrast with symbolic approaches.<br />
+- Week 15 (Anomaly Detection/QoE) where rules can wrap around ML for governance.</p>
 </details>
-<p><strong>First programs:</strong><br />
-    - <strong>Logic Theorist (1955)</strong> – Newell &amp; Simon proved logic theorems with a program.<br />
-    - <strong>General Problem Solver (1957)</strong> – Early universal reasoning attempt.</p>
-<div class="highlight"><pre><span></span><code>!!! note &quot;Why this still matters&quot;
-    - Understanding the **hype → disappointment → AI winters** cycle helps you stay realistic about today’s claims.  
-    - Symbolic reasoning/search ideas from this era live on in **knowledge graphs** and **constraint solvers**.
-</code></pre></div>
 <hr />
 <details class="info" open="open">
 <summary>Expert Systems Era (1970s–1980s)</summary>
-<p><strong>Core idea:</strong> Encode expert knowledge as <strong>IF–THEN rules</strong>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>IF symptom = fever AND symptom = rash
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>THEN suggest = measles
+<p><strong>Core idea (kept):</strong> Encode expert knowledge as <strong>IF–THEN rules</strong>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>IF symptom = fever AND symptom = rash
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>THEN suggest = measles
 </code></pre></div>
-<p><strong>MYCIN (1972–1980):</strong><br />
+<p><strong>MYCIN (1972–1980) (kept):</strong><br />
 - ~600 rules to diagnose bacterial infections &amp; suggest antibiotics<br />
 - Matched/surpassed human experts in blind tests</p>
-<p><strong>Strengths vs. limits:</strong><br />
+<p><strong>Strengths vs. limits (kept):</strong><br />
 - ✅ Transparent logic (traceable to specific rules)<br />
 - ❌ Hard to scale (thousands of hand‑written rules), weak with uncertainty</p>
 <div class="admonition tip">
-<p class="admonition-title">Modern relevance</p>
+<p class="admonition-title">Modern relevance (kept)</p>
 <ul>
 <li>Rule‑based logic still used in finance/healthcare compliance.  </li>
 <li>Today’s <strong>hybrid systems</strong>: rules for regulation + ML models for scoring.</li>
 </ul>
 </div>
+<hr />
+<p><strong>Deeper Context</strong><br />
+- <strong>Hardware shift:</strong> Minicomputers/workstations made corporate AI feasible; dedicated LISP machines sold.<br />
+- <strong>Commercialization:</strong> DEC’s XCON configured VAX computers—saved ~$25M/year; oil, med, and manufacturing sectors experimented widely.</p>
+<p><strong>Core Technical Ideas</strong><br />
+- <strong>Production rules + Inference engine:</strong><br />
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Knowledge Base (rules)
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>+ Working Memory (facts)
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>+ Inference Engine (forward/backward chaining)
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>= Conclusion
+</code></pre></div>
+  - Forward chaining: facts → conclusions<br />
+  - Backward chaining: goal → supporting rules<br />
+- <strong>Certainty factors:</strong> MYCIN’s workaround for uncertainty (e.g., 0.6 confidence).</p>
+<p><strong>Business &amp; Societal Impact</strong><br />
+- <em>Then:</em> Big early ROI stories, then maintenance bottlenecks → <strong>AI winter</strong> (late ’80s).<br />
+- <em>Now:</em> Business rules engines (Drools, BRMS) enforce policies &amp; compliance.</p>
+<p><strong>Why It Matters to Dan</strong><br />
+- <strong>Maintenance cost lesson:</strong> Knowledge capture &amp; upkeep is expensive—design for continuous update (MLOps mindset).<br />
+- <strong>Explainability:</strong> In regulated spaces, traceable logic is critical; combine rules + ML for auditability.</p>
+<p><strong>Misconceptions &amp; Lessons</strong><br />
+- Myth: “Expert systems are dead.” → They evolved into modern decision engines.<br />
+- Lesson: Balance <strong>transparency vs. flexibility</strong>—all‑rules = rigid, all‑ML = opaque.</p>
+<p><strong>Mini Timeline Callout</strong><br />
+| Year | Event | Why It Matters |
+|------|-------|----------------|
+| 1972 | MYCIN begins | First impactful medical expert system |
+| 1979 | XCON deployed at DEC | Massive real-world cost savings |
+| 1984 | Japan’s 5th Gen Project | National bet on symbolic AI |
+| 1987 | AI Winter hits | Funding collapses after hype |
+| 1990 | Probabilistic models rise | Bayes nets mark shift to statistical AI |</p>
+<p><strong>See Also</strong><br />
+- Week 5 (Ethics/Bias): rules help enforce fairness policies.<br />
+- Deployment weeks: wrap ML predictions with business rules.</p>
 </details>
 <hr />
 <details class="info" open="open">
 <summary>Deep Learning Boom (2010s–Present)</summary>
-<p><strong>Key breakthrough – AlexNet (2012):</strong><br />
+<p><strong>Key breakthrough – AlexNet (2012) (kept):</strong><br />
 - 8‑layer CNN, cut ImageNet error rate in half (1.2M images, 1,000 classes)<br />
 - Used ReLU, dropout, and <strong>GPU training</strong>.</p>
-<p><strong>Why deep learning emerged:</strong><br />
+<p><strong>Why deep learning emerged (kept):</strong><br />
 1. <strong>Data:</strong> Huge labeled datasets (images, text, speech)<br />
 2. <strong>Compute:</strong> GPUs = fast parallel matrix ops<br />
 3. <strong>Algorithms:</strong> Batch norm, better backprop, new architectures</p>
-<p><strong>Transformative apps:</strong><br />
+<p><strong>Transformative apps (kept):</strong><br />
 - Computer vision: self‑driving cars, medical imaging<br />
 - NLP: translation, GPT‑style generation<br />
 - Speech: voice assistants, real‑time translation</p>
 <div class="admonition success">
-<p class="admonition-title">Why this matters for you</p>
+<p class="admonition-title">Why this matters for you (kept)</p>
 <ul>
 <li>Modern frameworks (TensorFlow, PyTorch) are built around neural nets.  </li>
 <li>Explains why later terms focus on coding deep models &amp; leveraging <strong>pretrained architectures</strong> quickly.</li>
 </ul>
 </div>
+<hr />
+<p><strong>Deeper Context</strong><br />
+- <strong>Before 2012:</strong> Neural nets unfashionable; SVMs/ensembles dominated. ImageNet (2009) provided the benchmark that changed that.<br />
+- <strong>GPU/CUDA era:</strong> NVIDIA CUDA (2007) let researchers use gaming GPUs for matrix math cheaply.<br />
+- <strong>Open-source wave:</strong> Theano/Torch → TensorFlow (2015) → PyTorch (2016) democratized DL.</p>
+<p><strong>Core Technical Ideas</strong><br />
+- <strong>Representation learning:</strong> Networks learn features automatically vs. manual engineering.<br />
+- <strong>Backprop + Optimizers:</strong> Adam/RMSProp etc. speed convergence.<br />
+- <strong>Regularization:</strong> Dropout, data augmentation reduce overfitting.<br />
+- <strong>Transfer learning:</strong> Fine‑tune large pretrained models for your niche.<br />
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Pseudocode: fine-tune a pretrained CNN</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">base</span> <span class="o">=</span> <span class="n">load_pretrained_model</span><span class="p">(</span><span class="s2">&quot;resnet50&quot;</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="s2">&quot;imagenet&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">freeze_layers</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">up_to</span><span class="o">=</span><span class="s2">&quot;layer3&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">new_head</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;sigmoid&quot;</span><span class="p">)(</span><span class="n">base</span><span class="o">.</span><span class="n">output</span><span class="p">)</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">base</span><span class="o">.</span><span class="n">input</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">new_head</span><span class="p">)</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">&quot;adam&quot;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;binary_crossentropy&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">my_data</span><span class="p">,</span> <span class="n">my_labels</span><span class="p">)</span>
+</code></pre></div></p>
+<p><strong>Business &amp; Societal Impact</strong><br />
+- <em>Then:</em> Explosion of startups (vision, NLP, speech).<br />
+- <em>Now:</em> Foundation models/LLMs power copilots, automations, creative tools.<br />
+- <em>Risks:</em> Opaqueness, bias, IP, energy costs → regulation &amp; governance needed.</p>
+<p><strong>Why It Matters to Dan</strong><br />
+- <strong>Speed to value:</strong> APIs + pretrained nets = rapid prototypes.<br />
+- <strong>Data moat:</strong> High-quality labeled data becomes a competitive advantage.<br />
+- <strong>Build vs. Buy:</strong> Decide between API use (fast, less control) and in-house models (costly, differentiated).</p>
+<p><strong>Misconceptions &amp; Lessons</strong><br />
+- Myth: “Deep learning is always best.” → For tabular biz data, simpler models often win.<br />
+- Lesson: Start simple; escalate complexity when ROI demands it.</p>
+<p><strong>Mini Timeline Callout</strong><br />
+| Year | Event | Why It Matters |
+|------|-------|----------------|
+| 2006 | “Deep Learning” term revived (Hinton et al.) | Layer-wise pretraining shows deep nets can work |
+| 2009 | ImageNet released | Benchmark catalyzes vision progress |
+| 2012 | AlexNet wins ImageNet | GPU CNN breakthrough |
+| 2015 | TensorFlow open-sourced | Industrial-grade DL tooling |
+| 2017 | Transformer paper | Base of modern LLMs (GPT, etc.) |
+| 2020+| GPT‑3, Stable Diffusion | Generative AI mainstreams |</p>
+<p><strong>See Also</strong><br />
+- Week 4 (Neural Net Basics) &amp; Week 10 (TensorFlow/Keras) for hands-on DL.<br />
+- Term 3 apps (marketing, inventory, QoE) where transfer learning/LLMs drive ROI.</p>
 </details>
-<h3 id="c-probability-basics">C. Probability Basics</h3>
+<hr />
+<div class="admonition tip">
+<p class="admonition-title">Pattern to Remember</p>
+<p><strong>Symbolic → Rule‑Based → Deep Learning</strong><br />
+1. Each wave adds new capabilities.<br />
+2. Each brings new limitations.<br />
+3. Each leaves tools you can still exploit.<br />
+Your edge = knowing <strong>when to mix them</strong> for real business value.</p>
+</div>
+<h3 id="b-probability-basics">B. Probability Basics</h3>
 <div class="admonition abstract">
 <p class="admonition-title">Definition</p>
 <p><strong>Probability Theory</strong> – “The mathematical framework for quantifying uncertainty and modeling random phenomena.”</p>
 </div>
-<h4 id="c1-gentle-introduction">C1. Gentle Introduction</h4>
+<h4 id="b1-gentle-introduction">B1. Gentle Introduction</h4>
 <details class="tip" open="open">
 <summary>1. What is Chance?</summary>
 <p><strong>Analogy:</strong> Flipping a coin—two outcomes, but you can’t predict which.<br />
@@ -837,7 +959,7 @@ In summer 1956, John McCarthy, Marvin Minsky, Nathaniel Rochester, and Cla
 <summary>2. Simple Data &amp; Averages</summary>
 <p><strong>Real example:</strong> Test scores: 80, 90, 70, 100, 60.<br />
 <strong>Mean (average):</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>(80 + 90 + 70 + 100 + 60) / 5 = 80
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>(80 + 90 + 70 + 100 + 60) / 5 = 80
 </code></pre></div>
 <strong>Why it matters:</strong> The mean tells you what’s “typical.”</p>
 </details>
@@ -851,18 +973,18 @@ In summer 1956, John McCarthy, Marvin Minsky, Nathaniel Rochester, and Cla
 4. Square root of variance → standard deviation ≈ 16.7<br />
 <strong>Why we care:</strong> Spread tells you how consistent or noisy data is—critical for risk or quality control.</p>
 </details>
-<h4 id="c2-formal-definitions-deep-dive">C2. Formal Definitions &amp; Deep Dive</h4>
+<h4 id="b2-formal-definitions-deep-dive">B2. Formal Definitions &amp; Deep Dive</h4>
 <details class="info" open="open">
 <summary>1. Random Variables</summary>
 <p>A <strong>random variable (RV)</strong> assigns numbers to random outcomes.</p>
 <ul>
 <li><strong>Discrete RV:</strong> countable values (die roll, number of returns)<br />
   Example: Fair die →<br />
-  <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>X ∈ {1,2,3,4,5,6},   P(X = k) = 1/6
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>X ∈ {1,2,3,4,5,6},   P(X = k) = 1/6
 </code></pre></div></li>
 <li><strong>Continuous RV:</strong> any value in a range (time between failures)<br />
   Example: Exponential distribution for time ( t ≥ 0 ):<br />
-  <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>f(t) = λ e^{−λ t}
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>f(t) = λ e^{−λ t}
 </code></pre></div></li>
 </ul>
 </details>
@@ -871,13 +993,13 @@ In summer 1956, John McCarthy, Marvin Minsky, Nathaniel Rochester, and Cla
 <p>Long‑run average outcome if you repeat forever.</p>
 <ul>
 <li><strong>Discrete:</strong><br />
-  <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>E[X] = Σ x_i · P(X = x_i)
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>E[X] = Σ x_i · P(X = x_i)
 </code></pre></div></li>
 <li><strong>Continuous:</strong><br />
-  <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>E[X] = ∫ x f(x) dx
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>E[X] = ∫ x f(x) dx
 </code></pre></div>
 <strong>Worked example (die):</strong><br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>E[X] = (1+2+3+4+5+6) / 6 = 3.5
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>E[X] = (1+2+3+4+5+6) / 6 = 3.5
 </code></pre></div>
 <strong>Relevance:</strong> Loss functions (e.g., MSE) minimize expected error → expectation is baked into training.</li>
 </ul>
@@ -885,13 +1007,13 @@ In summer 1956, John McCarthy, Marvin Minsky, Nathaniel Rochester, and Cla
 <details class="info" open="open">
 <summary>3. Variance &amp; Standard Deviation</summary>
 <p><strong>Variance:</strong> average squared distance from the mean.<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Var(X) = E[(X − E[X])^2]
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>Var(X) = E[(X − E[X])^2]
 </code></pre></div>
 <strong>Std. dev.:</strong><br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>σ = √Var(X)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>σ = √Var(X)
 </code></pre></div>
 <strong>Die example:</strong><br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>Var ≈ 2.92,  σ ≈ 1.71
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Var ≈ 2.92,  σ ≈ 1.71
 </code></pre></div>
 <strong>Why it matters:</strong> Tells you how uncertain predictions are, helps build confidence intervals, drives anomaly detection.</p>
 </details>
@@ -903,12 +1025,12 @@ In summer 1956, John McCarthy, Marvin Minsky, Nathaniel Rochester, and Cla
 <li><strong>Feature Engineering:</strong> Understanding distributions guides transformations (e.g., log scales for skewed data).</li>
 </ul>
 </div>
-<h3 id="d-linear-algebra-basics">D. Linear Algebra Basics</h3>
+<h3 id="c-linear-algebra-basics">C. Linear Algebra Basics</h3>
 <div class="admonition abstract">
 <p class="admonition-title">Definition</p>
 <p><strong>Linear Algebra</strong> – “The branch of mathematics concerned with vectors, vector spaces, and linear transformations.”</p>
 </div>
-<h4 id="d1-gentle-introduction">D1. Gentle Introduction</h4>
+<h4 id="c1-gentle-introduction">C1. Gentle Introduction</h4>
 <details class="tip" open="open">
 <summary>1. Vectors as Lists</summary>
 <p><strong>Analogy:</strong> A grocery list: <code>[2 bananas, 1 loaf bread, 500 g cheese]</code><br />
@@ -917,9 +1039,9 @@ In summer 1956, John McCarthy, Marvin Minsky, Nathaniel Rochester, and Cla
 <details class="tip" open="open">
 <summary>2. Matrices as Tables</summary>
 <p><strong>Analogy:</strong> A seating chart (rows = tables, columns = seats):<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>       S1  S2  S3
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    T1  A   B   C
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    T2  D   E   F
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>       S1  S2  S3
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    T1  A   B   C
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>    T2  D   E   F
 </code></pre></div>
 <strong>Key idea:</strong> A <strong>matrix</strong> stacks many vectors into rows or columns.</p>
 </details>
@@ -928,7 +1050,7 @@ In summer 1956, John McCarthy, Marvin Minsky, Nathaniel Rochester, and Cla
 <p><strong>Example (bill splitting):</strong><br />
 - You &amp; a friend order appetizers <code>[3, 2]</code> and drinks <code>[1, 2]</code>.<br />
 - Prices: appetizers = \$5, drinks = \$2 →<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>[3, 2] · [5, 2] = 3×5 + 2×2 = 19
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>[3, 2] · [5, 2] = 3×5 + 2×2 = 19
 </code></pre></div>
 <strong>Why it matters:</strong> Same math as a simple regression prediction (weights × features).</p>
 </details>
@@ -939,29 +1061,29 @@ In summer 1956, John McCarthy, Marvin Minsky, Nathaniel Rochester, and Cla
 <li><strong>School timetable:</strong> Days × hours grid to schedule classes.</li>
 </ul>
 </details>
-<h4 id="d2-formal-definitions-deep-dive">D2. Formal Definitions &amp; Deep Dive</h4>
+<h4 id="c2-formal-definitions-deep-dive">C2. Formal Definitions &amp; Deep Dive</h4>
 <details class="info" open="open">
 <summary>1. Vectors &amp; Their Interpretation</summary>
 <p>A vector <strong>x ∈ ℝⁿ</strong> is an ordered list of n numbers (features).<br />
 <strong>Example:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>x = [age, monthly_spend, num_orders] = [45, 320.5, 12]
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>x = [age, monthly_spend, num_orders] = [45, 320.5, 12]
 </code></pre></div></p>
 </details>
 <details class="info" open="open">
 <summary>2. Matrices &amp; Batch Operations</summary>
 <p>A matrix <strong>X ∈ ℝ^{m×n}</strong> stacks m row‑vectors of length n.<br />
 <strong>Example (customer table):</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>X = [
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>  [45, 320.5, 12],
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>  [23, 150.0,  5],
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>  ...
-<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>]
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>X = [
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>  [45, 320.5, 12],
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>  [23, 150.0,  5],
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>  ...
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>]
 </code></pre></div></p>
 </details>
 <details class="info" open="open">
 <summary>3. Dot Product &amp; Linear Transformations</summary>
 <p><strong>Dot product:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>a · b = Σ (a_i * b_i)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>a · b = Σ (a_i * b_i)
 </code></pre></div>
 <strong>Use in AI:</strong>
 - <strong>Regression:</strong>  ŷ = w · x + b<br />
@@ -969,7 +1091,7 @@ In summer 1956, John McCarthy, Marvin Minsky, Nathaniel Rochester, and Cla
 </details>
 <details class="info" open="open">
 <summary>4. Matrix Multiplication</summary>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>C = A × B,   C_{ij} = Σ_k A_{ik} B_{kj}
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>C = A × B,   C_{ij} = Σ_k A_{ik} B_{kj}
 </code></pre></div>
 <strong>Example:</strong> Combine/transform features or chain neural network layers.</p>
 </details>
@@ -986,8 +1108,8 @@ In summer 1956, John McCarthy, Marvin Minsky, Nathaniel Rochester, and Cla
 <p class="admonition-title">You’ll do this once, then reuse the environment all term.</p>
 </div>
 <h3 id="a-install-python-anaconda-windows-mac">A. Install Python &amp; Anaconda (Windows &amp; Mac)</h3>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># Visit this in your browser:</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>https://www.anaconda.com/products/distribution
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># Visit this in your browser:</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>https://www.anaconda.com/products/distribution
 </code></pre></div>
 1. Download the <strong>Python 3.x</strong> installer for your OS.<br />
 2. Run the installer, accept defaults.<br />
@@ -1001,11 +1123,11 @@ In summer 1956, John McCarthy, Marvin Minsky, Nathaniel Rochester, and Cla
 </ol>
 <h3 id="c-install-import-numpy-pandas">C. Install &amp; Import NumPy &amp; pandas</h3>
 <p>In a notebook cell, run:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>!conda<span class="w"> </span>install<span class="w"> </span>numpy<span class="w"> </span>pandas<span class="w"> </span>-y
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>!conda<span class="w"> </span>install<span class="w"> </span>numpy<span class="w"> </span>pandas<span class="w"> </span>-y
 </code></pre></div>
 Then import:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 </code></pre></div></p>
 <div class="admonition tip">
 <p class="admonition-title">Why these tools?</p>
@@ -1030,18 +1152,18 @@ Simulate 1,000 rolls of a fair six‑sided die in Python and compute the empiric
 - <strong>Risk modeling:</strong> Monte Carlo estimates of portfolio variance<br />
 - <strong>Game design:</strong> balance randomness in mechanics</p>
 <p><strong>4. Step-by-Step Instructions</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>
-<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="c1"># Simulate 1,000 die rolls</span>
-<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>           <span class="c1"># optional: reproducibility</span>
-<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="n">rolls</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
-<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>
-<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="c1"># Compute statistics</span>
-<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="n">mean_rolls</span> <span class="o">=</span> <span class="n">rolls</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="n">var_rolls</span>  <span class="o">=</span> <span class="n">rolls</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
-<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>
-<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Simulated Mean:    &quot;</span><span class="p">,</span> <span class="n">mean_rolls</span><span class="p">)</span>
-<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Simulated Variance:&quot;</span><span class="p">,</span> <span class="n">var_rolls</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="c1"># Simulate 1,000 die rolls</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>           <span class="c1"># optional: reproducibility</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="n">rolls</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="c1"># Compute statistics</span>
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="n">mean_rolls</span> <span class="o">=</span> <span class="n">rolls</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="n">var_rolls</span>  <span class="o">=</span> <span class="n">rolls</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
+<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a>
+<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Simulated Mean:    &quot;</span><span class="p">,</span> <span class="n">mean_rolls</span><span class="p">)</span>
+<a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Simulated Variance:&quot;</span><span class="p">,</span> <span class="n">var_rolls</span><span class="p">)</span>
 </code></pre></div></p>
 <p><strong>Notes:</strong><br />
 - <code>np.random.randint(1, 7, size=1000)</code> → integers 1–6<br />
@@ -1068,15 +1190,15 @@ Simulate 10,000 coin flips to estimate the probability of heads and tails.</p>
 - <strong>A/B testing:</strong> success/failure rates<br />
 - <strong>Clinical trials:</strong> treatment vs. control outcomes</p>
 <p><strong>4. Step-by-Step Instructions</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>
-<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                      <span class="c1"># optional: reproducibility</span>
-<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="n">flips</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
-<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>
-<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="n">p_heads</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">flips</span> <span class="o">==</span> <span class="s1">&#39;H&#39;</span><span class="p">)</span>
-<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="n">p_tails</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">flips</span> <span class="o">==</span> <span class="s1">&#39;T&#39;</span><span class="p">)</span>
-<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>
-<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P(heads): </span><span class="si">{</span><span class="n">p_heads</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, P(tails): </span><span class="si">{</span><span class="n">p_tails</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                      <span class="c1"># optional: reproducibility</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="n">flips</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="n">p_heads</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">flips</span> <span class="o">==</span> <span class="s1">&#39;H&#39;</span><span class="p">)</span>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="n">p_tails</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">flips</span> <span class="o">==</span> <span class="s1">&#39;T&#39;</span><span class="p">)</span>
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P(heads): </span><span class="si">{</span><span class="n">p_heads</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, P(tails): </span><span class="si">{</span><span class="n">p_tails</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div></p>
 <p><strong>5. Expected Outcomes &amp; Interpretation</strong><br />
 - Both ≈ 0.5, with random fluctuation ~±0.01<br />
@@ -1098,13 +1220,13 @@ Visualize the distribution of the 1,000 die rolls from Exercise 1.</p>
 - Sales distribution by category<br />
 - Error counts per batch in manufacturing</p>
 <p><strong>4. Step-by-Step Instructions</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>
-<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">rolls</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">rwidth</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
-<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Die Face&#39;</span><span class="p">)</span>
-<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
-<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histogram of 1,000 Die Rolls&#39;</span><span class="p">)</span>
-<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">rolls</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">rwidth</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Die Face&#39;</span><span class="p">)</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histogram of 1,000 Die Rolls&#39;</span><span class="p">)</span>
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></p>
 <p><strong>5. Expected Outcomes &amp; Interpretation</strong><br />
 - Bars roughly equal for faces 1–6 (random noise is okay)</p>
@@ -1126,13 +1248,13 @@ Simulate 5,000 samples from an exponential distribution (mean = 2) and compu
 - Time between machine failures<br />
 - Call‑center interarrival times</p>
 <p><strong>4. Step-by-Step Instructions</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>
-<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                         <span class="c1"># optional</span>
-<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
-<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>
-<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Empirical Mean:   &quot;</span><span class="p">,</span> <span class="n">samples</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
-<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Empirical Variance:&quot;</span><span class="p">,</span> <span class="n">samples</span><span class="o">.</span><span class="n">var</span><span class="p">())</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                         <span class="c1"># optional</span>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Empirical Mean:   &quot;</span><span class="p">,</span> <span class="n">samples</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Empirical Variance:&quot;</span><span class="p">,</span> <span class="n">samples</span><span class="o">.</span><span class="n">var</span><span class="p">())</span>
 </code></pre></div></p>
 <p><strong>5. Expected Outcomes &amp; Interpretation</strong><br />
 - Mean ≈ 2<br />
@@ -1156,13 +1278,13 @@ Draw 10,000 samples from a standard normal distribution (mean 0, σ = 1) a
 - Measurement error modeling<br />
 - Standardized test scores / z‑scores</p>
 <p><strong>4. Step-by-Step Instructions</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>
-<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                    <span class="c1"># optional</span>
-<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="n">normals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>     <span class="c1"># mean=0, std=1</span>
-<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>
-<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean:&quot;</span><span class="p">,</span> <span class="n">normals</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
-<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Variance:&quot;</span><span class="p">,</span> <span class="n">normals</span><span class="o">.</span><span class="n">var</span><span class="p">())</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                    <span class="c1"># optional</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="n">normals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>     <span class="c1"># mean=0, std=1</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean:&quot;</span><span class="p">,</span> <span class="n">normals</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Variance:&quot;</span><span class="p">,</span> <span class="n">normals</span><span class="o">.</span><span class="n">var</span><span class="p">())</span>
 </code></pre></div></p>
 <p><strong>5. Expected Outcomes &amp; Interpretation</strong><br />
 - Mean ≈ 0, Variance ≈ 1 (allow small deviation)</p>
@@ -1184,17 +1306,17 @@ Run 1,000 “mini‑experiments.” Each experiment rolls a die 100 times, recor
 - <strong>Polling averages:</strong> many small samples → distribution of means<br />
 - <strong>Quality control:</strong> batch averages instead of single measurements</p>
 <p><strong>4. Step-by-Step Instructions</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>
-<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># optional</span>
-<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="n">means</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)]</span>
-<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>
-<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">means</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sampling Distribution of Die Roll Means&#39;</span><span class="p">)</span>
-<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Sample Mean&#39;</span><span class="p">)</span>
-<a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
-<a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># optional</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="n">means</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)]</span>
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a>
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">means</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sampling Distribution of Die Roll Means&#39;</span><span class="p">)</span>
+<a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Sample Mean&#39;</span><span class="p">)</span>
+<a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></p>
 <p><strong>5. Expected Outcomes &amp; Interpretation</strong><br />
 - Histogram looks roughly normal, centered near 3.5<br />
@@ -1216,14 +1338,14 @@ Simulate 1,000 rolls of a <strong>biased</strong> die where P(6) = 0.5 and the o
 - Biased processes in manufacturing (defect more likely on one line)<br />
 - Skewed customer behavior (one product far more popular)</p>
 <p><strong>4. Step-by-Step Instructions</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>
-<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># optional</span>
-<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="n">faces</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
-<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="n">probs</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">]</span><span class="o">*</span><span class="mi">5</span> <span class="o">+</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">]</span>     <span class="c1"># 0.1 each for 1–5, 0.5 for 6</span>
-<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="n">rolls_biased</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">faces</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">probs</span><span class="p">)</span>
-<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>
-<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean:&quot;</span><span class="p">,</span> <span class="n">rolls_biased</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="s2">&quot;Variance:&quot;</span><span class="p">,</span> <span class="n">rolls_biased</span><span class="o">.</span><span class="n">var</span><span class="p">())</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># optional</span>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="n">faces</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="n">probs</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">]</span><span class="o">*</span><span class="mi">5</span> <span class="o">+</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">]</span>     <span class="c1"># 0.1 each for 1–5, 0.5 for 6</span>
+<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="n">rolls_biased</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">faces</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">probs</span><span class="p">)</span>
+<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a>
+<a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean:&quot;</span><span class="p">,</span> <span class="n">rolls_biased</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="s2">&quot;Variance:&quot;</span><span class="p">,</span> <span class="n">rolls_biased</span><span class="o">.</span><span class="n">var</span><span class="p">())</span>
 </code></pre></div></p>
 <p><strong>5. Expected Outcomes &amp; Interpretation</strong><br />
 - Mean <strong>&gt; 3.5</strong> due to heavy weight on 6<br />
@@ -1246,16 +1368,16 @@ Demonstrate vector addition and scalar multiplication using simple feature vecto
 - Combine feature effects (e.g., marketing channels)<br />
 - Scale normalized data or weights</p>
 <p><strong>4. Step-by-Step Instructions</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>
-<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="n">v1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
-<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="n">v2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
-<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>
-<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="n">sum_v</span>   <span class="o">=</span> <span class="n">v1</span> <span class="o">+</span> <span class="n">v2</span>        <span class="c1"># vector addition</span>
-<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="n">scaled_v</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">v1</span>      <span class="c1"># scalar multiplication</span>
-<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>
-<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sum:   &quot;</span><span class="p">,</span> <span class="n">sum_v</span><span class="p">)</span>
-<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Scaled:&quot;</span><span class="p">,</span> <span class="n">scaled_v</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="n">v1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="n">v2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="n">sum_v</span>   <span class="o">=</span> <span class="n">v1</span> <span class="o">+</span> <span class="n">v2</span>        <span class="c1"># vector addition</span>
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="n">scaled_v</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">v1</span>      <span class="c1"># scalar multiplication</span>
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>
+<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sum:   &quot;</span><span class="p">,</span> <span class="n">sum_v</span><span class="p">)</span>
+<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Scaled:&quot;</span><span class="p">,</span> <span class="n">scaled_v</span><span class="p">)</span>
 </code></pre></div></p>
 <p><strong>5. Expected Outcomes &amp; Interpretation</strong><br />
 - <code>Sum</code> = <code>[3, 7, 11]</code><br />
@@ -1278,21 +1400,21 @@ Multiply a 2×3 matrix by a 3×2 matrix to reinforce matrix‑multiplication rul
 - Transforming feature spaces<br />
 - Chaining layers in neural networks (each layer = a matrix multiply)</p>
 <p><strong>4. Step-by-Step Instructions</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>
-<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
-<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>              <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>          <span class="c1"># shape (2, 3)</span>
-<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>
-<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span> <span class="mi">7</span><span class="p">,</span>  <span class="mi">8</span><span class="p">],</span>
-<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a>              <span class="p">[</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
-<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a>              <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]])</span>          <span class="c1"># shape (3, 2)</span>
-<a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a>
-<a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a><span class="n">C</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>            <span class="c1"># or: C = A @ B in Python 3.5+</span>
-<a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Result:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>              <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>          <span class="c1"># shape (2, 3)</span>
+<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>
+<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a><span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span> <span class="mi">7</span><span class="p">,</span>  <span class="mi">8</span><span class="p">],</span>
+<a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a>              <span class="p">[</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+<a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a>              <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]])</span>          <span class="c1"># shape (3, 2)</span>
+<a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a>
+<a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a><span class="n">C</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>            <span class="c1"># or: C = A @ B in Python 3.5+</span>
+<a id="__codelineno-30-11" name="__codelineno-30-11" href="#__codelineno-30-11"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Result:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
 </code></pre></div></p>
 <p><strong>5. Expected Outcomes &amp; Interpretation</strong><br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>[[ 58  64]
-<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a> [139 154]]
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>[[ 58  64]
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a> [139 154]]
 </code></pre></div>
 - You can verify: first row × first column → 1<em>7 + 2</em>9 + 3*11 = 58</p>
 <p><strong>6. Extensions &amp; Variations</strong><br />
@@ -1313,22 +1435,22 @@ Perform PCA on a tiny 2‑D dataset, reduce it to 1‑D, and see how much varian
 - Compressing image or sensor data<br />
 - Feature extraction before clustering or modeling</p>
 <p><strong>4. Step-by-Step Instructions</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
-<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>
-<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>    <span class="p">[</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.4</span><span class="p">],</span>
-<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>    <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">],</span>
-<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>    <span class="p">[</span><span class="mf">2.2</span><span class="p">,</span> <span class="mf">2.9</span><span class="p">],</span>
-<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>    <span class="p">[</span><span class="mf">1.9</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">],</span>
-<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a>    <span class="p">[</span><span class="mf">3.1</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">]</span>
-<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a><span class="p">])</span>
-<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a>
-<a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a><span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a><span class="n">X_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a>
-<a id="__codelineno-29-15" name="__codelineno-29-15" href="#__codelineno-29-15"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Explained variance ratio:&quot;</span><span class="p">,</span> <span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">)</span>
-<a id="__codelineno-29-16" name="__codelineno-29-16" href="#__codelineno-29-16"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Projected data:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">X_pca</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>    <span class="p">[</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.4</span><span class="p">],</span>
+<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>    <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">],</span>
+<a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>    <span class="p">[</span><span class="mf">2.2</span><span class="p">,</span> <span class="mf">2.9</span><span class="p">],</span>
+<a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>    <span class="p">[</span><span class="mf">1.9</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">],</span>
+<a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a>    <span class="p">[</span><span class="mf">3.1</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">]</span>
+<a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a><span class="p">])</span>
+<a id="__codelineno-32-11" name="__codelineno-32-11" href="#__codelineno-32-11"></a>
+<a id="__codelineno-32-12" name="__codelineno-32-12" href="#__codelineno-32-12"></a><span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-32-13" name="__codelineno-32-13" href="#__codelineno-32-13"></a><span class="n">X_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<a id="__codelineno-32-14" name="__codelineno-32-14" href="#__codelineno-32-14"></a>
+<a id="__codelineno-32-15" name="__codelineno-32-15" href="#__codelineno-32-15"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Explained variance ratio:&quot;</span><span class="p">,</span> <span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">)</span>
+<a id="__codelineno-32-16" name="__codelineno-32-16" href="#__codelineno-32-16"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Projected data:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">X_pca</span><span class="p">)</span>
 </code></pre></div></p>
 <p><strong>5. Expected Outcomes &amp; Interpretation</strong><br />
 - First component should capture ~98% of variance for this toy set<br />
