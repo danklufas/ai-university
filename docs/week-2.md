@@ -96,19 +96,20 @@ By the end of Week 2, you will be able to:
 
 > Assumes Python, Jupyter, NumPy, and pandas are already installed from Week 1.
 
-### A. Download/Install (only if you don’t already have them)
+### A. Download / Install (only if you don’t already have them)
 
 - **Python 3.x (official):** <https://www.python.org/downloads/>  
-- **Anaconda (optional, easy package mgmt):** <https://www.anaconda.com/download>  
-- **Git (already installed, but link for reference):** <https://git-scm.com/downloads>
+- **Anaconda (optional, easier package management):** <https://www.anaconda.com/download>  
+- **Git (already on your machine; link for reference):** <https://git-scm.com/downloads>  
+- **scikit-learn docs:** <https://scikit-learn.org/stable/install.html>  
+- **matplotlib install guide:** <https://matplotlib.org/stable/users/installing.html>  
+- **seaborn install guide (optional):** <https://seaborn.pydata.org/installing.html>
+
+---
 
 ### B. Install scikit-learn & matplotlib
 
 Pick **ONE** method (conda **or** pip).
-
-Official docs:  
-- scikit-learn: <https://scikit-learn.org/stable/install.html>  
-- matplotlib: <https://matplotlib.org/stable/users/installing.html>
 
 **Using conda (recommended if you installed Anaconda):**
 
@@ -116,19 +117,17 @@ Official docs:
 conda install scikit-learn matplotlib -y
 ~~~
 
-**Or with pip:**
+**Or with pip (pure Python):**
 
 ~~~bash
 pip install scikit-learn matplotlib
-# Windows alternative if 'pip' isn't found:
+# Windows fallback if 'pip' isn’t recognized:
 py -m pip install scikit-learn matplotlib
 ~~~
 
 ---
 
 ### C. (Optional) Install seaborn for nicer plots
-
-Official docs: <https://seaborn.pydata.org/installing.html>
 
 **With conda:**
 
@@ -145,7 +144,7 @@ py -m pip install seaborn
 
 ---
 
-### D. Verify inside Python/Jupyter
+### D. Verify installs inside Python/Jupyter
 
 ~~~python
 import sklearn, matplotlib, seaborn
@@ -153,6 +152,34 @@ print("sklearn:", sklearn.__version__)
 print("matplotlib:", matplotlib.__version__)
 print("seaborn:", seaborn.__version__)
 ~~~
+
+---
+
+### E. Why these tools?
+
+- **scikit-learn** – Core classic ML toolkit (linear/logistic regression, train/test split, GridSearchCV).  
+- **matplotlib** – Base plotting library (residual plots, ROC curves, confusion matrices).  
+- **seaborn** (optional) – Cleaner statistical charts (pairplots, heatmaps) built on matplotlib.  
+- **joblib** (bundled with scikit-learn) – Quick model save/load.
+
+---
+
+### F. Troubleshooting
+
+~~~bash
+# 'pip' not found
+python -m pip install --upgrade pip
+
+# 'conda' not found
+# You probably didn’t install Anaconda or its PATH isn’t set. Use pip instead.
+
+# Permission error on Windows
+# Open "Anaconda Prompt" (Start Menu) or run PowerShell as Administrator
+
+# Still stuck? Try upgrading tools
+pip install --upgrade scikit-learn matplotlib seaborn
+~~~
+
 
 ### **5 — Step-by-Step Exercises (10 total)**
 
