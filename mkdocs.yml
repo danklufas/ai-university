@@ -2,11 +2,24 @@ site_name: AI University Curriculum
 
 theme:
   name: material
+  features:
+    - content.code.copy
+    - navigation.instant
+    - navigation.top
+    - toc.integrate
+
+markdown_extensions:
+  - admonition
+  - tables
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
 
 nav:
   - Home: index.md
+  - Roadmap: roadmap.md
   - Week 1: week-1.md
   - Week 2: week-2.md
-  - Cheat Sheet: cheat-sheet.md
-
-  # …continue listing up through Week 24
+  - Cheat Sheets: cheat-sheet.md
