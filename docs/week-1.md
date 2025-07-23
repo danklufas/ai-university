@@ -24,71 +24,214 @@ By the end of this lesson, you will be able to:
 
 ### A. AI Milestones
 
-???+ info "The Dartmouth Workshop (1956)"
-    **What happened:**  
-    In summer 1956, John McCarthy, Marvin Minsky, Nathaniel Rochester, and Claude Shannon met at Dartmouth College to ask: *“Can machines simulate human intelligence?”* They coined **“Artificial Intelligence”** and proposed studying how machines might “learn from experience,” “make abstractions,” and “use language.”
+> **Artificial Intelligence (AI)** – “The science and engineering of making intelligent machines, especially intelligent computer programs.” — John McCarthy, 1956
 
-    **Context & significance:**  
+???+ info "The Dartmouth Workshop (1956)"
+    **What happened (kept):**  
+    In summer 1956, John McCarthy, Marvin Minsky, Nathaniel Rochester, and Claude Shannon met at Dartmouth College to ask: *“Can machines simulate human intelligence?”* They coined **“Artificial Intelligence”** and proposed studying how machines might “learn from experience,” “make abstractions,” and “use language.”
+    
+    **Context & significance (kept):**  
     - Pre‑1956, computers = number crunchers. Dartmouth reframed them as **potential thinking machines**.  
     - Sparked optimism (and funding) that small teams could crack “every aspect of learning.”
 
- **First programs:**  
+    **First programs (kept):**  
     - **Logic Theorist (1955)** – Newell & Simon proved logic theorems with a program.  
     - **General Problem Solver (1957)** – Early universal reasoning attempt.
 
-    !!! note "Why this still matters"
+    !!! note "Why this still matters (kept)"
         - Understanding the **hype → disappointment → AI winters** cycle helps you stay realistic about today’s claims.  
         - Symbolic reasoning/search ideas from this era live on in **knowledge graphs** and **constraint solvers**.
+
+    ---
+    **Deeper Context**  
+    - **Computing state:** Transistors were new; programming languages just emerging (FORTRAN in 1957).  
+    - **Intellectual backdrop:** Cybernetics & information theory showed feedback/communication could be formalized—why not “intelligence”?  
+    - **People & ideas:** McCarthy later created LISP (1958); Minsky founded MIT AI Lab; Newell & Simon argued a “physical symbol system” can generate intelligence.
+
+    **Core Technical Ideas (plain → precise)**  
+    - Treat problems as **symbol strings**; solving = **searching** through legal symbol transformations.  
+    - **Heuristics** prune search trees (A* algorithm later builds on this mindset).  
+    ```text
+    Problem → Encode as symbols
+            → Define legal operations (rules)
+            → Search for a sequence of operations to reach the goal
+    ```
+
+    **Business & Societal Impact (Then vs. Now)**  
+    - *Then:* Government/academic funding—no commercial AI market yet.  
+    - *Now:* Symbolic engines persist in compliance, tax, scheduling, and planning software.
+
+    **Why It Matters to Dan (CEO/Entrepreneur)**  
+    - Separate **vision** from **roadmap**. Dartmouth overpromised timelines—avoid that trap.  
+    - Use **hybrid systems**: rules for constraints, ML for patterns (common in finance/ops).
+
+    **Misconceptions & Lessons**  
+    - Myth: “AI began with neural nets.” → It began symbolically.  
+    - Lesson: Each wave leaves **usable tools**—don’t discard “old” tech.
+
+    **Mini Timeline Callout**  
+    | Year | Event | Why It Matters |
+    |------|-------|----------------|
+    | 1950 | Turing’s “Imitation Game” paper | First formal test of “machine intelligence” |
+    | 1955 | Logic Theorist | Proved math theorems—machines can “reason” |
+    | 1956 | Dartmouth Workshop | AI term coined; field launched |
+    | 1957 | General Problem Solver | Shows limits of “universal” reasoning |
+    | 1958 | LISP created | Dominant AI language for decades |
+
+    **See Also**  
+    - Week 4 (Neural Network Basics) for a contrast with symbolic approaches.  
+    - Week 15 (Anomaly Detection/QoE) where rules can wrap around ML for governance.
 
 ---
 
 ???+ info "Expert Systems Era (1970s–1980s)"
-    **Core idea:** Encode expert knowledge as **IF–THEN rules**.
-
+    **Core idea (kept):** Encode expert knowledge as **IF–THEN rules**.
+    
     ```text
     IF symptom = fever AND symptom = rash
     THEN suggest = measles
     ```
 
-    **MYCIN (1972–1980):**  
+    **MYCIN (1972–1980) (kept):**  
     - ~600 rules to diagnose bacterial infections & suggest antibiotics  
     - Matched/surpassed human experts in blind tests
 
-    **Strengths vs. limits:**  
+    **Strengths vs. limits (kept):**  
     - ✅ Transparent logic (traceable to specific rules)  
     - ❌ Hard to scale (thousands of hand‑written rules), weak with uncertainty
 
-    !!! tip "Modern relevance"
+    !!! tip "Modern relevance (kept)"
         - Rule‑based logic still used in finance/healthcare compliance.  
         - Today’s **hybrid systems**: rules for regulation + ML models for scoring.
+
+    ---
+    **Deeper Context**  
+    - **Hardware shift:** Minicomputers/workstations made corporate AI feasible; dedicated LISP machines sold.  
+    - **Commercialization:** DEC’s XCON configured VAX computers—saved ~$25M/year; oil, med, and manufacturing sectors experimented widely.
+
+    **Core Technical Ideas**  
+    - **Production rules + Inference engine:**  
+      ```text
+      Knowledge Base (rules)
+      + Working Memory (facts)
+      + Inference Engine (forward/backward chaining)
+      = Conclusion
+      ```  
+      - Forward chaining: facts → conclusions  
+      - Backward chaining: goal → supporting rules  
+    - **Certainty factors:** MYCIN’s workaround for uncertainty (e.g., 0.6 confidence).
+
+    **Business & Societal Impact**  
+    - *Then:* Big early ROI stories, then maintenance bottlenecks → **AI winter** (late ’80s).  
+    - *Now:* Business rules engines (Drools, BRMS) enforce policies & compliance.
+
+    **Why It Matters to Dan**  
+    - **Maintenance cost lesson:** Knowledge capture & upkeep is expensive—design for continuous update (MLOps mindset).  
+    - **Explainability:** In regulated spaces, traceable logic is critical; combine rules + ML for auditability.
+
+    **Misconceptions & Lessons**  
+    - Myth: “Expert systems are dead.” → They evolved into modern decision engines.  
+    - Lesson: Balance **transparency vs. flexibility**—all‑rules = rigid, all‑ML = opaque.
+
+    **Mini Timeline Callout**  
+    | Year | Event | Why It Matters |
+    |------|-------|----------------|
+    | 1972 | MYCIN begins | First impactful medical expert system |
+    | 1979 | XCON deployed at DEC | Massive real-world cost savings |
+    | 1984 | Japan’s 5th Gen Project | National bet on symbolic AI |
+    | 1987 | AI Winter hits | Funding collapses after hype |
+    | 1990 | Probabilistic models rise | Bayes nets mark shift to statistical AI |
+
+    **See Also**  
+    - Week 5 (Ethics/Bias): rules help enforce fairness policies.  
+    - Deployment weeks: wrap ML predictions with business rules.
 
 ---
 
 ???+ info "Deep Learning Boom (2010s–Present)"
-    **Key breakthrough – AlexNet (2012):**  
+    **Key breakthrough – AlexNet (2012) (kept):**  
     - 8‑layer CNN, cut ImageNet error rate in half (1.2M images, 1,000 classes)  
     - Used ReLU, dropout, and **GPU training**.
 
-    **Why deep learning emerged:**  
+    **Why deep learning emerged (kept):**  
     1. **Data:** Huge labeled datasets (images, text, speech)  
     2. **Compute:** GPUs = fast parallel matrix ops  
     3. **Algorithms:** Batch norm, better backprop, new architectures
 
-    **Transformative apps:**  
+    **Transformative apps (kept):**  
     - Computer vision: self‑driving cars, medical imaging  
     - NLP: translation, GPT‑style generation  
     - Speech: voice assistants, real‑time translation
 
-    !!! success "Why this matters for you"
+    !!! success "Why this matters for you (kept)"
         - Modern frameworks (TensorFlow, PyTorch) are built around neural nets.  
         - Explains why later terms focus on coding deep models & leveraging **pretrained architectures** quickly.
 
-### C. Probability Basics
+    ---
+    **Deeper Context**  
+    - **Before 2012:** Neural nets unfashionable; SVMs/ensembles dominated. ImageNet (2009) provided the benchmark that changed that.  
+    - **GPU/CUDA era:** NVIDIA CUDA (2007) let researchers use gaming GPUs for matrix math cheaply.  
+    - **Open-source wave:** Theano/Torch → TensorFlow (2015) → PyTorch (2016) democratized DL.
+
+    **Core Technical Ideas**  
+    - **Representation learning:** Networks learn features automatically vs. manual engineering.  
+    - **Backprop + Optimizers:** Adam/RMSProp etc. speed convergence.  
+    - **Regularization:** Dropout, data augmentation reduce overfitting.  
+    - **Transfer learning:** Fine‑tune large pretrained models for your niche.  
+      ```python
+      # Pseudocode: fine-tune a pretrained CNN
+      base = load_pretrained_model("resnet50", weights="imagenet")
+      freeze_layers(base, up_to="layer3")
+      new_head = Dense(1, activation="sigmoid")(base.output)
+      model = Model(inputs=base.input, outputs=new_head)
+      model.compile(optimizer="adam", loss="binary_crossentropy")
+      model.fit(my_data, my_labels)
+      ```
+
+    **Business & Societal Impact**  
+    - *Then:* Explosion of startups (vision, NLP, speech).  
+    - *Now:* Foundation models/LLMs power copilots, automations, creative tools.  
+    - *Risks:* Opaqueness, bias, IP, energy costs → regulation & governance needed.
+
+    **Why It Matters to Dan**  
+    - **Speed to value:** APIs + pretrained nets = rapid prototypes.  
+    - **Data moat:** High-quality labeled data becomes a competitive advantage.  
+    - **Build vs. Buy:** Decide between API use (fast, less control) and in-house models (costly, differentiated).
+
+    **Misconceptions & Lessons**  
+    - Myth: “Deep learning is always best.” → For tabular biz data, simpler models often win.  
+    - Lesson: Start simple; escalate complexity when ROI demands it.
+
+    **Mini Timeline Callout**  
+    | Year | Event | Why It Matters |
+    |------|-------|----------------|
+    | 2006 | “Deep Learning” term revived (Hinton et al.) | Layer-wise pretraining shows deep nets can work |
+    | 2009 | ImageNet released | Benchmark catalyzes vision progress |
+    | 2012 | AlexNet wins ImageNet | GPU CNN breakthrough |
+    | 2015 | TensorFlow open-sourced | Industrial-grade DL tooling |
+    | 2017 | Transformer paper | Base of modern LLMs (GPT, etc.) |
+    | 2020+| GPT‑3, Stable Diffusion | Generative AI mainstreams |
+
+    **See Also**  
+    - Week 4 (Neural Net Basics) & Week 10 (TensorFlow/Keras) for hands-on DL.  
+    - Term 3 apps (marketing, inventory, QoE) where transfer learning/LLMs drive ROI.
+
+---
+
+!!! tip "Pattern to Remember"
+    **Symbolic → Rule‑Based → Deep Learning**  
+    1. Each wave adds new capabilities.  
+    2. Each brings new limitations.  
+    3. Each leaves tools you can still exploit.  
+    Your edge = knowing **when to mix them** for real business value.
+
+
+### B. Probability Basics
 
 !!! abstract "Definition"
     **Probability Theory** – “The mathematical framework for quantifying uncertainty and modeling random phenomena.”
 
-#### C1. Gentle Introduction 
+#### B1. Gentle Introduction 
 
 ???+ tip "1. What is Chance?"
     **Analogy:** Flipping a coin—two outcomes, but you can’t predict which.  
@@ -112,7 +255,7 @@ By the end of this lesson, you will be able to:
     4. Square root of variance → standard deviation ≈ 16.7  
     **Why we care:** Spread tells you how consistent or noisy data is—critical for risk or quality control.
 
-#### C2. Formal Definitions & Deep Dive
+#### B2. Formal Definitions & Deep Dive
 
 ???+ info "1. Random Variables"
     A **random variable (RV)** assigns numbers to random outcomes.
@@ -166,12 +309,12 @@ By the end of this lesson, you will be able to:
     - **Feature Engineering:** Understanding distributions guides transformations (e.g., log scales for skewed data).
 
 
-### D. Linear Algebra Basics
+### C. Linear Algebra Basics
 
 !!! abstract "Definition"
     **Linear Algebra** – “The branch of mathematics concerned with vectors, vector spaces, and linear transformations.”
 
-#### D1. Gentle Introduction 
+#### C1. Gentle Introduction 
 
 ???+ tip "1. Vectors as Lists"
     **Analogy:** A grocery list: `[2 bananas, 1 loaf bread, 500 g cheese]`  
@@ -199,7 +342,7 @@ By the end of this lesson, you will be able to:
     - **Recipe scaling:** Multiply ingredient matrix by 1.5 to go from 4 to 6 servings.  
     - **School timetable:** Days × hours grid to schedule classes.
 
-#### D2. Formal Definitions & Deep Dive
+#### C2. Formal Definitions & Deep Dive
 
 ???+ info "1. Vectors & Their Interpretation"
     A vector **x ∈ ℝⁿ** is an ordered list of n numbers (features).  
